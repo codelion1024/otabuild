@@ -11,23 +11,25 @@ printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "编译开始"
 otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
 
+curtime=$(date +%y%m%d_%H%M)
 if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then
   printf "=====================开始制作整包==================\n"
-  curtime=$(date +%y%m%d_%H%M)
   source $otabuild/tools/makeota.sh full
+fi
+if [ $ota_style = "all" ] || [ $ota_style = "full" ] || [ $ota_style = "forward" ]; then
   printf "=====================开始制作正向差分升级包==================\n"
   source $otabuild/tools/makeota.sh up
   mv -v $ota_param_file $outputdir/$packfolder
   python $otabuild/tools/makeupc.py $diffpack_signed $PROJECT_NAME "$description" $priority $hw_version $old_ver $new_ver
 fi
 
-if [ $ota_style = "all" ] || [ $ota_style = "diff" ]; then
+curtime=$(date +%y%m%d_%H%M)
+if [ $ota_style = "all" ] || [ $ota_style = "diff" ] || [ $ota_style = "backward" ]; then
   printf "======================开始制作逆向差分升级包=================\n"
   # 对于逆向差分升级包, 需要交换新旧target-files
   tmpdir=$target_old_dir;target_old_dir=$target_new_dir;target_new_dir=$tmpdir
   tmpfile=$target_old_file;target_old_file=$target_new_file;target_new_file=$tmpfile
   tmpver=$old_ver;old_ver=$new_ver;new_ver=$tmpver
-  curtime=$(date +%y%m%d_%H%M)
   source $otabuild/tools/makeota.sh down
   python $otabuild/tools/makeupc.py $diffpack_signed $PROJECT_NAME "$description" $priority $hw_version $old_ver $new_ver
 fi

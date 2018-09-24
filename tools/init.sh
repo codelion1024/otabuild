@@ -35,6 +35,7 @@ printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--初始化并打印所有参数"
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
 ota_param_file=$ota_param_dir/ota_parameter.txt
 mv -v $WORKSPACE/ota_parameter.txt $ota_param_file
+dos2unix $ota_param_file
 enca -L zh_CN -x UTF-8 $ota_param_file
 
 if [ $LOCATION == "XIAN" ]; then

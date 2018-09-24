@@ -8,7 +8,8 @@ function clean_and_quit()
     exit
 }
 
-# 检测enca是否安装, 后面要用enca转换文件编码
+# 检测dos2unix,enca是否安装, 后面要用dos2unix转换文件换行符,用enca转换文件编码
+type dos2unix >/dev/null 2>&1 || { echo >&2 "we need dos2unix to convert dos style line break,using sudo apt-get install dos2unix to install it.  Aborting."; exit 1; }
 type enca >/dev/null 2>&1 || { echo >&2 "we need enca to convert ota_param_file's encoding,using sudo apt-get install enca to install it.  Aborting."; exit 1; }
 
 TIME=`date +%y%m%d_%H%M%S`

@@ -95,7 +95,7 @@ if [ $WIPE_DATA = "true" ]; then
 elif [ $WIPE_DATA = "false" ]; then
   IS_WIPE_USER_DATA=""
 fi
-cpu_nums=$(cat /proc/cpuinfo | grep "physical id" | uniq | wc -l)
+cpu_nums=$(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)
 core_nums=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | tr -cd "[0-9]")
 # to speed up the generation of ota packages, set work thread as ths sum of Cores to take full advantage of multi-core cpu(s).
 thread_nums=$(expr $cpu_nums \* $core_nums)

@@ -12,3 +12,6 @@ rel_server_ip=10.100.11.19
 rel_version=CP_Release_Version
 #发布服务器目录
 rel_platform=QC8940_Release_Version
+
+#release签名文件目录
+rel_key_dir=/home/system1/QK1711/Rel_Version/security/testkey

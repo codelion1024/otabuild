@@ -16,15 +16,12 @@ mkdir -p $window_out_path;
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$JAVA_HOME/bin:$PATH
-SIGNAPK=$otabuild/tools/sign/signapk.jar
-Int_KEY=$otabuild/tools/sign/int/testkey
-Rel_KEY=$otabuild/tools/sign/rel/testkey
 OTA_TYPE=stable
 
-if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
-if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
-
 PLAT_CFG_FILE=$otabuild/tools/config/${PLATFORM}_ota_parameter.txt
+SIGNAPK=$otabuild/tools/signapk.jar
+Int_KEY=$ANDROID/build/target/product/security/testkey
+Rel_KEY=`grep '^rel_key_dir' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 int_server_name=`grep '^int_server_name' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 int_server_ip=`grep '^int_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 int_platform=`grep '^int_platform' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
@@ -50,7 +47,8 @@ new_ver=$(basename --suffix=.zip $target_new_win | awk -F \- '{print $4}')
 hw_version=$(echo $target_old_win | awk -F \/ '{print $7}' | awk -F \. '{print $2}')
 if [ $priority = "" ]; then priority=Optional; fi
 if [ $ota_style = "" ]; then ota_style=all; fi
-
+if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
+if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
 echo =========================所有信息BEGIN==================================
 echo "ANDROID           $ANDROID"

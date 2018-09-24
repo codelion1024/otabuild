@@ -30,4 +30,5 @@ bash ./main.sh $ANDROID $PROJECT_NAME $PLATFORM $window_out_path
 
 3 otabuild适配新项目  
 3.1 在tools/config下新增新项目的配置文件  
-3.2 在tools/init.sh中设置新项目的PLATFORM(平台名称)和window_out_path(输出路径)
+
+

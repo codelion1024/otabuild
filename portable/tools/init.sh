@@ -142,10 +142,13 @@ if [ "$target_old_win" = "" ] || [ "$target_new_win" = "" ]; then
   fi
 fi
 printf '%b' "\033[32;1m =================将target-files从/mnt/hgfs拷贝到%s/input下====================== \033[0m\n" $otabuild
-cp -vf $target_old_win $target_old_dir
-if [ $check_integrity = "true" ]; then
-    test_integrity $target_old_file
+if [ $ota_style != "fullpkg" ]; then
+    cp -vf $target_old_win $target_old_dir
+    if [ $check_integrity = "true" ]; then
+        test_integrity $target_old_file
+    fi
 fi
+
 
 cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then

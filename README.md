@@ -39,17 +39,17 @@ android$ git clone --branch otabuild_Int ssh://{username}@10.100.13.23:29418/and
 创建当前项目的Jenkins任务时,首先选择任务类型为`构建一个自由风格的软件项目`
 
 ######3.2 设置 `参数化构建过程`
-勾选任务配置中的`参数化构建过程`
+勾选任务配置中的`参数化构建过程`  
 
-参数 | 类型 | 取值 | 含义 |
----|---|---|
-SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名 |
-ota_parameter.txt | File Parameter | 使用者上传 | spm启动任务时上传的文件 
-check_integrity | Choice | true, false(默认) | 是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
-BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7 |
-BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
-autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
-WIPE_DATA | Choice | true, false | 所整包差分包都强制清除数据 |
+| 参数   |      类型      |  取值 | 含义 |
+|----------|:-------------:|------:|:-----:|
+| SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名 |
+| ota_parameter.txt | File Parameter |   使用者上传 | spm启动任务时上传的文件 |
+| check_integrity | Choice |  true, false(默认) | 是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
+| BIGVERSION | Choice |  7, 8(默认) | 项目android源码的大版本号, O及之后都选8, O之前都选7 |
+| BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
+| autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
+| WIPE_DATA | Choice | true, false | 所整包差分包都强制清除数据 |
 
 各参数的Description的html描述信息:
 `autosync`
@@ -67,13 +67,13 @@ WIPE_DATA | Choice | true, false | 所整包差分包都强制清除数据 |
 在`构建环境`下勾选`Color ANSI Console Output`, 之后在`ANSI color map`下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.
 各颜色风格示例:
 1 xterm
-![xterm](md_pic\xterm.PNG "xterm example")
+![xterm](.\md_pic\xterm.PNG "xterm example")
 2 vga
-![vga](md_pic\vga.PNG "vga example")
+![vga](.\md_pic\vga.PNG "vga example")
 3 css
-![css](md_pic\css.PNG "css example")
+![css](.\md_pic\css.PNG "css example")
 4 gnome-terminal
-![gnome-terminal](md_pic\gnome-terminal.PNG "gnome-terminal example")
+![gnome-terminal](.\md_pic\gnome-terminal.PNG "gnome-terminal example")
 
 ######3.5 设置 `构建`
 选择`Execute shell`,`Command`为:

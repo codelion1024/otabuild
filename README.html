@@ -1,1164 +1,248 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
-  max-width: 980px;
-  border: 1px solid #ddd;
-  outline: 1300px solid #fff;
-  margin: 16px auto;
-}
 
-body .markdown-body
-{
-  padding: 45px;
-}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta name="renderer" content="webkit"/>
+    <title>README</title>
+    <link rel="stylesheet" href="data:text/css;base64,CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyIHsKICAgICAgICB3aWR0aDo4cHg7CiAgICAgICAgbWFyZ2luOjAgMXB4OwogICAgICAgIGJhY2tncm91bmQ6ICNmZGZkZmQ7CiAgICB9CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyOmhvcml6b250YWx7CiAgICAgICAgaGVpZ2h0OiA4cHg7CiAgICB9CgogICAgOjotd2Via2l0LXNjcm9sbGJhci1idXR0b257CiAgICAgICAgaGVpZ2h0OiAwOwogICAgfQoKICAgIDo6LXdlYmtpdC1zY3JvbGxiYXItdHJhY2sgewogICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDsKICAgIH0KICAgIDo6LXdlYmtpdC1zY3JvbGxiYXItdHJhY2stcGllY2UgewogICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmZGZkZmQ7CiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4OwogICAgfQogICAgOjotd2Via2l0LXNjcm9sbGJhci10aHVtYiB7CiAgICAgICAgd2lkdGg6OHB4OwogICAgICAgIG1hcmdpbjogMCAxcHg7CiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNjNGM0YzQ7CiAgICB9CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyLXRodW1iOmhvdmVyIHsKICAgICAgICBiYWNrZ3JvdW5kOiAjOTA5MDkwOwogICAgfQoKCgoKICAgIGJvZHkgewogICAgICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7CiAgICAgICAgZm9udC1zaXplOiAxNHB4OwogICAgICAgIGxpbmUtaGVpZ2h0OjIuMTAyNTsKICAgICAgICBmb250LWZhbWlseTogIk1lbmxvIiwgIkFuZGFsZSBNb25vIiwgbW9ub3NwYWNlLCAiRHJvaWQgU2FucyBGYWxsYmFjayIsICJNaWNyb3NvZnQgWWFIZWkiLCBzYW5zLXNlcmlmOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzYzNjM2M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICAgICAgd29yZC13cmFwOmJyZWFrLXdvcmQ7CgogICAgICAgIG92ZXJmbG93LXg6IGhpZGRlbjsKICAgICAgICB0ZXh0LXJlbmRlcmluZzogb3B0aW1pemVMZWdpYmlsaXR5OwogICAgICAgIC13ZWJraXQtdGV4dC1zaXplLWFkanVzdDogbm9uZTsKICAgIH0KCiAgICBicnsKICAgICAgICBsaW5lLWhlaWdodDogMi4xMDI1OwogICAgfQoKCgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDYwMHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAzMHB4OwogICAgICAgIH0KICAgIH0KCiAgICBAbWVkaWEgKG1heC13aWR0aDogNDgwcHgpIHsKICAgICAgICBib2R5ewogICAgICAgICAgICBwYWRkaW5nOiAwIDIwcHg7CiAgICAgICAgfQogICAgfQoKICAgIC5naXN0ewogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgIH0KCiAgICAucG9zdHsKICAgICAgICBtYXJnaW4tdG9wOiAxMHB4OwogICAgICAgIG1hcmdpbi1ib3R0b206IDUwcHg7CiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgfQoKCgogICAgaW1newogICAgICAgIG1heC13aWR0aDogOTglOwogICAgICAgIG1hcmdpbjogMC44ZW0gYXV0byAwLjhlbSBhdXRvOwogICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICB3b3JkLXdyYXA6YnJlYWstd29yZDsKICAgICAgICBvdmVyZmxvdzpoaWRkZW47CiAgICAgICAgbWFyZ2luOiAxLjVlbSAwOwogICAgfQoKICAgIGxpIHB7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuODg1OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KCiAgICAuY29kZWhpbGl0ZXRhYmxlIHByZXsKICAgICAgICBtYXJnaW4tbGVmdDogMDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDA7CgogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgLmNvZGVoaWxpdGUgcHJlewogICAgICAgIGJvcmRlci1sZWZ0OiBub25lOwogICAgfQoKICAgIC8qIHRleHQgaW5kZW50IGZvciBjaGluZXNlIGVuZHMqLwoKCiAgICBibG9ja3F1b3RlIC5wX3BhcnQgcCwgbGkgLnBfcGFydCBwewogICAgICAgIHRleHQtaW5kZW50OiAwICFpbXBvcnRhbnQ7CiAgICB9CgoKICAgIGhyewogICAgICAgIG1hcmdpbjogMzhweCAwOwogICAgICAgIGJvcmRlcjogbm9uZTsKICAgICAgICBib3JkZXItYm90dG9tOiAxcHggZGFzaGVkICNlM2UzZTM7CiAgICAgICAgY29sb3I6ICNlM2UzZTM7CiAgICAgICAgaGVpZ2h0OiAxcHg7CiAgICAgICAgbGluZS1oZWlnaHQ6MXB4OwogICAgICAgIGZvbnQtc2l6ZToxcHg7CiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjsKICAgIH0KCgogICAgaDF7CiAgICAgICAgY29sb3I6ICMxMGEzZWU7CiAgICAgICAgZm9udC1zaXplOiAxLjdlbTsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgICAgIG1hcmdpbjogMDsKICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjZlbTsKICAgICAgICBtYXJnaW4tdG9wOiAwLjhlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgIH0KCiAgICBoMSwgaDIsIGgzLCBoNHsKICAgICAgICBjb2xvcjogIzEwYTNlZTsKICAgIH0KCiAgICBoMSwgaDIsIGgzewogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICB9CgogICAgaDIsIGgzewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjVlbTsKICAgICAgICBtYXJnaW4tdG9wOiAxLjVlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjhlbTsKICAgIH0KCiAgICBoMiB7CiAgICAgICAgZm9udC1zaXplOiAxLjQ1ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgoKICAgIG9sIHsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWx7CiAgICAgICAgcGFkZGluZzogNXB4IDM4cHg7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIGxpLCBsaXsKICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bCBwLCBvbCBwewogICAgICAgIG92ZXJmbG93OiB2aXNpYmxlOwogICAgfQoKCiAgICBibG9ja3F1b3RlIHsKICAgICAgICAtbW96LWJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBtYXJnaW46IDEuNmVtIDA7CiAgICAgICAgcGFkZGluZzogMCAwIDAgMS4yZW07CiAgICAgICAgYm9yZGVyLWxlZnQ6IDAuNGVtIHNvbGlkICNkZGRkZGQ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgbWluLWhlaWdodDoyMHB4OwogICAgfQoKCiAgICBibG9ja3F1b3RlIHAgewogICAgICAgIG1hcmdpbjogMC44ZW0gMDsKICAgIH0KCiAgICBibG9ja3F1b3RlIHNwYW4ubWRfbGluZSB7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDAuMjVlbTsKICAgIH0KCiAgICBibG9ja3F1b3RlIHVsewogICAgICAgIHBhZGRpbmc6IDAgMTVweDsKICAgIH0KCiAgICBibG9ja3F1b3RlIHNtYWxsIHsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwIDAuOGVtIDEuNWVtOwogICAgICAgIGZvbnQtc2l6ZTogMC45ZW07CiAgICAgICAgY29sb3I6ICNjY2M7CiAgICB9CgoKCiAgICB0YWJsZSB7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKICAgICAgICBib3JkZXItc3BhY2luZzogMDsKICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjZDlkOWQ5OwogICAgICAgIGJvcmRlci1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi10b3A6IDIwcHg7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgIH0KCgogICAgdGgsIHRkIHsKICAgICAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkICNkOWQ5ZDk7CiAgICAgICAgcGFkZGluZzogOHB4OwogICAgICAgIGxpbmUtaGVpZ2h0OiAyMHB4OwogICAgICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICAgICAgdmVydGljYWwtYWxpZ246IHRvcDsKICAgICAgICBib3JkZXItdG9wOiAxcHggc29saWQgI2Q5ZDlkOTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6ICNmNWY1ZjU7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2U2ZTZlNjsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAxLjJlbTsKICAgICAgICBwYWRkaW5nOiAxNXB4IDEwcHg7CiAgICAgICAgZGlzcGxheTogYmxvY2s7CiAgICAgICAgb3ZlcmZsb3c6IGF1dG87CiAgICAgICAgYmFja2dyb3VuZDogI2Y3ZjdmNzsKICAgICAgICBmb250LXNpemU6IDkwJTsKICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICB3b3JkLXdyYXA6IG5vcm1hbDsKICAgIH0KCiAgICBwcmUgY29kZXsKICAgICAgICBib3JkZXI6bm9uZTsKICAgICAgICBiYWNrZ3JvdW5kOiBub25lOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHByZSBwewogICAgICAgIG1hcmdpbjogMDsKICAgICAgICBwYWRkaW5nOiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHRoLCAuY29kZWhpbGl0ZSB0ZHsKICAgICAgICBsaW5lLWhlaWdodDogMS44ZW07CiAgICB9CgoKICAgIGF7CiAgICAgICAgY29sb3I6ICM0MDgzYzQ7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwogICAgICAgIC8vYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHRyYW5zcGFyZW50OwogICAgfQoKICAgIGE6aG92ZXJ7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgIzQwODNjNDsKICAgIH0KCiAgICBzdHJvbmcgewogICAgICAgIGNvbG9yOiAjMDAwMDAwOwogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgfQoKCiAgICAvKiBmb3IgbWFya2Rvd24gKi8KCiAgICAubGluZW5vcyBwcmV7CgkJYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CgkJYm9yZGVyOiBub25lOwoJfQoJLyoKCS5saW5lbm9zewoJICAgIHBhZGRpbmc6IDAgMCAwIDEwcHg7Cgl9CgkqLwoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogI2ZkZmRmZDsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2U2ZTZlNjsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM2MzYzNjOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjYzg1YTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAnXDI3MTUnOwogICAgICAgIHBhZGRpbmctcmlnaHQ6IDAuN2VtOwogICAgICAgIGZvbnQtZmFtaWx5OiBhcmlhbDsKICAgIH0KCiAgICB1bCBsaS50b2RvX2RvbmVfaXRlbTpiZWZvcmV7CiAgICAgICAgY29udGVudDogJ1wyNzEzJzsKICAgICAgICBwYWRkaW5nLXJpZ2h0OiAwLjdlbTsKICAgICAgICBmb250LWZhbWlseTogYXJpYWw7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtIGlucHV0ewogICAgICAgIGRpc3BsYXk6bm9uZQogICAgfQoKCiAgICAvKnB5Z21lbnRzKi8KCiAgICAuY29kZWhpbGl0ZXsKICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50OwogICAgfQoKICAgIHRhYmxlLmNvZGVoaWxpdGV0YWJsZXsgYm9yZGVyOm5vbmU7IH0KCgogICAgLmNvZGVoaWxpdGV0YWJsZSB0ZHsgYm9yZGVyOiBub25lOyBwYWRkaW5nOiAwO30KCiAgICAuZmxvdy1ncmFwaGlje3RleHQtYWxpZ246IGNlbnRlcn0KCgogICAgdGFibGUsIHRyLCB0ZCwgdGgsIHRib2R5LCB0aGVhZCwgdGZvb3QsIC5tZF9lY2hhcnRzLCBibG9ja3F1b3RlIC5tZF9saW5lewogICAgICAgIHBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZCAhaW1wb3J0YW50OwogICAgfQoKICAgIC5mb290bm90ZXMgLm1kX2xpbmV7CiAgICAgICAgZGlzcGxheTogaW5saW5lICFpbXBvcnRhbnQ7CiAgICB9CgoKICAgIC5pbWdfcnRfOTB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1zLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtby10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgIH0KICAgIC5pbWdfcnRfMTgwewogICAgICAgIHRyYW5zZm9ybTpyb3RhdGUoMTgwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoMTgwZGVnKTsKICAgIH0KICAgIC5pbWdfcnRfMjcwewogICAgICAgIHRyYW5zZm9ybTpyb3RhdGUoMjcwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoMjcwZGVnKTsKICAgIH0KCiAgICAubWRfaGFzX2Jsb2NrX2JlbG93ewogICAgICAgIG1hcmdpbi1ib3R0b206IDAuMWVtICFpbXBvcnRhbnQ7CiAgICB9CiAgICAubWRfaGFzX2Jsb2NrX2JlbG93X2ltZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC42ZW0gIWltcG9ydGFudDsKICAgIH0KCgoKICAgICAgICBzcGFuLm1kX2xpbmV7bWFyZ2luLWJvdHRvbTowLjVlbTsgZGlzcGxheTpibG9jazsgbGluZS1oZWlnaHQ6MS44MTg2NjI1fQogICAgICAgIC5tZF9saW5lIGJyeyBkaXNwbGF5OiBub25lO30KICAgICAgICAuY29kZWhpbGl0ZSAuaGxsIHsgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZjYyB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2IgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkJhY2t0aWNrICovCi5jb2RlaGlsaXRlIC5zYyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQ2hhciAqLwouY29kZWhpbGl0ZSAuc2QgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkRvYyAqLwouY29kZWhpbGl0ZSAuczIgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkRvdWJsZSAqLwouY29kZWhpbGl0ZSAuc2UgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkVzY2FwZSAqLwouY29kZWhpbGl0ZSAuc2ggeyBjb2xvcjogIzFjN2U3MTsgZm9udC1zdHlsZTogaXRhbGljIH0gLyogTGl0ZXJhbC5TdHJpbmcuSGVyZWRvYyAqLwouY29kZWhpbGl0ZSAuc2kgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkludGVycG9sICovCi5jb2RlaGlsaXRlIC5zeCB7IGNvbG9yOiAjY2I2YzIwIH0gLyogTGl0ZXJhbC5TdHJpbmcuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnNyIHsgY29sb3I6ICMxYzdlNzEgfSAvKiBMaXRlcmFsLlN0cmluZy5SZWdleCAqLwouY29kZWhpbGl0ZSAuczEgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLlNpbmdsZSAqLwouY29kZWhpbGl0ZSAuc3MgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLlN5bWJvbCAqLwouY29kZWhpbGl0ZSAuYnAgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbi5Qc2V1ZG8gKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC5pbCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlci5Mb25nICov">
+    <!--header_scripts-->
+</head>
+<body>
 
-@font-face {
-  font-family: fontawesome-mini;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
 
-@font-face {
-  font-family: octicons-anchor;
-  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
-}
+<div class="post">
+    
+    <div class="post_body">
+        <h5 id="toc_0">1 编译服务器软件环境要求</h5>
 
-.markdown-body {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: #333333;
-  overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-}
+<p class="md_block">
+    <span class="md_line">1.1 enca,用于转换ota_parameter.txt文件(spm启动任务时上传的文件)的编码<br /></span>
+    <span class="md_line">sudo apt-get install enca<br /></span>
+    <span class="md_line">1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符<br /></span>
+    <span class="md_line">sudo apt-get install dos2unix<br /></span>
+    <span class="md_line">1.3 python命令默认链接到的是python2.x<br /></span>
+    <span class="md_line">1.4 Jenkins上需要安装AnsiColor插件,用于让Jenkins任务的Console Output支持解释ANSI转义字符,输出彩色日志<br /></span>
+    <span class="md_line">https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin</span>
+</p>
 
-.markdown-body a {
-  background: transparent;
-}
 
-.markdown-body a:active,
-.markdown-body a:hover {
-  outline: 0;
-}
+<h5 id="toc_1">2 适配新项目前的准备工作</h5>
 
-.markdown-body b,
-.markdown-body strong {
-  font-weight: bold;
-}
+<p class="md_block">
+    <span class="md_line">2.1 将以下活动cherry-pick到当前项目的分支上并merge<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/47213/ 全包升级时根据版本编译时间决定是否清data分区<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/48082/ 支持通过全量包降级升级<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/48086/ 支持直接生成逆向差分升级包</span>
+</p>
 
-.markdown-body mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
 
-.markdown-body sub,
-.markdown-body sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-.markdown-body sup {
-  top: -0.5em;
-}
-.markdown-body sub {
-  bottom: -0.25em;
-}
+<p class="md_block">
+    <span class="md_line">http://10.100.13.23:8080/#/c/49688/ 解决system.img差异导致的OTA失败<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/49717/ 解决system.img差异导致的OTA失败<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/49879/ 优化out/dist下对编译结果的判断逻辑</span>
+</p>
 
-.markdown-body h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
 
-.markdown-body img {
-  border: 0;
-}
+<p class="md_block">
+    <span class="md_line">http://10.100.13.23:8080/#/c/48050/ extra_script框架更新build下的辅助改动<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/50611/ extra_script框架:recovery集成busybox工具集,更新update-script逻辑<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/51335/ extra_script框架:recovery中集成toybox,并创建子命令链接<br /></span>
+    <span class="md_line">http://10.100.13.23:8080/#/c/51368/ extra_script框架:修复注释格式错误</span>
+</p>
 
-.markdown-body hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
 
-.markdown-body pre {
-  overflow: auto;
-}
+<p class="md_block">
+    <span class="md_line">2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 用以下命令在android/qiku的上一级目录clone好otabuild仓库, 同时切到otabuild_Int分支:</span>
+</p>
 
-.markdown-body code,
-.markdown-body kbd,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
+<div class="codehilite code_lang_bash  highlight"><pre><span></span>android$ git clone --branch otabuild_Int ssh://<span class="o">{</span>username<span class="o">}</span>@10.100.13.23:29418/android/otabuild
+</pre></div>
 
-.markdown-body input {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.</span>
+</p>
 
-.markdown-body html input[disabled] {
-  cursor: default;
-}
 
-.markdown-body input {
-  line-height: normal;
-}
+<p class="md_block">
+    <span class="md_line">2.3  在otabuild仓库的extra_script下, 建立存放对应机型国内版和海外版extra脚本路径,如extra_script\QK1807\normal和\extra_script\QK1807\oversea.<br /></span>
+    <span class="md_line">对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板脚本文件到normal和oversea下.<br /></span>
+    <span class="md_line">对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板脚本文件到normal和oversea下.<br /></span>
+    <span class="md_line">然后在otabuild下将刚新增的extra脚本提交到otabuild_Int和otabuild_Dev,并合入.<br /></span>
+    <span class="md_line">以后按软件代表的特殊需求持续更新对应的脚本即可.</span>
+</p>
 
-.markdown-body input[type="checkbox"] {
-  box-sizing: border-box;
-  padding: 0;
-}
 
-.markdown-body table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+<h5 id="toc_2">3 hudson任务配置</h5>
 
-.markdown-body td,
-.markdown-body th {
-  padding: 0;
-}
+<h6 id="toc_3">3.1 选择任务类型</h6>
 
-.markdown-body .codehilitetable {
-  border: 0;
-  border-spacing: 0;
-}
+<p class="md_block">
+    <span class="md_line">创建当前项目的Jenkins任务时,首先选择任务类型为<code>构建一个自由风格的软件项目</code></span>
+</p>
 
-.markdown-body .codehilitetable tr {
-  border: 0;
-}
 
-.markdown-body .codehilitetable pre,
-.markdown-body .codehilitetable div.codehilite {
-  margin: 0;
-}
+<h6 id="toc_4">3.2 设置 <code>参数化构建过程</code></h6>
 
-.markdown-body .linenos,
-.markdown-body .code,
-.markdown-body .codehilitetable td {
-  border: 0;
-  padding: 0;
-}
+<p class="md_block">
+    <span class="md_line">勾选任务配置中的<code>参数化构建过程</code>  </span>
+</p>
 
-.markdown-body td:not(.linenos) .linenodiv {
-  padding: 0 !important;
-}
 
-.markdown-body .code {
-  width: 100%;
-}
-
-.markdown-body .linenos div pre,
-.markdown-body .linenodiv pre,
-.markdown-body .linenodiv {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.markdown-body .code div pre,
-.markdown-body .code div {
-  border: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.markdown-body * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body input {
-  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.4;
-}
-
-.markdown-body a {
-  color: #4183c4;
-  text-decoration: none;
-}
-
-.markdown-body a:hover,
-.markdown-body a:focus,
-.markdown-body a:active {
-  text-decoration: underline;
-}
-
-.markdown-body hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.markdown-body hr:before,
-.markdown-body hr:after {
-  display: table;
-  content: " ";
-}
-
-.markdown-body hr:after {
-  clear: both;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-}
-
-.markdown-body h1 {
-  font-size: 30px;
-}
-
-.markdown-body h2 {
-  font-size: 21px;
-}
-
-.markdown-body h3 {
-  font-size: 16px;
-}
-
-.markdown-body h4 {
-  font-size: 14px;
-}
-
-.markdown-body h5 {
-  font-size: 12px;
-}
-
-.markdown-body h6 {
-  font-size: 11px;
-}
-
-.markdown-body blockquote {
-  margin: 0;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
-.markdown-body dd {
-  margin-left: 0;
-}
-
-.markdown-body code,
-.markdown-body pre,
-.markdown-body samp {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
-}
-
-.markdown-body pre {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body kbd {
-  background-color: #e7e7e7;
-  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
-  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
-  background-image: linear-gradient(#fefefe, #e7e7e7);
-  background-repeat: repeat-x;
-  border-radius: 2px;
-  border: 1px solid #cfcfcf;
-  color: #000;
-  padding: 3px 5px;
-  line-height: 10px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  display: inline-block;
-}
-
-.markdown-body>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-.markdown-body .headeranchor-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-}
-
-.markdown-body .headeranchor-link:focus {
-  outline: none;
-}
-
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6 {
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.markdown-body h1 .headeranchor,
-.markdown-body h2 .headeranchor,
-.markdown-body h3 .headeranchor,
-.markdown-body h4 .headeranchor,
-.markdown-body h5 .headeranchor,
-.markdown-body h6 .headeranchor {
-  display: none;
-  color: #000;
-  vertical-align: middle;
-}
-
-.markdown-body h1:hover .headeranchor-link,
-.markdown-body h2:hover .headeranchor-link,
-.markdown-body h3:hover .headeranchor-link,
-.markdown-body h4:hover .headeranchor-link,
-.markdown-body h5:hover .headeranchor-link,
-.markdown-body h6:hover .headeranchor-link {
-  height: 1em;
-  padding-left: 8px;
-  margin-left: -30px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.markdown-body h1:hover .headeranchor-link .headeranchor,
-.markdown-body h2:hover .headeranchor-link .headeranchor,
-.markdown-body h3:hover .headeranchor-link .headeranchor,
-.markdown-body h4:hover .headeranchor-link .headeranchor,
-.markdown-body h5:hover .headeranchor-link .headeranchor,
-.markdown-body h6:hover .headeranchor-link .headeranchor {
-  display: inline-block;
-}
-
-.markdown-body h1 {
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h2 {
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-}
-
-.markdown-body h3 {
-  font-size: 1.5em;
-  line-height: 1.43;
-}
-
-.markdown-body h4 {
-  font-size: 1.25em;
-}
-
-.markdown-body h5 {
-  font-size: 1em;
-}
-
-.markdown-body h6 {
-  font-size: 1em;
-  color: #777;
-}
-
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre,
-.markdown-body .admonition {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.markdown-body hr {
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 2em;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body li>p {
-  margin-top: 16px;
-}
-
-.markdown-body dl {
-  padding: 0;
-}
-
-.markdown-body dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.markdown-body dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.markdown-body blockquote {
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-}
-
-.markdown-body blockquote>:first-child {
-  margin-top: 0;
-}
-
-.markdown-body blockquote>:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-body table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
-}
-
-.markdown-body table th {
-  font-weight: bold;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-  padding: 6px 13px;
-  border: 1px solid #ddd;
-}
-
-.markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-.markdown-body img {
-  max-width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.markdown-body code,
-.markdown-body samp {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-  letter-spacing: -0.2em;
-  content: "\00a0";
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown-body .codehilite {
-  margin-bottom: 16px;
-}
-
-.markdown-body .codehilite pre,
-.markdown-body pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown-body .codehilite pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown-body pre {
-  word-wrap: normal;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-  content: normal;
-}
-
-/* Admonition */
-.markdown-body .admonition {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  position: relative;
-  border-radius: 3px;
-  border: 1px solid #e0e0e0;
-  border-left: 6px solid #333;
-  padding: 10px 10px 10px 30px;
-}
-
-.markdown-body .admonition table {
-  color: #333;
-}
-
-.markdown-body .admonition p {
-  padding: 0;
-}
-
-.markdown-body .admonition-title {
-  font-weight: bold;
-  margin: 0;
-}
-
-.markdown-body .admonition>.admonition-title {
-  color: #333;
-}
-
-.markdown-body .attention>.admonition-title {
-  color: #a6d796;
-}
-
-.markdown-body .caution>.admonition-title {
-  color: #d7a796;
-}
-
-.markdown-body .hint>.admonition-title {
-  color: #96c6d7;
-}
-
-.markdown-body .danger>.admonition-title {
-  color: #c25f77;
-}
-
-.markdown-body .question>.admonition-title {
-  color: #96a6d7;
-}
-
-.markdown-body .note>.admonition-title {
-  color: #d7c896;
-}
-
-.markdown-body .admonition:before,
-.markdown-body .attention:before,
-.markdown-body .caution:before,
-.markdown-body .hint:before,
-.markdown-body .danger:before,
-.markdown-body .question:before,
-.markdown-body .note:before {
-  font: normal normal 16px fontawesome-mini;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  line-height: 1.5;
-  color: #333;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-.markdown-body .admonition:before {
-  content: "\f056\00a0";
-  color: 333;
-}
-
-.markdown-body .attention:before {
-  content: "\f058\00a0";
-  color: #a6d796;
-}
-
-.markdown-body .caution:before {
-  content: "\f06a\00a0";
-  color: #d7a796;
-}
-
-.markdown-body .hint:before {
-  content: "\f05a\00a0";
-  color: #96c6d7;
-}
-
-.markdown-body .danger:before {
-  content: "\f057\00a0";
-  color: #c25f77;
-}
-
-.markdown-body .question:before {
-  content: "\f059\00a0";
-  color: #96a6d7;
-}
-
-.markdown-body .note:before {
-  content: "\f040\00a0";
-  color: #d7c896;
-}
-
-.markdown-body .admonition::after {
-  content: normal;
-}
-
-.markdown-body .attention {
-  border-left: 6px solid #a6d796;
-}
-
-.markdown-body .caution {
-  border-left: 6px solid #d7a796;
-}
-
-.markdown-body .hint {
-  border-left: 6px solid #96c6d7;
-}
-
-.markdown-body .danger {
-  border-left: 6px solid #c25f77;
-}
-
-.markdown-body .question {
-  border-left: 6px solid #96a6d7;
-}
-
-.markdown-body .note {
-  border-left: 6px solid #d7c896;
-}
-
-.markdown-body .admonition>*:first-child {
-  margin-top: 0 !important;
-}
-
-.markdown-body .admonition>*:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* progress bar*/
-.markdown-body .progress {
-  display: block;
-  width: 300px;
-  margin: 10px 0;
-  height: 24px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #ededed;
-  position: relative;
-  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
-}
-
-.markdown-body .progress-label {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  width: 100%; margin: 0;
-  line-height: 24px;
-  color: #333;
-  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
-  -webkit-font-smoothing: antialiased !important;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.markdown-body .progress-bar {
-  height: 24px;
-  float: left;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #96c6d7;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
-  background-size: 30px 30px;
-  background-image: -webkit-linear-gradient(
-    135deg, rgba(255, 255, 255, .4) 27%,
-    transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%,
-    transparent 77%, transparent
-  );
-  background-image: -moz-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -ms-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: -o-linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-  background-image: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, .4) 27%, transparent 27%,
-    transparent 52%, rgba(255, 255, 255, .4) 52%,
-    rgba(255, 255, 255, .4) 77%, transparent 77%,
-    transparent
-  );
-}
-
-.markdown-body .progress-100plus .progress-bar {
-  background-color: #a6d796;
-}
-
-.markdown-body .progress-80plus .progress-bar {
-  background-color: #c6d796;
-}
-
-.markdown-body .progress-60plus .progress-bar {
-  background-color: #d7c896;
-}
-
-.markdown-body .progress-40plus .progress-bar {
-  background-color: #d7a796;
-}
-
-.markdown-body .progress-20plus .progress-bar {
-  background-color: #d796a6;
-}
-
-.markdown-body .progress-0plus .progress-bar {
-  background-color: #c25f77;
-}
-
-.markdown-body .candystripe-animate .progress-bar{
-  -webkit-animation: animate-stripes 3s linear infinite;
-  -moz-animation: animate-stripes 3s linear infinite;
-  animation: animate-stripes 3s linear infinite;
-}
-
-@-webkit-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@-moz-keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-@keyframes animate-stripes {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 60px 0;
-  }
-}
-
-.markdown-body .gloss .progress-bar {
-  box-shadow:
-    inset 0 4px 12px rgba(255, 255, 255, .7),
-    inset 0 -12px 0 rgba(0, 0, 0, .05);
-}
-
-/* Multimarkdown Critic Blocks */
-.markdown-body .critic_mark {
-  background: #ff0;
-}
-
-.markdown-body .critic_delete {
-  color: #c82829;
-  text-decoration: line-through;
-}
-
-.markdown-body .critic_insert {
-  color: #718c00 ;
-  text-decoration: underline;
-}
-
-.markdown-body .critic_comment {
-  color: #8e908c;
-  font-style: italic;
-}
-
-.markdown-body .headeranchor {
-  font: normal normal 16px octicons-anchor;
-  line-height: 1;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.headeranchor:before {
-  content: '\f05c';
-}
-
-.markdown-body .task-list-item {
-  list-style-type: none;
-}
-
-.markdown-body .task-list-item+.task-list-item {
-  margin-top: 3px;
-}
-
-.markdown-body .task-list-item input {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-
-/* Media */
-@media only screen and (min-width: 480px) {
-  .markdown-body {
-    font-size:14px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .markdown-body {
-    font-size:16px;
-  }
-}
-
-@media print {
-  .markdown-body * {
-    background: transparent !important;
-    color: black !important;
-    filter:none !important;
-    -ms-filter: none !important;
-  }
-
-  .markdown-body {
-    font-size:12pt;
-    max-width:100%;
-    outline:none;
-    border: 0;
-  }
-
-  .markdown-body a,
-  .markdown-body a:visited {
-    text-decoration: underline;
-  }
-
-  .markdown-body .headeranchor-link {
-    display: none;
-  }
-
-  .markdown-body a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  .markdown-body abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  .markdown-body .ir a:after,
-  .markdown-body a[href^="javascript:"]:after,
-  .markdown-body a[href^="#"]:after {
-    content: "";
-  }
-
-  .markdown-body pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .markdown-body pre,
-  .markdown-body blockquote {
-    border: 1px solid #999;
-    padding-right: 1em;
-    page-break-inside: avoid;
-  }
-
-  .markdown-body .progress,
-  .markdown-body .progress-bar {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .markdown-body .progress {
-    border: 1px solid #ddd;
-  }
-
-  .markdown-body .progress-bar {
-    height: 22px;
-    border-right: 1px solid #ddd;
-  }
-
-  .markdown-body tr,
-  .markdown-body img {
-    page-break-inside: avoid;
-  }
-
-  .markdown-body img {
-    max-width: 100% !important;
-  }
-
-  .markdown-body p,
-  .markdown-body h2,
-  .markdown-body h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  .markdown-body h2,
-  .markdown-body h3 {
-    page-break-after: avoid;
-  }
-}
-</style><title>README</title></head><body><article class="markdown-body"><h5 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1 编译服务器软件环境要求</h5>
-<p>1.1 enca,用于转换ota_parameter.txt文件(spm启动任务时上传的文件)的编码<br />
-sudo apt-get install enca<br />
-1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符<br />
-sudo apt-get install dos2unix<br />
-1.3 python命令默认链接到的是python2.x<br />
-1.4 Jenkins上需要安装AnsiColor插件,用于让Jenkins任务的Console Output支持解释ANSI转义字符,输出彩色日志<br />
-<a href="https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin">https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin</a></p>
-<h5 id="2"><a name="user-content-2" href="#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2 适配新项目前的准备工作</h5>
-<p>2.1 将以下活动cherry-pick到当前项目的分支上并merge<br />
-<a href="http://10.100.13.23:8080/#/c/47213/">http://10.100.13.23:8080/#/c/47213/</a> 全包升级时根据版本编译时间决定是否清data分区<br />
-<a href="http://10.100.13.23:8080/#/c/48082/">http://10.100.13.23:8080/#/c/48082/</a> 支持通过全量包降级升级<br />
-<a href="http://10.100.13.23:8080/#/c/48086/">http://10.100.13.23:8080/#/c/48086/</a> 支持直接生成逆向差分升级包</p>
-<p><a href="http://10.100.13.23:8080/#/c/49688/">http://10.100.13.23:8080/#/c/49688/</a> 解决system.img差异导致的OTA失败<br />
-<a href="http://10.100.13.23:8080/#/c/49717/">http://10.100.13.23:8080/#/c/49717/</a> 解决system.img差异导致的OTA失败<br />
-<a href="http://10.100.13.23:8080/#/c/49879/">http://10.100.13.23:8080/#/c/49879/</a> 优化out/dist下对编译结果的判断逻辑</p>
-<p><a href="http://10.100.13.23:8080/#/c/48050/">http://10.100.13.23:8080/#/c/48050/</a> extra_script框架更新build下的辅助改动<br />
-<a href="http://10.100.13.23:8080/#/c/50611/">http://10.100.13.23:8080/#/c/50611/</a> extra_script框架:recovery集成busybox工具集,更新update-script逻辑<br />
-<a href="http://10.100.13.23:8080/#/c/51335/">http://10.100.13.23:8080/#/c/51335/</a> extra_script框架:recovery中集成toybox,并创建子命令链接<br />
-<a href="http://10.100.13.23:8080/#/c/51368/">http://10.100.13.23:8080/#/c/51368/</a> extra_script框架:修复注释格式错误</p>
-<p>2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 用以下命令在android/qiku的上一级目录clone好otabuild仓库, 同时切到otabuild_Int分支:<br />
-<pre><code class="bash">android$ git clone --branch otabuild_Int ssh://{username}@10.100.13.23:29418/android/otabuild
-</code></pre><br />
-其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.</p>
-<p>2.3  在otabuild仓库的extra_script下, 建立存放对应机型国内版和海外版extra脚本路径,如extra_script\QK1807\normal和\extra_script\QK1807\oversea.<br />
-对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板脚本文件到normal和oversea下.<br />
-对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板脚本文件到normal和oversea下.<br />
-然后在otabuild下将刚新增的extra脚本提交到otabuild_Int和otabuild_Dev,并合入.<br />
-以后按软件代表的特殊需求持续更新对应的脚本即可.</p>
-<h5 id="3-hudson"><a name="user-content-3-hudson" href="#3-hudson" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3 hudson任务配置</h5>
-<h6 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 选择任务类型</h6>
-<p>创建当前项目的Jenkins任务时,首先选择任务类型为<code>构建一个自由风格的软件项目</code></p>
-<h6 id="32"><a name="user-content-32" href="#32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 设置 <code>参数化构建过程</code></h6>
-<p>勾选任务配置中的<code>参数化构建过程</code></p>
 <table>
 <thead>
 <tr>
 <th>参数</th>
-<th>类型</th>
-<th>取值</th>
-<th>含义</th>
+<th style="text-align: center">类型</th>
+<th style="text-align: right">取值</th>
+<th style="text-align: center">含义</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>SIGNTYPE</td>
-<td>Choice</td>
-<td>Rel(默认), Int</td>
-<td>ota包的签名类型,选Rel用qiku签名,选Int用google签名</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">Rel(默认), Int</td>
+<td style="text-align: center">ota包的签名类型,选Rel用qiku签名,选Int用google签名</td>
 </tr>
 <tr>
 <td>ota_parameter.txt</td>
-<td>File Parameter</td>
-<td>使用者上传</td>
-<td>spm启动任务时上传的文件</td>
+<td style="text-align: center">File Parameter</td>
+<td style="text-align: right">使用者上传</td>
+<td style="text-align: center">spm启动任务时上传的文件</td>
 </tr>
 <tr>
 <td>check_integrity</td>
-<td>Choice</td>
-<td>true, false(默认)</td>
-<td>是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">true, false(默认)</td>
+<td style="text-align: center">是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟</td>
 </tr>
 <tr>
 <td>BIGVERSION</td>
-<td>Choice</td>
-<td>7, 8(默认)</td>
-<td>项目android源码的大版本号, O及之后都选8, O之前都选7</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">7, 8(默认)</td>
+<td style="text-align: center">项目android源码的大版本号, O及之后都选8, O之前都选7</td>
 </tr>
 <tr>
 <td>BUILDTYPE</td>
-<td>Choice</td>
-<td>RELEASE(默认), DEBUG</td>
-<td>RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">RELEASE(默认), DEBUG</td>
+<td style="text-align: center">RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本</td>
 </tr>
 <tr>
 <td>autosync</td>
-<td>Choice</td>
-<td>true, false</td>
-<td>是否自动同步编译输出到17服务器</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">true, false</td>
+<td style="text-align: center">是否自动同步编译输出到17服务器</td>
 </tr>
 <tr>
 <td>WIPE_DATA</td>
-<td>Choice</td>
-<td>true, false</td>
-<td>所整包差分包都强制清除数据</td>
+<td style="text-align: center">Choice</td>
+<td style="text-align: right">true, false</td>
+<td style="text-align: center">所整包差分包都强制清除数据</td>
 </tr>
 </tbody>
 </table>
-<p>各参数的Description的html描述信息:<br />
-<code>autosync</code><br />
-<pre><code class="http">&lt;font size=&quot;3&quot;&gt;
-是否自动同步编译输出到17服务器&lt;br/&gt;
-如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17
-&lt;font&gt;
-</code></pre></p>
-<h6 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 设置 <code>绑定服务器节点</code></h6>
-<p>勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</p>
-<h6 id="34"><a name="user-content-34" href="#34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.4 设置 <code>构建环境</code></h6>
-<p>在<code>构建环境</code>下勾选<code>Color ANSI Console Output</code>, 之后在<code>ANSI color map</code>下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br />
-各颜色风格示例:<br />
-1 xterm<br />
-<img alt="xterm" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/xterm.PNG" title="xterm example" /><br />
-2 vga<br />
-<img alt="vga" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/vga.PNG" title="vga example" /><br />
-3 css<br />
-<img alt="css" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/css.PNG" title="css example" /><br />
-4 gnome-terminal<br />
-<img alt="gnome-terminal" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/gnome-terminal.PNG" title="gnome-terminal example" /></p>
-<h6 id="35"><a name="user-content-35" href="#35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5 设置 <code>构建</code></h6>
-<p>选择<code>Execute shell</code>,<code>Command</code>为:<br />
-<pre><code class="bash">SHELL=脚本解析器类型                        # 选择用'bash'还是'dash'作为脚本解析器.参考https://wiki.ubuntu.com/DashAsBinSh dash是bash的精简版,启动更快, POSIX兼容移植性更好.
-export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径
-export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名
-export PLATFORM=芯片平台名                  # $PLATFORM为芯片平台名
-export market=国内版或海外版                # 国内版取normal, 海外版取oversea
-echo &quot;build type is $BUILDTYPE&quot;
-cd $ANDROID/../otabuild
-if [ $BUILDTYPE = &quot;RELEASE&quot; ]; then
+
+<p class="md_block">
+    <span class="md_line">各参数的Description的html描述信息:<br /></span>
+    <span class="md_line md_line_dom_embed"><code>autosync</code></span>
+</p>
+
+<div class="codehilite code_lang_http  highlight"><pre><span></span><span class="err">&lt;font size=&quot;3&quot;&gt;</span>
+<span class="err">是否自动同步编译输出到17服务器&lt;br/&gt;</span>
+<span class="err">如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17</span>
+<span class="err">&lt;font&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<h6 id="toc_5">3.3 设置 <code>绑定服务器节点</code></h6>
+
+<p class="md_block">
+    <span class="md_line">勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</span>
+</p>
+
+
+<h6 id="toc_6">3.4 设置 <code>构建环境</code></h6>
+
+<p class="md_block">
+    <span class="md_line">在<code>构建环境</code>下勾选<code>Color ANSI Console Output</code>, 之后在<code>ANSI color map</code>下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br /></span>
+    <span class="md_line">各颜色风格示例:<br /></span>
+    <span class="md_line">1 xterm<br /></span>
+    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picxterm.PNG';this.onerror=null;"  class="" src="/.md_picxterm.PNG" alt="xterm" title="xterm example" ><br /></span>
+    <span class="md_line">2 vga<br /></span>
+    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picvga.PNG';this.onerror=null;"  class="" src="/.md_picvga.PNG" alt="vga" title="vga example" ><br /></span>
+    <span class="md_line">3 css<br /></span>
+    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_piccss.PNG';this.onerror=null;"  class="" src="/.md_piccss.PNG" alt="css" title="css example" ><br /></span>
+    <span class="md_line">4 gnome-terminal<br /></span>
+    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picgnome-terminal.PNG';this.onerror=null;"  class="" src="/.md_picgnome-terminal.PNG" alt="gnome-terminal" title="gnome-terminal example" ></span>
+</p>
+
+
+<h6 id="toc_7">3.5 设置 <code>构建</code></h6>
+
+<p class="md_block">
+    <span class="md_line">选择<code>Execute shell</code>,<code>Command</code>为:</span>
+</p>
+
+<div class="codehilite code_lang_bash  highlight"><pre><span></span><span class="nv">SHELL</span><span class="o">=</span>脚本解析器类型                        <span class="c1"># 选择用&#39;bash&#39;还是&#39;dash&#39;作为脚本解析器.参考https://wiki.ubuntu.com/DashAsBinSh dash是bash的精简版,启动更快, POSIX兼容移植性更好.</span>
+<span class="nb">export</span> <span class="nv">ANDROID</span><span class="o">=</span>项目android源码路径          <span class="c1"># $ANDROID为编译服务器上当前项目android源码路径</span>
+<span class="nb">export</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span>机型名                  <span class="c1"># $PROJECT_NAME为机型名</span>
+<span class="nb">export</span> <span class="nv">PLATFORM</span><span class="o">=</span>芯片平台名                  <span class="c1"># $PLATFORM为芯片平台名</span>
+<span class="nb">export</span> <span class="nv">market</span><span class="o">=</span>国内版或海外版                <span class="c1"># 国内版取normal, 海外版取oversea</span>
+<span class="nb">echo</span> <span class="s2">&quot;build type is </span><span class="nv">$BUILDTYPE</span><span class="s2">&quot;</span>
+<span class="nb">cd</span> <span class="nv">$ANDROID</span>/../otabuild
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;RELEASE&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
   git checkout otabuild_Int
   git checkout .
   git pull --rebase origin otabuild_Int
-  export window_out_path_20=编译输出路径    # $window_out_path_20为20服务器编译生成的ota包输出路径
-  export window_out_path_17=编译输出路径    # $window_out_path_17为17服务器编译生成的ota包输出路径
-elif [ $BUILDTYPE = &quot;DEBUG&quot; ]; then
+  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>编译输出路径    <span class="c1"># $window_out_path_20为20服务器编译生成的ota包输出路径</span>
+  <span class="nb">export</span> <span class="nv">window_out_path_17</span><span class="o">=</span>编译输出路径    <span class="c1"># $window_out_path_17为17服务器编译生成的ota包输出路径</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;DEBUG&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
   git checkout otabuild_Dev
-  # when debug, no need copy to 17 server,just need copy to a signle path for we debug.
-  export window_out_path_20=编译输出路径
-fi
+  <span class="c1"># when debug, no need copy to 17 server,just need copy to a signle path for we debug.</span>
+  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>编译输出路径
+<span class="k">fi</span>
 
-if [ $SHELL = &quot;bash&quot; ]; then
-  $SHELL ./main.sh
-elif [ $SHELL = &quot;dash&quot; ]; then
-  $SHELL ./portable/main.sh
-fi
-</code></pre></p>
-<h5 id="4"><a name="user-content-4" href="#4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4 其他注意事项</h5>
-<p>1 西安编译服务器上的挂载点配置文件为~/bin/mount.sh,深圳编译服务器上的挂载点配置文件为 /etc/fstab<br />
-otabuild是从服务器上的挂载点配置文件中, 自动解析来得到target-files文件的挂载路径. 因此对于这两个文件,有以下要求:<br />
-1.  换行符为unix风格<br />
-2. 最好不要有无任何内容的空白行</p>
-<h5 id="5"><a name="user-content-5" href="#5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5 编译系统中所有文件说明</h5>
-<p>main.sh&ndash;主控脚本,由Jenkin任务直接启动<br />
-tools/init.sh&ndash;main.sh调用,初始化脚本,解析出所有编译所需信息<br />
-tools/makeota.sh&ndash;main.sh调用,实现编译ota包<br />
-tools/makeupc.py&ndash;main.sh调用,实现生成upc文件<br />
-tools/config&ndash;所有支持机型的配置文件,里面保存一些必要的常量<br />
-tools/linux-x86&ndash;host端生成ota包时需要用到的库和binary.<br />
-tools/signapk.jar&ndash;用于签名ota包.</p></article></body></html>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&quot;bash&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nv">$SHELL</span> ./main.sh
+<span class="k">elif</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&quot;dash&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nv">$SHELL</span> ./portable/main.sh
+<span class="k">fi</span>
+</pre></div>
+
+<!--block_code_end-->
+<h5 id="toc_8">4 其他注意事项</h5>
+
+<p class="md_block md_has_block_below md_has_block_below_ol">
+    <span class="md_line">1 西安编译服务器上的挂载点配置文件为~/bin/mount.sh,深圳编译服务器上的挂载点配置文件为 /etc/fstab<br /></span>
+    <span class="md_line">otabuild是从服务器上的挂载点配置文件中, 自动解析来得到target-files文件的挂载路径. 因此对于这两个文件,有以下要求:</span>
+</p>
+
+
+<ol>
+<li> 换行符为unix风格</li>
+<li>最好不要有无任何内容的空白行</li>
+</ol>
+
+<h5 id="toc_9">5 编译系统中所有文件说明</h5>
+
+<p class="md_block">
+    <span class="md_line">main.sh--主控脚本,由Jenkin任务直接启动<br /></span>
+    <span class="md_line">tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息<br /></span>
+    <span class="md_line">tools/makeota.sh--main.sh调用,实现编译ota包<br /></span>
+    <span class="md_line">tools/makeupc.py--main.sh调用,实现生成upc文件<br /></span>
+    <span class="md_line">tools/config--所有支持机型的配置文件,里面保存一些必要的常量<br /></span>
+    <span class="md_line">tools/linux-x86--host端生成ota包时需要用到的库和binary.<br /></span>
+    <span class="md_line">tools/signapk.jar--用于签名ota包.</span>
+</p>
+    </div>
+</div>
+
+<!--mathjax-->
+
+</body>
+</html>

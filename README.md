@@ -28,10 +28,10 @@ android$ git clone --branch otabuild_Int ssh://{username}@10.100.13.23:29418/and
 ```
 其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.
 
-2.3  在otabuild仓库的extra_script下, 建立对应机型名的文件夹,将otabuild/extra_script/template下对应的extra脚本模板拷到此机型文件夹下.
-对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板.
-对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板.
-国内版拷贝到机型名\normal路径下,海外版拷贝到机型名\oversea路径下.
+2.3  在otabuild仓库的extra_script下, 建立存放对应机型国内版和海外版extra脚本路径,如extra_script\QK1807\normal和\extra_script\QK1807\oversea.
+对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板脚本文件到normal和oversea下.
+对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板脚本文件到normal和oversea下.
+然后在otabuild下将刚新增的extra脚本提交到otabuild_Int和otabuild_Dev,并合入.
 以后按软件代表的特殊需求持续更新对应的脚本即可.
 
 #####3 hudson任务配置
@@ -80,7 +80,7 @@ autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
 SHELL=脚本解析器类型                        # 选择用'bash'还是'dash'作为脚本解析器.参考https://wiki.ubuntu.com/DashAsBinSh dash是bash的精简版,启动更快, POSIX兼容移植性更好.
 export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径
 export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名
-export PLATFORM=芯片平台名                  # $PLATFORM为平台名
+export PLATFORM=芯片平台名                  # $PLATFORM为芯片平台名
 export market=国内版或海外版                # 国内版取normal, 海外版取oversea
 echo "build type is $BUILDTYPE"
 cd $ANDROID/../otabuild

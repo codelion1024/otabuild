@@ -57,10 +57,10 @@ enca -L zh_CN -x UTF-8 $ota_param_file
 # $JENKINS_URL is the env variable powered by jenkins(http://10.100.11.206:8080/jenkins/env-vars.html/), available to shell scripts
 JENKINS_IP_UNSTRIP=`echo $JENKINS_URL | cut -d ':' -f 2`
 JENKINS_IP=${JENKINS_IP_UNSTRIP:2} # strip the "//" after "http:"
-if [ $JENKINS_IP == "10.100.11.206" ]; then
+if [ $JENKINS_IP == $JENKINS_IP_XIAN ]; then
   target_old_windir=$(get_targetfiles_dir_XIAN source_version)
   target_new_windir=$(get_targetfiles_dir_XIAN dest_version)
-elif [ $JENKINS_IP == "10.100.11.23" ]; then
+elif [ $JENKINS_IP == $JENKINS_IP_SHENZHEN ]; then
   target_old_windir=$(get_targetfiles_dir_SHENZHEN source_version)
   target_new_windir=$(get_targetfiles_dir_SHENZHEN dest_version)
 else

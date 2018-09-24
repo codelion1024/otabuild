@@ -1,4 +1,4 @@
-﻿#!/sbin/sh
+#!/sbin/sh
 
 # I am sure $srcver variable is useless for full ota
 tgtver=`busybox cat /tmp/info.txt | busybox grep tgtver | busybox cut -d '=' -f 2`

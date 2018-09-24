@@ -1,4 +1,4 @@
-﻿#!/system/bin/sh
+#!/system/bin/sh
 
 srcver=`cat /tmp/info.txt | grep srcver | busybox cut -d '=' -f 2`
 tgtver=`cat /tmp/info.txt | grep tgtver | busybox cut -d '=' -f 2`

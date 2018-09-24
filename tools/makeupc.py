@@ -17,7 +17,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
-  print '============开始制作upc文件============'
+  print '\033[32m ============开始制作upc文件============ \033[0m'
   diffpackpath=sys.argv[1]
   PROJECT_NAME=sys.argv[2]
   description=sys.argv[3]
@@ -43,7 +43,7 @@ def main():
     # 再从这两行中提取出升级前后的完整版本号
     old_version = re.split("[:/]", line[0])[5]
     new_version = re.split("[:/]", line[1])[5]
-    print '==========debug updater-script中old_version,new_version=============='
+    print '\033[32m ==========debug updater-script中old_version,new_version============== \033[0m'
     print(old_version)
     print(new_version)
     assert(len(old_version) > 28)
@@ -77,7 +77,7 @@ def main():
     os.remove(os.path.dirname(diffpackpath) + '/base64.txt');shutil.rmtree(os.path.dirname(diffpackpath) + '/META-INF/')
 
   tree = ET.parse(os.path.dirname(diffpackpath) + '/UPC_' + PROJECT_NAME + '_' + hw_version + '_' + old_ver + '-' + new_ver + '.xml')
-  print '============upc文件参数============'
+  print '\033[32m ============upc文件参数============ \033[0m'
   print(tree.getroot().find('creation-date').text)
   print(tree.getroot().find('hw').text)
   print(tree.getroot().find('hwv').text)
@@ -87,7 +87,7 @@ def main():
   print(tree.getroot().find('size').text)
   print(tree.getroot().find('priority').text)
   print(tree.getroot().find('md5').text)
-  print '==================================='
+  print '\033[32m =================================== \033[0m'
 
   
 if __name__ == '__main__':

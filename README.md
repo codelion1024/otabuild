@@ -4,6 +4,8 @@ sudo apt-get install enca
 1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符
 sudo apt-get install dos2unix
 1.3 python命令默认链接到的是python2.x
+1.4 Jenkins上需要安装AnsiColor插件,用于让Jenkins任务的Console Output支持解释ANSI转义字符,输出彩色日志
+https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin
 
 #####2 适配新项目前的准备工作
 2.1 将以下活动cherry-pick到当前项目的分支上并merge
@@ -31,36 +33,48 @@ git checkout -t origin/otabuild_Int
 
 #####3 hudson任务配置
 ######3.1 设置  参数化构建过程
-参数 | 类型 | 取值 | 含义
----|---|---
-SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名
+参数 | 类型 | 取值 | 含义 |
+---|---|---|
+SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名 |
 ota_parameter.txt | File Parameter | 使用者上传 | spm启动任务时上传的文件 
-check_integrity | Choice | true, false(默认) | 是否对target-file zip做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟
-BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7
-BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本
+check_integrity | Choice | true, false(默认) | 是否对target-file zip做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
+BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7 |
+BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
 
 ######3.2 设置  绑定服务器节点
 勾选`Restrict where this project can be run`,`Label Expression`设置为项目android源码所在服务器,eg:Ubu_10.99.12.11
 
-######3.3 设置  构建
+######3.3 设置  构建环境
+在"构建环境"下勾选"Color ANSI Console Output", 之后在"ANSI color map"下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.
+各颜色风格示例:
+1 xterm
+![xterm](md_pic\xterm.PNG "xterm example")
+2 vga
+![vga](md_pic\vga.PNG "vga example")
+3 css
+![css](md_pic\css.PNG "css example")
+4 gnome-terminal
+![gnome-terminal](md_pic\gnome-terminal.PNG "gnome-terminal example")
+
+######3.4 设置  构建
 选择`Execute shell`,`Command`为:
 ```bash
-export ANDROID=项目android源码路径 	        # $ANDROID为编译服务器上当前项目android源码路径
-export PROJECT_NAME=机型名							# $PROJECT_NAME为机型名
-export PLATFORM=芯片平台名						   # $PLATFORM为平台名
-export market=国内版或海外版                          # 国内版取normal, 海外版取oversea
+export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径
+export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名
+export PLATFORM=芯片平台名                  # $PLATFORM为平台名
+export market=国内版或海外版                # 国内版取normal, 海外版取oversea
 echo "build type is $BUILDTYPE"
 cd $ANDROID/../otabuild
 if [ "$BUILDTYPE" == "RELEASE" ]; then
   git checkout otabuild_Int
   git checkout .
   git pull --rebase origin otabuild_Int
-  export window_out_path_20=编译输出路径     # $window_out_path_20为20服务器编译生成的ota包输出路径
-  export window_out_path_17=编译输出路径     # $window_out_path_17为17服务器编译生成的ota包输出路径
+  export window_out_path_20=编译输出路径    # $window_out_path_20为20服务器编译生成的ota包输出路径
+  export window_out_path_17=编译输出路径    # $window_out_path_17为17服务器编译生成的ota包输出路径
 elif [ "$BUILDTYPE" == "DEBUG" ]; then
   git checkout otabuild_Dev
   # when debug, no need copy to 17 server,just need copy to a signle path for we debug.
-  export window_out_path_20=编译输出路径     # $window_out_path_20为20服务器编译生成的ota包输出路径
+  export window_out_path_20=编译输出路径
 fi
 
 bash ./main.sh

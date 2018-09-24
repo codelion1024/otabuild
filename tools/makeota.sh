@@ -22,13 +22,13 @@ makefull()
   mkdir -p $outputdir/$packfolder
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf "%s\n" "制作整包----$fullpack_signed"
+  printf "\e[32m %s \e[0m\n" "制作整包----$fullpack_signed"
   prepare_extra
   if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
-    echo "--------BLOCK-BASED FULL OTA-----------------"
+    echo -e "\e[32m --------BLOCK-BASED FULL OTA----------------- \e[0m"
     $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   elif [ $BIGVERSION -lt 8 ]; then
-    echo "--------FILE-BASED FULL OTA-----------------"
+    echo -e "\e[32m --------FILE-BASED FULL OTA----------------- \e[0m"
     $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   fi
 }
@@ -36,7 +36,7 @@ makefull()
 makediff()
 {
   if [ $full_bsp_modem = "true" ]; then
-    printf "%s\n" "-------------对target_old_file去除BSPMODEM文件----------------"
+    printf "\e[32m %s \e[0m\n" "-------------对target_old_file去除BSPMODEM文件----------------"
     target_old_file_noradio=$target_old_dir/$(basename -s '.zip' $target_old_file)_noradio.zip
     cp -vu $target_old_file $target_old_file_noradio
     zip --verbose $target_old_file_noradio --delete "RADIO/*.*"
@@ -47,17 +47,17 @@ makediff()
   mkdir -p $outputdir/$packfolder
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf "%s\n" "制作差分包----$diffpack_signed"
+  printf "\e[32m %s \e[0m\n" "制作差分包----$diffpack_signed"
   prepare_extra
   if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
-    echo "--------BLOCK-BASED INCREMENT OTA-----------------"
+    echo -e "\e[32m --------BLOCK-BASED INCREMENT OTA----------------- \e[0m"
     if [ $full_bsp_modem = "true" ]; then
       $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
     else
       $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack_signed
     fi
   elif [ $BIGVERSION -lt 8 ]; then
-    echo "--------FILE-BASED INCREMENT OTA-----------------"
+    echo -e "\e[32m --------FILE-BASED INCREMENT OTA----------------- \e[0m"
     if [ $full_bsp_modem = "true" ]; then
       $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
     else

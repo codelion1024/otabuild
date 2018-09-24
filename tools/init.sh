@@ -21,24 +21,18 @@ PLAT_CFG_FILE=$otabuild/tools/config/${PLATFORM}_ota_parameter.txt
 SIGNAPK=$otabuild/tools/signapk.jar
 Int_KEY=$ANDROID/build/target/product/security/testkey
 Rel_KEY=`grep '^rel_key_dir' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-int_server_name=`grep '^int_server_name' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-int_server_ip=`grep '^int_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-int_platform=`grep '^int_platform' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-int_server=/mnt/hgfs/$int_server_name/${PROJECT_NAME}/${PROJECT_NAME}_Int
-rel_server_name=`grep '^rel_server_name' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-rel_server_ip=`grep '^rel_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-rel_version=`grep '^rel_version=' $PLAT_CFG_FILE | awk -F = '{print $2}' | tr -d " "| tr -d "\r"`
-rel_platform=`grep '^rel_platform' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-rel_server=/mnt/hgfs/$rel_server_name/${PROJECT_NAME}
+targetfiles_server_ip=`grep '^targetfiles_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
+targetfiles_subroot_win=`grep '^targetfiles_subroot_win' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
+targetfiles_subroot_linux=`grep '^targetfiles_subroot_linux' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 
-source_version=$(grep source_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$rel_server_ip'\/'$rel_version'\/'$rel_platform'/\/mnt\/hgfs\/'$rel_server_name'/g' | sed 's/\/\/'$int_server_ip'\/'$int_platform'/\/mnt\/hgfs\/'$int_server_name'/g')
-dest_version=$(grep dest_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$rel_server_ip'\/'$rel_version'\/'$rel_platform'/\/mnt\/hgfs\/'$rel_server_name'/g' | sed 's/\/\/'$int_server_ip'\/'$int_platform'/\/mnt\/hgfs\/'$int_server_name'/g')
+target_old_windir=$(grep source_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$targetfiles_server_ip'\/'$targetfiles_subroot_win'/\/mnt\/hgfs\/'$targetfiles_subroot_linux'/g')
+target_new_windir=$(grep dest_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$targetfiles_server_ip'\/'$targetfiles_subroot_win'/\/mnt\/hgfs\/'$targetfiles_subroot_linux'/g')
 priority=$(grep priority $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 description=$(grep description $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 ota_style=$(grep ota_style $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 full_bsp_modem=$(grep full_bsp_modem $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
-target_old_win=$(ls $source_version/*cota*.zip)
-target_new_win=$(ls $dest_version/*cota*.zip)
+target_old_win=$(ls $target_old_windir/*cota*.zip)
+target_new_win=$(ls $target_new_windir/*cota*.zip)
 target_old_file=$target_old_dir/$(basename $target_old_win)
 target_new_file=$target_new_dir/$(basename $target_new_win)
 old_ver=$(basename --suffix=.zip $target_old_win | awk -F \- '{print $4}')
@@ -50,47 +44,41 @@ if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
 printf "%s\n" "=========================所有信息BEGIN=================================="
-printf "ANDROID           %s\n" $ANDROID
-printf "otabuild          %s\n" $otabuild
-printf "PROJECT_NAME      %s\n" $PROJECT_NAME
-printf "SIGNTYPE          %s\n" $SIGNTYPE
-printf "TIME              %s\n" $TIME
-printf "ota_param_dir     %s\n" $ota_param_dir
-printf "ota_param_file    %s\n" $ota_param_file
+printf "ANDROID                     %s\n" $ANDROID
+printf "otabuild                    %s\n" $otabuild
+printf "PROJECT_NAME                %s\n" $PROJECT_NAME
+printf "SIGNTYPE                    %s\n" $SIGNTYPE
+printf "TIME                        %s\n" $TIME
+printf "ota_param_dir               %s\n" $ota_param_dir
+printf "ota_param_file              %s\n" $ota_param_file
 cat -n $ota_param_file
-printf "outputdir         %s\n" $outputdir
-printf "target_old_dir    %s\n" $target_old_dir
-printf "target_new_dir    %s\n" $target_new_dir
-printf "OTA_TYPE          %s\n" $OTA_TYPE
-printf "PLATFORM          %s\n" $PLATFORM
-printf "window_out_path   %s\n" $window_out_path
-printf "DEV_SRC           %s\n" $DEV_SRC
-printf "DEV_DST           %s\n" $DEV_DST
-printf "PLAT_CFG_FILE     %s\n" $PLAT_CFG_FILE
+printf "outputdir                   %s\n" $outputdir
+printf "target_old_dir              %s\n" $target_old_dir
+printf "target_new_dir              %s\n" $target_new_dir
+printf "OTA_TYPE                    %s\n" $OTA_TYPE
+printf "PLATFORM                    %s\n" $PLATFORM
+printf "window_out_path             %s\n" $window_out_path
+printf "DEV_SRC                     %s\n" $DEV_SRC
+printf "DEV_DST                     %s\n" $DEV_DST
+printf "PLAT_CFG_FILE               %s\n" $PLAT_CFG_FILE
 printf "%s\n" "--------------------------------------------------------------"
-printf "int_server_name   %s\n" $int_server_name
-printf "int_server_ip     %s\n" $int_server_ip
-printf "int_platform      %s\n" $int_platform
-printf "int_server        %s\n" $int_server
-printf "rel_server_name   %s\n" $rel_server_name
-printf "rel_server_ip     %s\n" $rel_server_ip
-printf "rel_version       %s\n" $rel_version
-printf "rel_platform      %s\n" $rel_platform
-printf "rel_server        %s\n" $rel_server
+printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip
+printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip
+printf "targetfiles_subroot_linux   %s\n" $targetfiles_subroot_linux
 printf "%s\n" "--------------------------------------------------------------"
-printf "source_version    %s\n" $source_version
-printf "dest_version      %s\n" $dest_version
-printf "priority          %s\n" $priority
-printf "description       %s\n" $description
-printf "ota_style         %s\n" $ota_style
-printf "full_bsp_modem    %s\n" $full_bsp_modem
-printf "target_old_win    %s\n" $target_old_win
-printf "target_new_win    %s\n" $target_new_win
-printf "target_old_file   %s\n" $target_old_file
-printf "target_new_file   %s\n" $target_new_file
-printf "old_ver           %s\n" $old_ver
-printf "new_ver           %s\n" $new_ver
-printf "hw_version        %s\n" $hw_version
+printf "target_old_windir           %s\n" $target_old_windir
+printf "target_new_windir           %s\n" $target_new_windir
+printf "priority                    %s\n" $priority
+printf "description                 %s\n" $description
+printf "ota_style                   %s\n" $ota_style
+printf "full_bsp_modem              %s\n" $full_bsp_modem
+printf "target_old_win              %s\n" $target_old_win
+printf "target_new_win              %s\n" $target_new_win
+printf "target_old_file             %s\n" $target_old_file
+printf "target_new_file             %s\n" $target_new_file
+printf "old_ver                     %s\n" $old_ver
+printf "new_ver                     %s\n" $new_ver
+printf "hw_version                  %s\n" $hw_version
 printf "%s\n" "=========================所有信息END=================================="
 
 

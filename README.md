@@ -6,7 +6,14 @@ sudo apt-get install enca
 
 ###2 适配新项目前的准备工作  
 
-2.1 在tools/config下新增新项目的配置文件  
+2.1 在tools/config下查看新项目的配置文件 {项目平台名}_ota_parameter.txt 是否存在  
+如果不存在则创建,在此文件中设置3个变量的值:
+变量名 | 含义
+--- | ---
+targetfiles_server_ip | 上传的ota_parameter.txt中source_version和dest_version取值中的ip地址,脚本从source_version解析出的路径中寻找targetfiles,因此要求targetfiles文件必须存放于targetfiles-server-ip对应服务器下
+targetfiles_subroot_win | 此平台的项目在targetfiles-server-ip下存放targetfiles文件的"根目录", 这是在windows下查看的地址,即\\\targetfiles-server-ip\targetfiles-subroot-win,例如1713在10.99.11.20下存放targetfiles文件的路径为\\\10.99.11.20\qcom_sdm630,则targetfiles-subroot-win取值即为qcom_sdm630
+targetfiles_subroot_linux | 此平台的项目在targetfiles-server-ip下存放targetfiles文件的路径\\\targetfiles-server-ip\targetfiles-subroot-win(windows路径),在此项目的编译服务器上会将\\\targetfiles-server-ip\targetfiles-subroot-win挂载为/mnt/hgfs/targetfiles-subroot-linux (linux路径).例如1713在10.99.11.20下存放targetfiles文件的路径为\\\10.99.11.20\qcom_sdm630,1713在编译服务器10.99.12.10上编译, 在编译服务器10.99.12.10上 \\\10.99.11.20\qcom_sdm630 被挂载为/mnt/hgfs/QCOM_SDM630
+
 2.2 将以下活动cherry-pick到当前项目的分支上  
 http://10.100.13.23:8080/#/c/47213/  
 http://10.100.13.23:8080/#/c/46178/  
@@ -25,10 +32,10 @@ check_integrity | Choice | 选true会增加target-file zip包数据完整性检�
 ####3.3 设置  构建  
 选择Execute shell,Command为:  
 ```bash
-export ANDROID=项目android源码路径       # $ANDROID为编译服务器上当前项目android源码路径  
-export PROJECT_NAME=机型名	                  # $PROJECT_NAME为机型名  
-export PLATFORM=芯片平台名				# $PLATFORM为平台名  
-export window_out_path=编译输出路径	# $window_out_path为编译生成的ota包输出路径  
+export ANDROID=项目android源码路径      # $ANDROID为编译服务器上当前项目android源码路径  
+export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名  
+export PLATFORM=芯片平台名				    # $PLATFORM为平台名  
+export window_out_path=编译输出路径	  # $window_out_path为编译生成的ota包输出路径  
 
 cd $ANDROID/../otabuild  
 git pull --rebase origin otabuild_Int  

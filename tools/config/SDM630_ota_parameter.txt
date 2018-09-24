@@ -1,17 +1,7 @@
-#编译服务器挂载集成服务器的目录
-int_server_name=QCOM_SDM630
-#集成服务器地址
-int_server_ip=10.99.11.20
-#集成服务器目录
-int_platform=qcom_sdm630
+targetfiles_server_ip=10.99.11.20
+targetfiles_subroot_win=qcom_sdm630
+targetfiles_subroot_linux=QCOM_SDM630
 
-#编译服务器挂载发布服务器的目录
-rel_server_name=QC8940_Rel_Version
-#发布服务器地址
-rel_server_ip=10.100.11.19
-rel_version=CP_Release_Version
-#发布服务器目录
-rel_platform=QC8940_Release_Version
 
-#release签名文件目录
+#release绛惧悕鏂囦欢鐩綍
 rel_key_dir=/home/system1/QK1713/Rel_Version/security/testkey

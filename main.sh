@@ -45,6 +45,7 @@ fi
 if [ $window_out_path_20 != "" ]; then
   cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_20
 fi
+echo "all of ota packgages had copied to 20 server, we can get them from 20, now begin copy to 17 server"
 if [ $window_out_path_17 != "" ]; then
   cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_17
 fi

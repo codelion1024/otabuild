@@ -2,10 +2,10 @@
 
 function clean_and_quit()
 {
-    echo -e "\e[32m clean input, output, and then quit \e[0m"
-    if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
-    if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
-    exit
+  echo -e "\e[32m clean input, output, and then quit \e[0m"
+  if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+  if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+  exit
 }
 
 # detect if installed dos2unix and enca was installed, laterly we will use dos2unix to convert line break, use enca to convert file encoding.

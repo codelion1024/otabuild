@@ -1,18 +1,18 @@
 #!/bin/dash
 
 prepare_extra() {
-    cat /dev/null >                             $otabuild/input/info.txt
-    echo "srcver=$old_ver" >>                   $otabuild/input/info.txt
-    echo "tgtver=$new_ver" >>                   $otabuild/input/info.txt
-    echo "device=$PROJECT_NAME" >>              $otabuild/input/info.txt
-    echo "style=$style" >>                      $otabuild/input/info.txt
-    echo "SIGNTYPE=$SIGNTYPE" >>                $otabuild/input/info.txt
-    echo "priority=$priority" >>                $otabuild/input/info.txt
-    echo "full_bsp_modem=$full_bsp_modem" >>    $otabuild/input/info.txt
-    echo "PLATFORM=$PLATFORM" >>                $otabuild/input/info.txt
-    echo "hw_version=$hw_version" >>            $otabuild/input/info.txt
+  cat /dev/null >                             $otabuild/input/info.txt
+  echo "srcver=$old_ver" >>                   $otabuild/input/info.txt
+  echo "tgtver=$new_ver" >>                   $otabuild/input/info.txt
+  echo "device=$PROJECT_NAME" >>              $otabuild/input/info.txt
+  echo "style=$style" >>                      $otabuild/input/info.txt
+  echo "SIGNTYPE=$SIGNTYPE" >>                $otabuild/input/info.txt
+  echo "priority=$priority" >>                $otabuild/input/info.txt
+  echo "full_bsp_modem=$full_bsp_modem" >>    $otabuild/input/info.txt
+  echo "PLATFORM=$PLATFORM" >>                $otabuild/input/info.txt
+  echo "hw_version=$hw_version" >>            $otabuild/input/info.txt
 
-    cp -vf $otabuild/extra_script/${PROJECT_NAME}/$market/extra_${style}.sh $otabuild/input/extra.sh
+  cp -vf $otabuild/extra_script/${PROJECT_NAME}/$market/extra_${style}.sh $otabuild/input/extra.sh
 }
 
 makefull() {

@@ -1,10 +1,10 @@
 #!/bin/dash
 
 clean_and_quit() {
-    printf '%b' "\033[32;1m clean input, output, and then quit \033[0m\n"
-    if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
-    if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
-    exit
+  printf '%b' "\033[32;1m clean input, output, and then quit \033[0m\n"
+  if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+  if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+  exit
 }
 
 # detect if installed dos2unix and enca was installed, laterly we will use dos2unix to convert line break, use enca to convert file encoding.

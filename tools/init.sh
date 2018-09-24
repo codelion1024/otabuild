@@ -155,15 +155,15 @@ if [ "$target_old_win" == "" ] || [ "$target_new_win" == "" ]; then
 fi
 printf "\e[32m =================copy target-files from '/mnt/hgfs' to '%s/input'====================== \e[0m\n" $otabuild
 if [ $ota_style != "fullpkg" ]; then
-    cp -vf $target_old_win $target_old_dir
-    if [ $check_integrity = "true" ]; then
-        test_integrity $target_old_file
-    fi
+  cp -vf $target_old_win $target_old_dir
+  if [ $check_integrity = "true" ]; then
+    test_integrity $target_old_file
+  fi
 fi
 
 cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then
-    test_integrity $target_new_file
+  test_integrity $target_new_file
 fi
 
 printf "\e[32m =================copy host building tools from 'out' to '%s/linux-x86'====================== \e[0m\n" $otabuild

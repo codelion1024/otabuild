@@ -1042,7 +1042,10 @@ git checkout -t origin/otabuild_Int</p>
 国内版拷贝到机型名\normal路径下,海外版拷贝到机型名\oversea路径下.<br />
 以后按软件代表的特殊需求持续更新对应的脚本即可.</p>
 <h5 id="3-hudson"><a name="user-content-3-hudson" href="#3-hudson" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3 hudson任务配置</h5>
-<h6 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 设置  参数化构建过程</h6>
+<h6 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 选择任务类型</h6>
+<p>创建当前项目的Jenkins任务时,首先选择任务类型为<code>构建一个自由风格的软件项目</code></p>
+<h6 id="32"><a name="user-content-32" href="#32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 设置 <code>参数化构建过程</code></h6>
+<p>勾选任务配置中的<code>参数化构建过程</code></p>
 <table>
 <thead>
 <tr>
@@ -1092,26 +1095,26 @@ git checkout -t origin/otabuild_Int</p>
 </tbody>
 </table>
 <p>各参数的Description的html描述信息:<br />
-autosync<br />
+<code>autosync</code><br />
 <pre><code class="http">&lt;font size=&quot;3&quot;&gt;
 是否自动同步编译输出到17服务器&lt;br/&gt;
 如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17
 &lt;font&gt;
 </code></pre></p>
-<h6 id="32"><a name="user-content-32" href="#32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 设置  绑定服务器节点</h6>
+<h6 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 设置 <code>绑定服务器节点</code></h6>
 <p>勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</p>
-<h6 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 设置  构建环境</h6>
-<p>在&rdquo;构建环境&rdquo;下勾选&rdquo;Color ANSI Console Output&rdquo;, 之后在&rdquo;ANSI color map&rdquo;下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br />
+<h6 id="34"><a name="user-content-34" href="#34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.4 设置 <code>构建环境</code></h6>
+<p>在<code>构建环境</code>下勾选<code>Color ANSI Console Output</code>, 之后在<code>ANSI color map</code>下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br />
 各颜色风格示例:<br />
 1 xterm<br />
-<img alt="xterm" src="///D://linyang/Documents/temp/%E7%A7%BB%E6%A4%8Dota%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC/otabuild/md_pic/xterm.PNG" title="xterm example" /><br />
+<img alt="xterm" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/xterm.PNG" title="xterm example" /><br />
 2 vga<br />
-<img alt="vga" src="///D://linyang/Documents/temp/%E7%A7%BB%E6%A4%8Dota%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC/otabuild/md_pic/vga.PNG" title="vga example" /><br />
+<img alt="vga" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/vga.PNG" title="vga example" /><br />
 3 css<br />
-<img alt="css" src="///D://linyang/Documents/temp/%E7%A7%BB%E6%A4%8Dota%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC/otabuild/md_pic/css.PNG" title="css example" /><br />
+<img alt="css" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/css.PNG" title="css example" /><br />
 4 gnome-terminal<br />
-<img alt="gnome-terminal" src="///D://linyang/Documents/temp/%E7%A7%BB%E6%A4%8Dota%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC/otabuild/md_pic/gnome-terminal.PNG" title="gnome-terminal example" /></p>
-<h6 id="34"><a name="user-content-34" href="#34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.4 设置  构建</h6>
+<img alt="gnome-terminal" src="///D://linyang/Documents/temp/%E8%84%9A%E6%9C%AC%E4%BC%98%E5%8C%96/OTA/otabuild/md_pic/gnome-terminal.PNG" title="gnome-terminal example" /></p>
+<h6 id="35"><a name="user-content-35" href="#35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5 设置 <code>构建</code></h6>
 <p>选择<code>Execute shell</code>,<code>Command</code>为:<br />
 <pre><code class="bash">export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径
 export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名

@@ -32,7 +32,12 @@ git checkout -t origin/otabuild_Int
 以后按软件代表的特殊需求持续更新对应的脚本即可.
 
 #####3 hudson任务配置
-######3.1 设置  参数化构建过程
+######3.1 选择任务类型
+创建当前项目的Jenkins任务时,首先选择任务类型为`构建一个自由风格的软件项目`
+
+######3.2 设置 `参数化构建过程`
+勾选任务配置中的`参数化构建过程`
+
 参数 | 类型 | 取值 | 含义 |
 ---|---|---|
 SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名 |
@@ -43,7 +48,7 @@ BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做
 autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
 
 各参数的Description的html描述信息:
-autosync
+`autosync`
 ```http
 <font size="3">
 是否自动同步编译输出到17服务器<br/>
@@ -51,11 +56,11 @@ autosync
 <font>
 ```
 
-######3.2 设置  绑定服务器节点
+######3.3 设置 `绑定服务器节点`
 勾选`Restrict where this project can be run`,`Label Expression`设置为项目android源码所在服务器,eg:Ubu_10.99.12.11
 
-######3.3 设置  构建环境
-在"构建环境"下勾选"Color ANSI Console Output", 之后在"ANSI color map"下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.
+######3.4 设置 `构建环境`
+在`构建环境`下勾选`Color ANSI Console Output`, 之后在`ANSI color map`下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.
 各颜色风格示例:
 1 xterm
 ![xterm](md_pic\xterm.PNG "xterm example")
@@ -66,7 +71,7 @@ autosync
 4 gnome-terminal
 ![gnome-terminal](md_pic\gnome-terminal.PNG "gnome-terminal example")
 
-######3.4 设置  构建
+######3.5 设置 `构建`
 选择`Execute shell`,`Command`为:
 ```bash
 export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径

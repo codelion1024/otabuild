@@ -13,7 +13,7 @@ function prepare_extra()
     echo "PLATFORM=$PLATFORM" >>                $otabuild/input/info.txt
     echo "hw_version=$hw_version" >>            $otabuild/input/info.txt
 
-    cp -vf $otabuild/extra_script/${PROJECT_NAME}/extra_${style}.sh $otabuild/input/extra.sh
+    cp -vf $otabuild/extra_script/${PROJECT_NAME}/$market/extra_${style}.sh $otabuild/input/extra.sh
 }
 
 makefull()

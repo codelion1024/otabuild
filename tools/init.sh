@@ -44,6 +44,8 @@ if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
 printf "%s\n" "=========================所有信息BEGIN=================================="
+printf "BIGVERSION                  %s\n" $BIGVERSION
+printf "market                      %s\n" $market
 printf "ANDROID                     %s\n" $ANDROID
 printf "otabuild                    %s\n" $otabuild
 printf "PROJECT_NAME                %s\n" $PROJECT_NAME

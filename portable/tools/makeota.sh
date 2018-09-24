@@ -20,7 +20,7 @@ makefull() {
   mkdir -p $outputdir/$packfolder
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf '%b' "\033[32;1m 制作整包----$fullpack_signed \033[0m\n"
+  printf '%b' "\033[32;1m building full-package----$fullpack_signed \033[0m\n"
   prepare_extra
   $ANDROID/build/tools/releasetools/ota_from_target_files \
   $IS_WIPE_USER_DATA \
@@ -39,7 +39,7 @@ makefull() {
 
 makediff() {
   if [ $full_bsp_modem = "true" ]; then
-    printf '%b' "\033[32;1m -------------对target_old_file去除BSPMODEM文件---------------- \033[0m\n"
+    printf '%b' "\033[32;1m -------------strip radio files from $target_old_file---------------- \033[0m\n"
     target_old_file_noradio=$target_old_dir/$(basename -s '.zip' $target_old_file)_noradio.zip
     cp -vu $target_old_file $target_old_file_noradio
     zip --verbose $target_old_file_noradio --delete "RADIO/*.*"
@@ -50,7 +50,7 @@ makediff() {
   mkdir -p $outputdir/$packfolder
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf '%b' "\033[32;1m 制作差分包----$diffpack_signed \033[0m\n"
+  printf '%b' "\033[32;1m building diff-package----$diffpack_signed \033[0m\n"
   prepare_extra
   if [ $full_bsp_modem = "true" ]; then
     $ANDROID/build/tools/releasetools/ota_from_target_files \

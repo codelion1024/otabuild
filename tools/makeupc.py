@@ -17,7 +17,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
-  print '\033[32m ============开始制作upc文件============ \033[0m'
+  print '\033[32m ============upc file generation start============ \033[0m'
   diffpackpath=sys.argv[1]
   PROJECT_NAME=sys.argv[2]
   description=sys.argv[3]
@@ -28,22 +28,22 @@ def main():
 
   bindata=[]
   base64file = open(os.path.dirname(diffpackpath) + '/base64.txt', 'wb')
-  base64.encode(open(diffpackpath, 'rb'),  base64file)  # 先将升级包的base64编码保存到base64.txt
+  base64.encode(open(diffpackpath, 'rb'),  base64file)  # save the base64 encoding stream of upgrade package to base64.txt
   base64file.close()
   with open(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
     for line in f.readlines():
-      bindata.append(line.strip('\n')) # base64.txt中所有行连到一起
+      bindata.append(line.strip('\n')) # join all lines of base64.txt together
 
   diffpack=zipfile.ZipFile(diffpackpath)
   scriptpath=diffpack.extract('META-INF/com/google/android/updater-script', os.path.dirname(sys.argv[1]))
   diffpack.close
   with open(scriptpath, "r") as f:
-    # 先从updater-script中过滤出含有"ro.build.fingerprint"的前两行
+    # read 'updater-script' and filter the first two lines which contains 'ro.build.fingerprint'
     line = [x for x in f if x.find('ro.build.fingerprint') > 0][0:2]
-    # 再从这两行中提取出升级前后的完整版本号
+    # use regex expression to extract the new build number and old build number from two lines mentioned above
     old_version = re.split("[:/]", line[0])[5]
     new_version = re.split("[:/]", line[1])[5]
-    print '\033[32m ==========debug updater-script中old_version,new_version============== \033[0m'
+    print '\033[32m ==========print and check the old_version,new_version from \'updater-script\'============== \033[0m'
     print(old_version)
     print(new_version)
     assert(len(old_version) > 28)
@@ -51,7 +51,7 @@ def main():
 
   root              = ET.Element("update-package")
   creationdate      = ET.SubElement(root, "creation-date")
-  creationdate.text = time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(os.path.getctime(diffpackpath))) # 用getctime得到升级包的创建时间
+  creationdate.text = time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(os.path.getctime(diffpackpath))) # using 'getctime' to acquire creation time
   hw                = ET.SubElement(root, "hw")
   hw.text           = PROJECT_NAME
   hwv               = ET.SubElement(root, "hwv")
@@ -67,17 +67,17 @@ def main():
   prio              = ET.SubElement(root, "priority")
   prio.text         = priority
   md5               = ET.SubElement(root, "md5")
-  md5.text          = hashlib.md5(open(diffpackpath, 'r').read()).hexdigest() # 得到升级包的md5
+  md5.text          = hashlib.md5(open(diffpackpath, 'r').read()).hexdigest() # get the 128-bit md5 hash value from the upgrade package
   binary            = ET.SubElement(root, "binary")
   binary.text       = "".join(bindata)
   tree              = ET.ElementTree(root)
-  # 为了在保存xml文件时声明xml文件头,将xml_declaration设为true
+  # in order to contain xml declaration header when saving xml file, set 'xml_declaration' as true.
   tree.write(os.path.dirname(diffpackpath) + '/UPC_' + PROJECT_NAME + '_' + hw_version + '_' + old_ver + '-' + new_ver + '.xml', encoding="UTF-8", xml_declaration=True)
   if os.path.exists(os.path.dirname(diffpackpath)):
     os.remove(os.path.dirname(diffpackpath) + '/base64.txt');shutil.rmtree(os.path.dirname(diffpackpath) + '/META-INF/')
 
   tree = ET.parse(os.path.dirname(diffpackpath) + '/UPC_' + PROJECT_NAME + '_' + hw_version + '_' + old_ver + '-' + new_ver + '.xml')
-  print '\033[32m ============upc文件参数============ \033[0m'
+  print '\033[32m ============upc file args============ \033[0m'
   print(tree.getroot().find('creation-date').text)
   print(tree.getroot().find('hw').text)
   print(tree.getroot().find('hwv').text)

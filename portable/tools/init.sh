@@ -39,7 +39,7 @@ test_integrity() {
   fi
 }
 
-printf '%b' "\033[32;1m $BUILD_TAG--步骤$((STEP=STEP+1))--初始化并打印所有参数 \033[0m\n"
+printf '%b' "\033[32;1m $BUILD_TAG--step$((STEP=STEP+1))--initial and print args \033[0m\n"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
 ota_param_file=$ota_param_dir/ota_parameter.txt
@@ -97,7 +97,7 @@ core_nums=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | tr -cd "[0-9]")
 # to speed up the generation of ota packages, set work thread as ths sum of Cores to take full advantage of multi-core cpu(s).
 thread_nums=$(expr $cpu_nums \* $core_nums)
 
-printf '%b' "\033[32;1m =========================所有信息BEGIN================================== \033[0m\n"
+printf '%b' "\033[32;1m =========================print args begin================================== \033[0m\n"
 printf "BIGVERSION                  %s\n" $BIGVERSION
 printf "check_integrity             %s\n" $check_integrity
 printf "BUILDTYPE                   %s\n" $BUILDTYPE
@@ -138,9 +138,9 @@ printf "hw_version                  %s\n" $hw_version
 printf "cpu_nums                    %s\n" $cpu_nums
 printf "core_nums                   %s\n" $core_nums
 printf "thread_nums                 %s\n" $thread_nums
-printf '%b' "\033[32;1m =========================所有信息END================================== \033[0m\n"
+printf '%b' "\033[32;1m =========================print args end================================== \033[0m\n"
 
-printf '%b' "\033[32;1m =================检查ota_param_file中的source_version和dest_version下是否确实存在target-files====================== \033[0m\n"
+printf '%b' "\033[32;1m =================check if there is target-file under source_version and dest_version from ota_parameter.txt====================== \033[0m\n"
 if [ "$target_old_win" = "" ] || [ "$target_new_win" = "" ]; then
   if [ $ota_style = "fullpkg" ] && [ "$target_new_win" != "" ]; then
     printf '%b' "\033[32;1m new target-files exist, still can proceed if we only build a full OTA package \033[0m\n"
@@ -150,7 +150,7 @@ if [ "$target_old_win" = "" ] || [ "$target_new_win" = "" ]; then
     clean_and_quit
   fi
 fi
-printf '%b' "\033[32;1m =================将target-files从/mnt/hgfs拷贝到%s/input下====================== \033[0m\n" $otabuild
+printf '%b' "\033[32;1m =================copy target-files from '/mnt/hgfs' to '%s/input'====================== \033[0m\n" $otabuild
 if [ $ota_style != "fullpkg" ]; then
     cp -vf $target_old_win $target_old_dir
     if [ $check_integrity = "true" ]; then
@@ -164,7 +164,7 @@ if [ $check_integrity = "true" ]; then
     test_integrity $target_new_file
 fi
 
-printf '%b' "\033[32;1m =================将host端工具从out拷贝到%s/linux-x86下====================== \033[0m\n" $otabuild
+printf '%b' "\033[32;1m =================copy host building tools from 'out' to '%s/linux-x86'====================== \033[0m\n" $otabuild
 if [ -e $ANDROID/out/target/product/${PROJECT_NAME}/otatools.zip ]; then
   # if otatools.zip exits, always extract it to get all of host building tools firstly. otatools.zip is used for this purpose.
   unzip -o $ANDROID/out/target/product/${PROJECT_NAME}/otatools.zip "bin/*" "framework/*" "lib64/*" -d $otatools_dir

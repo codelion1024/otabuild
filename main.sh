@@ -1,5 +1,12 @@
 #!/bin/bash
 
+function clean_and_quit()
+{
+    if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+    if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+    exit
+}
+
 # 检测enca是否安装, 后面要用enca转换文件编码
 type enca >/dev/null 2>&1 || { echo >&2 "we need enca to convert ota_param_file's encoding,using sudo apt-get install enca to install it.  Aborting."; exit 1; }
 
@@ -9,6 +16,7 @@ printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--编译开始"
 
 otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
+if [ $? == 8 ]; then clean_and_quit(); fi
 
 curtime=$(date +%y%m%d_%H%M)
 if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then
@@ -34,8 +42,7 @@ if [ $ota_style = "all" ] || [ $ota_style = "diff" ] || [ $ota_style = "backward
 fi
 
 cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path
-if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
-if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
+clean_and_quit
 
 
 

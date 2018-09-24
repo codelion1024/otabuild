@@ -105,4 +105,13 @@ cp -vu $ANDROID/out/host/linux-x86/lib64/libc++.so $ANDROID/out/host/linux-x86/l
 
 printf "=================将target-files从/mnt/hgfs拷贝到%s/input下======================\n" $otabuild
 cp -vf $target_old_win $target_old_dir
+if [ $check_integrity = "true" ]; then
+    zip -T $target_old_file
+    if [ $? != 0 ]; then echo "$target_old_file is data corrupt,exit!";exit 8; fi
+fi
+
 cp -vf $target_new_win $target_new_dir
+if [ $check_integrity = "true" ]; then
+    zip -T $target_new_file
+    if [ $? != 0 ]; then echo "$target_new_file is data corrupt,exit!";exit 8; fi
+fi

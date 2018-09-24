@@ -153,6 +153,14 @@ else
 fi
 
 printf "=================将target-files从/mnt/hgfs拷贝到%s/input下======================\n" $otabuild
+if [ "$target_old_win" == "" ] || [ "$target_new_win" == "" ]; then
+  if [ $ota_style == "fullpkg" ] && [ "$target_new_win" != "" ]; then
+    echo "new target-files exist, still can proceed if we only build a full OTA package"
+  else
+    echo "on any other situations, we can't proceed if lack target-files"
+    clean_and_quit
+fi
+
 cp -vf $target_old_win $target_old_dir
 if [ $check_integrity = "true" ]; then
     zip -T $target_old_file

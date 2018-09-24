@@ -60,7 +60,7 @@ makediff()
     $IS_WIPE_USER_DATA \
     $IS_BLOCK \
     --verbose \
-    --worker_threads 8 \
+    --worker_threads $thread_nums \
     --package_key $KEY \
     --path $otatools_dir \
     --device_specific $ANDROID/device/qcom/common \
@@ -70,7 +70,7 @@ makediff()
     $IS_WIPE_USER_DATA \
     $IS_BLOCK \
     --verbose \
-    --worker_threads 8 \
+    --worker_threads $thread_nums \
     --package_key $KEY \
     --path $otatools_dir \
     --device_specific $ANDROID/device/qcom/common \

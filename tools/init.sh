@@ -95,6 +95,10 @@ if [ $WIPE_DATA = "true" ]; then
 elif [ $WIPE_DATA = "false" ]; then
   IS_WIPE_USER_DATA=""
 fi
+cpu_nums=$(cat /proc/cpuinfo | grep "physical id" | uniq | wc -l)
+core_nums=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | tr -cd "[0-9]")
+# to speed up the generation of ota packages, set work thread as ths sum of Cores to take full advantage of multi-core cpu(s).
+thread_nums=$(expr $cpu_nums \* $core_nums)
 
 printf "\e[32m %s \e[0m\n" "=========================所有信息BEGIN=================================="
 printf "BIGVERSION                  %s\n" $BIGVERSION
@@ -134,6 +138,9 @@ printf "target_new_file             %s\n" $target_new_file
 printf "old_ver                     %s\n" $old_ver
 printf "new_ver                     %s\n" $new_ver
 printf "hw_version                  %s\n" $hw_version
+printf "cpu_nums                    %s\n" $cpu_nums
+printf "core_nums                   %s\n" $core_nums
+printf "thread_nums                 %s\n" $thread_nums
 printf "\e[32m %s \e[0m\n" "=========================所有信息END=================================="
 
 printf "\e[32m =================检查ota_param_file中的source_version和dest_version下是否确实存在target-files====================== \e[0m\n"

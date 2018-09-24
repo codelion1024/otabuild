@@ -20,7 +20,7 @@ makefull() {
   mkdir -p $outputdir/$packfolder
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf "\e[32m %s \e[0m\n" "制作整包----$fullpack_signed"
+  printf '%b' "\033[32;1m 制作整包----$fullpack_signed \033[0m\n"
   prepare_extra
   $ANDROID/build/tools/releasetools/ota_from_target_files \
   $IS_WIPE_USER_DATA \
@@ -35,17 +35,17 @@ makefull() {
   if [ $check_integrity = "true" ]; then
     zip -T $fullpack_signed
     if [ $? != 0 ]; then
-      echo -e "\e[31m $fullpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
+      printf '%b' "\033[31;1m $fullpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \033[0m\n"
       clean_and_quit
     else
-      echo -e "\e[32m $fullpack_signed integrity check succeed, go on \e[0m"
+      printf '%b' "\033[32;1m $fullpack_signed integrity check succeed, go on \033[0m\n"
     fi
   fi
 }
 
 makediff() {
   if [ $full_bsp_modem = "true" ]; then
-    printf "\e[32m %s \e[0m\n" "-------------对target_old_file去除BSPMODEM文件----------------"
+    printf '%b' "\033[32;1m -------------对target_old_file去除BSPMODEM文件---------------- \033[0m\n"
     target_old_file_noradio=$target_old_dir/$(basename -s '.zip' $target_old_file)_noradio.zip
     cp -vu $target_old_file $target_old_file_noradio
     zip --verbose $target_old_file_noradio --delete "RADIO/*.*"
@@ -56,7 +56,7 @@ makediff() {
   mkdir -p $outputdir/$packfolder
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  printf "\e[32m %s \e[0m\n" "制作差分包----$diffpack_signed"
+  printf '%b' "\033[32;1m 制作差分包----$diffpack_signed \033[0m\n"
   prepare_extra
   if [ $full_bsp_modem = "true" ]; then
     $ANDROID/build/tools/releasetools/ota_from_target_files \
@@ -83,10 +83,10 @@ makediff() {
   if [ $check_integrity = "true" ]; then
     zip -T $diffpack_signed
     if [ $? != 0 ]; then
-      echo -e "\e[31m $diffpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
+      printf '%b' "\033[31;1m $diffpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \033[0m\n"
       clean_and_quit
     else
-      echo -e "\e[32m $diffpack_signed integrity check succeed, go on \e[0m"
+      printf '%b' "\033[32;1m $diffpack_signed integrity check succeed, go on \033[0m\n"
     fi
   fi
 }

@@ -1,6 +1,5 @@
 ﻿#!/system/bin/sh
 
-
 srcver=         `cat /tmp/info.txt | grep srcver | busybox cut -d '=' -f 2`
 tgtver=         `cat /tmp/info.txt | grep tgtver | busybox cut -d '=' -f 2`
 device=         `cat /tmp/info.txt | grep device | busybox cut -d '=' -f 2`
@@ -14,8 +13,7 @@ hw_version=     `cat /tmp/info.txt | grep hw_version  | busybox cut -d '=' -f 2`
 if [ $device != $(getprop ro.product.device) ]; then
     echo "ota package is build for $device, can apply for $(getprop ro.product.device)"
 fi
-
-
+echo "we use this script to record and handle all of the ARTIFICIAL PROCESS for ${device}'s $style ota update"
 
 # 解决 Bug 188158: 【1713-A01_049】【智能聚合页】48-49OTA后负一屏未删除
 # 解决 Bug 188600: 【1713-A01--052】【OS3.0】一路OTA升级成功后快视频仍然存在
@@ -23,4 +21,4 @@ if [ tgtver == "054" ]; then
   rm -rf  /data/app/com.qiku.cardmanager*
   rm -rf  /data/app/com.lightsky.video*
 fi
-    
+

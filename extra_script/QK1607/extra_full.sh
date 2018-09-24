@@ -1,6 +1,5 @@
 ﻿#!/system/bin/sh
 
-
 srcver=         `cat /tmp/info.txt | grep srcver | busybox cut -d '=' -f 2`
 tgtver=         `cat /tmp/info.txt | grep tgtver | busybox cut -d '=' -f 2`
 device=         `cat /tmp/info.txt | grep device | busybox cut -d '=' -f 2`
@@ -14,6 +13,5 @@ hw_version=     `cat /tmp/info.txt | grep hw_version  | busybox cut -d '=' -f 2`
 if [ $device != $(getprop ro.product.device) ]; then
     echo "ota package is build for $device, can apply for $(getprop ro.product.device)"
 fi
-
-
+echo "we use this script to record and handle all of the ARTIFICIAL PROCESS for ${device}'s $style ota update "
 

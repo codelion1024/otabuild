@@ -1,3 +1,12 @@
 input
 output
 linux-x86
+
+# info.txt在hudson上ota编译任务编译ota时产生,包含一些升级时无法在recovery中获得的必要属性,相关逻辑流程为:
+# 1 ota_from_target_files将其打包进ota包
+# 2 升级时updater-script将其解压
+# 3 最终由额外执行的人工处理脚本extra.sh解析info.txt后删除
+input/info.txt
+
+# extra.sh就是额外执行的人工处理脚本,在hudson上ota编译任务编译ota时产生,里面记录着每个机型所有需要处理的特殊版本及对应操作.
+input/extra.sh

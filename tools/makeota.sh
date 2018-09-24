@@ -2,18 +2,18 @@
 
 function prepare_extra()
 {
-    cat /dev/null >                             $ANDROID/build/tools/releasetools/info.txt
-    echo "srcver=$old_ver" >>                   $ANDROID/build/tools/releasetools/info.txt
-    echo "tgtver=$new_ver" >>                   $ANDROID/build/tools/releasetools/info.txt
-    echo "device=$PROJECT_NAME" >>              $ANDROID/build/tools/releasetools/info.txt
-    echo "style=$style" >>                      $ANDROID/build/tools/releasetools/info.txt
-    echo "SIGNTYPE=$SIGNTYPE" >>                $ANDROID/build/tools/releasetools/info.txt
-    echo "priority=$priority" >>                $ANDROID/build/tools/releasetools/info.txt
-    echo "full_bsp_modem=$full_bsp_modem" >>    $ANDROID/build/tools/releasetools/info.txt
-    echo "PLATFORM=$PLATFORM" >>                $ANDROID/build/tools/releasetools/info.txt
-    echo "hw_version=$hw_version" >>            $ANDROID/build/tools/releasetools/info.txt
+    cat /dev/null >                             $otabuild/input/info.txt
+    echo "srcver=$old_ver" >>                   $otabuild/input/info.txt
+    echo "tgtver=$new_ver" >>                   $otabuild/input/info.txt
+    echo "device=$PROJECT_NAME" >>              $otabuild/input/info.txt
+    echo "style=$style" >>                      $otabuild/input/info.txt
+    echo "SIGNTYPE=$SIGNTYPE" >>                $otabuild/input/info.txt
+    echo "priority=$priority" >>                $otabuild/input/info.txt
+    echo "full_bsp_modem=$full_bsp_modem" >>    $otabuild/input/info.txt
+    echo "PLATFORM=$PLATFORM" >>                $otabuild/input/info.txt
+    echo "hw_version=$hw_version" >>            $otabuild/input/info.txt
 
-    cp -vf $otabuild/extra_script/${PROJECT_NAME}/extra_${style}.sh $ANDROID/build/tools/releasetools/extra.sh
+    cp -vf $otabuild/extra_script/${PROJECT_NAME}/extra_${style}.sh $otabuild/input/extra.sh
 }
 
 makefull()

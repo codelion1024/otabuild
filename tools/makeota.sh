@@ -20,20 +20,17 @@ makefull()
 {
   packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}
   mkdir -p $outputdir/$packfolder
-  fullpack=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}.zip
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
   printf "%s\n" "制作整包----$fullpack_signed"
   prepare_extra
   if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
     echo "--------BLOCK-BASED FULL OTA-----------------"
-    $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   elif [ $BIGVERSION -lt 8 ]; then
     echo "--------FILE-BASED FULL OTA-----------------"
-    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   fi
-  java -Xmx8192m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $fullpack $fullpack_signed
-  if [ -f $fullpack ]; then rm -v $fullpack; fi
 }
 
 makediff()
@@ -48,7 +45,6 @@ makediff()
   if [ $style = "up" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}; fi
   if [ $style = "down" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}_F; fi
   mkdir -p $outputdir/$packfolder
-  diffpack=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}.zip
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
   printf "%s\n" "制作差分包----$diffpack_signed"
@@ -56,20 +52,18 @@ makediff()
   if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
     echo "--------BLOCK-BASED INCREMENT OTA-----------------"
     if [ $full_bsp_modem = "true" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack
+      $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
     else
-      $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack
+      $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack_signed
     fi
   elif [ $BIGVERSION -lt 8 ]; then
     echo "--------FILE-BASED INCREMENT OTA-----------------"
     if [ $full_bsp_modem = "true" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack
+      $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
     else
-      $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack
+      $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack_signed
     fi
   fi
-  java -Xmx4096m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $diffpack $diffpack_signed
-  if [ -f $diffpack ]; then rm -v $diffpack; fi
 }
 
 

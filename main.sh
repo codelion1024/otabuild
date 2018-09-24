@@ -14,9 +14,6 @@ type enca >/dev/null 2>&1 || { echo -e >&2 "\e[31m we need enca to convert ota_p
 
 TIME=`date +%y%m%d_%H%M%S`
 STEP=0
-# set jenkins server's ip address
-JENKINS_IP_XIAN=10.100.11.206
-JENKINS_IP_SHENZHEN=10.100.11.23
 printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--编译开始"
 
 otabuild=$ANDROID/../otabuild

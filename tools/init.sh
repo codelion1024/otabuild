@@ -1,21 +1,6 @@
 #!/bin/bash
 
-function get_targetfiles_dir_XIAN()
-{
-  netpath_full=$(grep $1 $ota_param_file | awk -F \= '{print $2}' | sed 's/\\/\//g')
-  while read line
-  do
-    netpath_prefix=$(echo $line | awk '{print $5}')
-    mountpath=$(echo $line | awk '{print $6}')
-    if [[ $netpath_full == *$netpath_prefix* ]]; then
-      behind=$(echo "$netpath_full" | awk -F "$netpath_prefix" '{printf "%s",$2}')
-      echo $mountpath$behind
-      break
-    fi
-  done < ~/bin/mount.sh # build server in xian use ~/bin/mount.sh to manage mountpoint
-}
-
-function get_targetfiles_dir_SHENZHEN()
+function get_targetfiles_dir()
 {
   netpath_full=$(grep $1 $ota_param_file | awk -F \= '{print $2}' | sed 's/\\/\//g')
   while read line
@@ -27,7 +12,7 @@ function get_targetfiles_dir_SHENZHEN()
       echo $mountpath$behind
       break
     fi
-  done < /etc/fstab # build server in shenzhen use /etc/fstab to manage mountpoint
+  done < /etc/fstab
 }
 
 function join_description()
@@ -54,19 +39,8 @@ mv -v $WORKSPACE/ota_parameter.txt $ota_param_file
 dos2unix $ota_param_file
 enca -L zh_CN -x UTF-8 $ota_param_file
 
-# $JENKINS_URL is the env variable powered by jenkins(http://10.100.11.206:8080/jenkins/env-vars.html/), available to shell scripts
-JENKINS_IP_UNSTRIP=`echo $JENKINS_URL | cut -d ':' -f 2`
-JENKINS_IP=${JENKINS_IP_UNSTRIP:2} # strip the "//" after "http:"
-if [ $JENKINS_IP == $JENKINS_IP_XIAN ]; then
-  target_old_windir=$(get_targetfiles_dir_XIAN source_version)
-  target_new_windir=$(get_targetfiles_dir_XIAN dest_version)
-elif [ $JENKINS_IP == $JENKINS_IP_SHENZHEN ]; then
-  target_old_windir=$(get_targetfiles_dir_SHENZHEN source_version)
-  target_new_windir=$(get_targetfiles_dir_SHENZHEN dest_version)
-else
-  echo -e "\e[31m parsing JENKINS_IP($JENKINS_IP) from JENKINS_URL($JENKINS_URL) failed \e[0m"
-  clean_and_quit
-fi
+target_old_windir=$(get_targetfiles_dir source_version)
+target_new_windir=$(get_targetfiles_dir dest_version)
 
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
 target_old_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/oldtarget;mkdir -p $target_old_dir
@@ -115,8 +89,6 @@ printf "BUILDTYPE                   %s\n" $BUILDTYPE
 printf "autosync                    %s\n" $autosync
 printf "WIPE_DATA                   %s\n" $WIPE_DATA
 printf "market                      %s\n" $market
-printf "JENKINS_URL                 %s\n" $JENKINS_URL
-printf "JENKINS_IP                  %s\n" $JENKINS_IP
 printf "ANDROID                     %s\n" $ANDROID
 printf "otabuild                    %s\n" $otabuild
 printf "PROJECT_NAME                %s\n" $PROJECT_NAME

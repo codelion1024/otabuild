@@ -13,9 +13,6 @@ type enca >/dev/null 2>&1 || { printf >&2 '%b' "\033[31;1m we need enca to conve
 
 TIME=`date +%y%m%d_%H%M%S`
 STEP=0
-# set jenkins server's ip address
-JENKINS_IP_XIAN=10.100.11.206
-JENKINS_IP_SHENZHEN=10.100.11.23
 printf "%s\n" "$BUILD_TAG--步骤$((STEP=STEP+1))--编译开始"
 
 otabuild=$ANDROID/../otabuild

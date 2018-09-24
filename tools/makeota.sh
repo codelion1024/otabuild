@@ -31,6 +31,15 @@ makefull()
     echo -e "\e[32m --------FILE-BASED FULL OTA----------------- \e[0m"
     $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   fi
+  if [ $check_integrity = "true" ]; then
+    zip -T $fullpack_signed
+    if [ $? != 0 ]; then
+      echo -e "\e[31m $fullpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
+      clean_and_quit
+    else
+      echo -e "\e[32m $fullpack_signed integrity check succeed, go on \e[0m"
+    fi
+  fi
 }
 
 makediff()
@@ -62,6 +71,15 @@ makediff()
       $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
     else
       $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 --package_key $KEY --path $otabuild/linux-x86 --device_specific $ANDROID/device/qcom/common --incremental_from $target_old_file $target_new_file $diffpack_signed
+    fi
+  fi
+  if [ $check_integrity = "true" ]; then
+    zip -T $diffpack_signed
+    if [ $? != 0 ]; then
+      echo -e "\e[31m $diffpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
+      clean_and_quit
+    else
+      echo -e "\e[32m $diffpack_signed integrity check succeed, go on \e[0m"
     fi
   fi
 }

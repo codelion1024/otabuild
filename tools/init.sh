@@ -149,13 +149,23 @@ printf "\e[32m =================将target-files从/mnt/hgfs拷贝到%s/input下=
 cp -vf $target_old_win $target_old_dir
 if [ $check_integrity = "true" ]; then
     zip -T $target_old_file
-    if [ $? != 0 ]; then echo -e "\e[31m $target_old_file is missing or data corrupt! \e[0m";clean_and_quit; fi
+    if [ $? != 0 ]; then
+      echo -e "\e[31m $target_new_file integrity check failed after copy to compile server, stop building, disk may has bad block(s)!!! \e[0m"
+      clean_and_quit
+    else
+      echo -e "\e[32m $target_new_file integrity check succeed, go on \e[0m"
+    fi
 fi
 
 cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then
     zip -T $target_new_file
-    if [ $? != 0 ]; then echo -e "\e[31m $target_new_file is missing or data corrupt! \e[0m";clean_and_quit; fi
+    if [ $? != 0 ]; then
+      echo -e "\e[31m $target_new_file integrity check failed after copy to compile server, stop building, disk may has bad block(s)!!! \e[0m"
+      clean_and_quit
+    else
+      echo -e "\e[32m $target_new_file integrity check succeed, go on \e[0m"
+    fi
 fi
 
 printf "\e[32m =================将host端工具从out拷贝到%s/linux-x86下====================== \e[0m\n" $otabuild

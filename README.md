@@ -42,7 +42,7 @@ git checkout -t origin/otabuild_Int
 ---|---|---|
 SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名 |
 ota_parameter.txt | File Parameter | 使用者上传 | spm启动任务时上传的文件 
-check_integrity | Choice | true, false(默认) | 是否对target-file zip做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
+check_integrity | Choice | true, false(默认) | 是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
 BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7 |
 BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
 autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |

@@ -16,7 +16,7 @@ prepare_extra() {
 }
 
 makefull() {
-  packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}
+  packfolder=OTA_V${old_ver}_V${new_ver}_${TIME}_${OTA_TYPE}
   mkdir -p $outputdir/$packfolder
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
@@ -45,8 +45,8 @@ makediff() {
     zip --verbose $target_old_file_noradio --delete "RADIO/*.*"
   fi
 
-  if [ $style = "up" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}; fi
-  if [ $style = "down" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}_F; fi
+  if [ $style = "up" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${TIME}_${OTA_TYPE}; fi
+  if [ $style = "down" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${TIME}_${OTA_TYPE}_F; fi
   mkdir -p $outputdir/$packfolder
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 

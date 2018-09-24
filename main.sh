@@ -19,7 +19,6 @@ printf "%s\n" "$BUILD_TAG--step$((STEP++))--Compile Start"
 otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
 
-curtime=$(date +%y%m%d_%H%M)
 # 'fullpkg','forward','backward' are used to debug for inside use, aiming to generate full-package, forward diff-package and backward diff-package respectively.
 if [ $ota_style = "all" ] || [ $ota_style = "full" ] || [ $ota_style = "fullpkg" ]; then
   printf "\e[32m =====================full-package building start================== \e[0m\n"
@@ -32,7 +31,6 @@ if [ $ota_style = "all" ] || [ $ota_style = "full" ] || [ $ota_style = "forward"
   python $otabuild/tools/makeupc.py $diffpack_signed $PROJECT_NAME "$description" $priority $hw_version $old_ver $new_ver
 fi
 
-curtime=$(date +%y%m%d_%H%M)
 if [ $ota_style = "all" ] || [ $ota_style = "diff" ] || [ $ota_style = "backward" ]; then
   printf "\e[32m ======================backward diff-package building start================= \e[0m\n"
   # we need to swap old and new target-files for backward diff-package.

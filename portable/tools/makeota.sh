@@ -22,49 +22,16 @@ makefull() {
 
   printf "\e[32m %s \e[0m\n" "制作整包----$fullpack_signed"
   prepare_extra
-  if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
-    echo -e "\e[32m --------BLOCK-BASED FULL OTA----------------- \e[0m"
-    if [ $WIPE_DATA = "false" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files \
-      --block \
-      --verbose \
-      --no_prereq \
-      --package_key $KEY \
-      --path $otabuild/linux-x86 \
-      --device_specific $ANDROID/device/qcom/common \
-      $target_new_file $fullpack_signed
-    elif [ $WIPE_DATA = "true" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files \
-      --wipe_user_data \
-      --block \
-      --verbose \
-      --no_prereq \
-      --package_key $KEY \
-      --path $otabuild/linux-x86 \
-      --device_specific $ANDROID/device/qcom/common \
-      $target_new_file $fullpack_signed
-    fi
-  elif [ $BIGVERSION -lt 8 ]; then
-    echo -e "\e[32m --------FILE-BASED FULL OTA----------------- \e[0m"
-    if [ $WIPE_DATA = "false" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files \
-      --verbose \
-      --no_prereq \
-      --package_key $KEY \
-      --path $otabuild/linux-x86 \
-      --device_specific $ANDROID/device/qcom/common \
-      $target_new_file $fullpack_signed
-    elif [ $WIPE_DATA = "true" ]; then
-      $ANDROID/build/tools/releasetools/ota_from_target_files \
-      --wipe_user_data \
-      --verbose \
-      --no_prereq \
-      --package_key $KEY \
-      --path $otabuild/linux-x86 \
-      --device_specific $ANDROID/device/qcom/common \
-      $target_new_file $fullpack_signed
-    fi
-  fi
+  $ANDROID/build/tools/releasetools/ota_from_target_files \
+  $IS_WIPE_USER_DATA \
+  $IS_BLOCK \
+  --verbose \
+  --no_prereq \
+  --package_key $KEY \
+  --path $otabuild/linux-x86 \
+  --device_specific $ANDROID/device/qcom/common \
+  $target_new_file $fullpack_signed
+
   if [ $check_integrity = "true" ]; then
     zip -T $fullpack_signed
     if [ $? != 0 ]; then
@@ -91,93 +58,28 @@ makediff() {
 
   printf "\e[32m %s \e[0m\n" "制作差分包----$diffpack_signed"
   prepare_extra
-  if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
-    echo -e "\e[32m --------BLOCK-BASED INCREMENT OTA----------------- \e[0m"
-    if [ $full_bsp_modem = "true" ]; then
-      if [ $WIPE_DATA = "false" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --block \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
-      elif [ $WIPE_DATA = "true" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --wipe_user_data \
-        --block \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
-      fi
-    else
-      if [ $WIPE_DATA = "false" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --block \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file $target_new_file $diffpack_signed
-      elif [ $WIPE_DATA = "true" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --wipe_user_data \
-        --block \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file $target_new_file $diffpack_signed
-      fi
-    fi
-  elif [ $BIGVERSION -lt 8 ]; then
-    echo -e "\e[32m --------FILE-BASED INCREMENT OTA----------------- \e[0m"
-    if [ $full_bsp_modem = "true" ]; then
-      if [ $WIPE_DATA = "false" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
-      elif [ $WIPE_DATA = "true" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --wipe_user_data \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
-      fi
-    else
-      if [ $WIPE_DATA = "false" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file $target_new_file $diffpack_signed
-      elif [ $WIPE_DATA = "true" ]; then
-        $ANDROID/build/tools/releasetools/ota_from_target_files \
-        --wipe_user_data \
-        --verbose \
-        --worker_threads 8 \
-        --package_key $KEY \
-        --path $otabuild/linux-x86 \
-        --device_specific $ANDROID/device/qcom/common \
-        --incremental_from $target_old_file $target_new_file $diffpack_signed
-      fi
-    fi
+  if [ $full_bsp_modem = "true" ]; then
+    $ANDROID/build/tools/releasetools/ota_from_target_files \
+    $IS_WIPE_USER_DATA \
+    $IS_BLOCK \
+    --verbose \
+    --worker_threads 8 \
+    --package_key $KEY \
+    --path $otabuild/linux-x86 \
+    --device_specific $ANDROID/device/qcom/common \
+    --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
+  else
+    $ANDROID/build/tools/releasetools/ota_from_target_files \
+    $IS_WIPE_USER_DATA \
+    $IS_BLOCK \
+    --verbose \
+    --worker_threads 8 \
+    --package_key $KEY \
+    --path $otabuild/linux-x86 \
+    --device_specific $ANDROID/device/qcom/common \
+    --incremental_from $target_old_file $target_new_file $diffpack_signed
   fi
+
   if [ $check_integrity = "true" ]; then
     zip -T $diffpack_signed
     if [ $? != 0 ]; then

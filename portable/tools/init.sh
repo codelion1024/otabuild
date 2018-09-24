@@ -95,6 +95,17 @@ if [ $priority = "" ]; then priority=Optional; fi
 if [ $ota_style = "" ]; then ota_style=all; fi
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
+if [ $BIGVERSION -ge 8 ]; then
+  # we make block-based OTA for new project since android O
+  IS_BLOCK="--block"
+elif [ $BIGVERSION -lt 8 ]; then
+  IS_BLOCK=""
+fi
+if [ $WIPE_DATA = "true" ]; then
+  IS_WIPE_USER_DATA="--wipe_user_data"
+elif [ $WIPE_DATA = "false" ]; then
+  IS_WIPE_USER_DATA=""
+fi
 
 printf "\e[32m %s \e[0m\n" "=========================所有信息BEGIN=================================="
 printf "BIGVERSION                  %s\n" $BIGVERSION

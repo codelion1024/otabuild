@@ -10,7 +10,8 @@ enca -L zh_CN -x UTF-8 $ota_param_file
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
 target_old_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/oldtarget;mkdir -p $target_old_dir
 target_new_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/newtarget;mkdir -p $target_new_dir
-mkdir -p $window_out_path;
+if [ ! -d $window_out_path_17 ]; then echo "$window_out_path_17 didn't exist, ask CIE to create it on ubuntu compile server";clean_and_quit; fi
+if [ ! -d $window_out_path_20 ]; then echo "$window_out_path_20 didn't exist, ask CIE to create it on ubuntu compile server";clean_and_quit; fi
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -59,7 +60,8 @@ printf "target_old_dir              %s\n" $target_old_dir
 printf "target_new_dir              %s\n" $target_new_dir
 printf "OTA_TYPE                    %s\n" $OTA_TYPE
 printf "PLATFORM                    %s\n" $PLATFORM
-printf "window_out_path             %s\n" $window_out_path
+printf "window_out_path_17          %s\n" $window_out_path_17
+printf "window_out_path_20          %s\n" $window_out_path_20
 printf "PLAT_CFG_FILE               %s\n" $PLAT_CFG_FILE
 printf "%s\n" "--------------------------------------------------------------"
 printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip

@@ -40,6 +40,16 @@ ota_parameter.txt | File Parameter | 使用者上传 | spm启动任务时上传�
 check_integrity | Choice | true, false(默认) | 是否对target-file zip做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟 |
 BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7 |
 BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
+autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
+
+各参数的Description的html描述信息:
+autosync
+```http
+<font size="3">
+是否自动同步编译输出到17服务器<br/>
+如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17
+<font>
+```
 
 ######3.2 设置  绑定服务器节点
 勾选`Restrict where this project can be run`,`Label Expression`设置为项目android源码所在服务器,eg:Ubu_10.99.12.11

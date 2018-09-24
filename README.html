@@ -1083,8 +1083,21 @@ git checkout -t origin/otabuild_Int</p>
 <td>RELEASE(默认), DEBUG</td>
 <td>RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本</td>
 </tr>
+<tr>
+<td>autosync</td>
+<td>Choice</td>
+<td>true, false</td>
+<td>是否自动同步编译输出到17服务器</td>
+</tr>
 </tbody>
 </table>
+<p>各参数的Description的html描述信息:<br />
+autosync<br />
+<pre><code class="http">&lt;font size=&quot;3&quot;&gt;
+是否自动同步编译输出到17服务器&lt;br/&gt;
+如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17
+&lt;font&gt;
+</code></pre></p>
 <h6 id="32"><a name="user-content-32" href="#32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 设置  绑定服务器节点</h6>
 <p>勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</p>
 <h6 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 设置  构建环境</h6>

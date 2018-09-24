@@ -50,8 +50,12 @@ if [ "$window_out_path_20" != "" ]; then
   cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_20
 fi
 if [ "$window_out_path_17" != "" ]; then
-  echo -e "\e[32m all of ota packgages had copied to 20 server, we can get them from 20, now begin copy to 17 server \e[0m"
-  cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_17
+  if [ $autosync == "true" ]; then
+    echo -e "\e[32m all of ota packgages had copied to 20 server, we can get them from 20, now begin copy to 17 server \e[0m"
+    cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_17
+  elif [ $autosync == "false" ]; then
+    echo -e "\e[32m you had selected don't sync building result to $window_out_path_17, you should copy them manually. \e[0m"
+  fi
 fi
 clean_and_quit
 

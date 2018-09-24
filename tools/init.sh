@@ -77,7 +77,9 @@ target_old_file=$target_old_dir/$(basename $target_old_win)
 target_new_file=$target_new_dir/$(basename $target_new_win)
 old_ver=$(basename --suffix=.zip $target_old_win | awk -F \- '{print $4}')
 new_ver=$(basename --suffix=.zip $target_new_win | awk -F \- '{print $4}')
-hw_version=$(echo $target_old_win | awk -F \/ '{print $7}' | awk -F \. '{print $2}')
+# as $target_old_win has the structured path like "/../../../version.hw-version.date.product-name/Configurations/xx-cota-target_files-xx.zip"
+# for compability, we can parsing it from END to BEGIN.
+hw_version=$(echo $target_old_win | awk -F \/ '{((NF--));((NF--));print $NF}' | awk -F \. '{print $2}')
 if [ $priority = "" ]; then priority=Optional; fi
 if [ $ota_style = "" ]; then ota_style=all; fi
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi

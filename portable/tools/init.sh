@@ -30,7 +30,7 @@ join_description() {
 }
 
 test_integrity() {
-  zip --verbose --test $1
+  time zip --verbose --test $1
   if [ $? != 0 ]; then
     printf '%b' "\033[31;1m $1 integrity check failed after copy to compile server, stop building, DISK MAY HAS BAD BLOCK(S)!!! \033[0m\n"
     clean_and_quit

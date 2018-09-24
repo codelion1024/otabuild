@@ -33,7 +33,7 @@ function join_description()
 
 function test_integrity()
 {
-  zip --verbose --test $1
+  time zip --verbose --test $1
   if [ $? != 0 ]; then
     echo -e "\e[31m $1 integrity check failed after copy to compile server, stop building, DISK MAY HAS BAD BLOCK(S)!!! \e[0m"
     clean_and_quit

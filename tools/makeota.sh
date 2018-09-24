@@ -41,9 +41,8 @@ makediff()
   if [ $full_bsp_modem = "true" ]; then
     printf "%s\n" "-------------对target_old_file去除BSPMODEM文件----------------"
     target_old_file_noradio=$target_old_dir/$(basename -s '.zip' $target_old_file)_noradio.zip
-    # --copy代表复制zip文件所有内容, 用-x排除RADIO下所有bsp散件
-    # 这一步默认输出的log很多,用--quiet参数消除
-    zip --quiet $target_old_file --copy "*.*" --out $target_old_file_noradio -x "RADIO/*.*"
+    cp -vu $target_old_file $target_old_file_noradio
+    zip --verbose $target_old_file_noradio --delete "RADIO/*.*"
   fi
 
   if [ $style = "up" ]; then packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}; fi

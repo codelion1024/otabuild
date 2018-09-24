@@ -49,6 +49,7 @@ check_integrity | Choice | true, false(默认) | 是否对拷贝到编译服务�
 BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7 |
 BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本 |
 autosync | Choice | true, false | 是否自动同步编译输出到17服务器 |
+WIPE_DATA | Choice | true, false | 所整包差分包都强制清除数据 |
 
 各参数的Description的html描述信息:
 `autosync`

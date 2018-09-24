@@ -99,6 +99,10 @@ if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
 printf "\e[32m %s \e[0m\n" "=========================所有信息BEGIN=================================="
 printf "BIGVERSION                  %s\n" $BIGVERSION
+printf "check_integrity             %s\n" $check_integrity
+printf "BUILDTYPE                   %s\n" $BUILDTYPE
+printf "autosync                    %s\n" $autosync
+printf "WIPE_DATA                   %s\n" $WIPE_DATA
 printf "market                      %s\n" $market
 printf "JENKINS_URL                 %s\n" $JENKINS_URL
 printf "JENKINS_IP                  %s\n" $JENKINS_IP

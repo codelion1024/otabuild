@@ -30,6 +30,22 @@ function get_targetfiles_dir_SHENZHEN()
   done < /etc/fstab # build server in shenzhen use /etc/fstab to manage mountpoint
 }
 
+function join_description()
+{
+  DES_TEXT_FILE=$otabuild/input/description.txt
+  DES_LINE_RANGE=`awk '/TEXT/ {print NR}' $1`  # get the line number of "[TEXT]" and "[/TEXT]"
+  DES_LINENU_BEGIN=`echo $DES_LINE_RANGE | awk -F " " '{print $1}'`
+  DES_LINENU_END=`echo $DES_LINE_RANGE | awk -F " " '{print $2}'`
+  if [ $DES_LINENU_END -le `expr $DES_LINENU_BEGIN + 1` ]; then echo "DES_LINENU_END $DES_LINENU_END must > DES_LINENU_BEGIN $DES_LINENU_BEGIN + 1"; clean_and_quit; fi
+
+  awk -F '\t' 'NR=='$DES_LINENU_BEGIN+1',NR=='$DES_LINENU_END-1' {print $1 " " $2}' $1 > $DES_TEXT_FILE
+  while read line
+  do
+    des_joined=${des_joined}\\\n${line}
+  done < $DES_TEXT_FILE
+  echo "<![CDATA[${des_joined#*n}]]>"
+}
+
 printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--初始化并打印所有参数"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
@@ -61,7 +77,7 @@ Int_KEY=$ANDROID/build/target/product/security/testkey
 Rel_KEY=/mnt/hgfs/security/testkey
 
 priority=$(grep priority $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
-description=$(grep description $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
+description=$(join_description $ota_param_file)
 ota_style=$(grep ota_style $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 full_bsp_modem=$(grep full_bsp_modem $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 target_old_win=$(ls $target_old_windir/*cota*.zip)
@@ -88,6 +104,7 @@ printf "TIME                        %s\n" $TIME
 printf "ota_param_dir               %s\n" $ota_param_dir
 printf "ota_param_file              %s\n" $ota_param_file
 cat -n $ota_param_file
+printf "\n"
 printf "outputdir                   %s\n" $outputdir
 printf "target_old_dir              %s\n" $target_old_dir
 printf "target_new_dir              %s\n" $target_new_dir

@@ -149,6 +149,88 @@
 
 <p class="md_block">
     <span class="md_line">各参数的Description的html描述信息:<br /></span>
+    <span class="md_line md_line_dom_embed"><code>SIGNTYPE</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+默认Rel为正式QIKU签名，Int为google原生签名。
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_dom_embed"><code>ota_parameter.txt</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+请上传ota_parameter.txt,内容格式如下：<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+source_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\088.PX.170825.QK1607_2017.08.25-09.29\Configurations<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+dest_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\090.PX.170828.QK1607_2017.08.28-16.08\Configurations<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+priority=Optional<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+ota_style=all<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+full_bsp_modem=false<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+description=1.改善XX;\n2增加XX;\n3.优化。<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+各参数说明:<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+source_version:源版本，对前向升级包而言即低版本而言，需填入*-cota-target_files-*.zip的全路径<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+dest_version:目标版本，对前向升级包而言即高版本而言，需填入*-cota-target_files-*.zip的全路径<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+priority:差分包升级类型，Optional为普通升级包，Super为强制升级包。没填写，默认使用Optional<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  
+ota_style: 此次的OTA包类型，取值有all,full,diff和fullpkg,forward,backward.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+all表示同时制作整包,正向差分升级包以及逆向差分升级包，full表示只制作正向差分升级包和整包，diff表示只制作逆向差分升级包<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+fullpkg,forward,backward为调试选项,仅用于调试脚本时填写.分别代表只制作整包,只制作正向差分升级包,只制作逆向差分升级包<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+不填写则默认使用all<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+  
+full_bsp_modem:取值为true或false,含义为做差分包时是否对bsp散件做全量更新.默认为false<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+description:该差分包的更新说明<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_dom_embed"><code>check_integrity</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+是否对拷贝到编译服务器的target-files.zip和刚编译生成的ota包做数据完整性检测.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+服务器上检测一个target-files.zip大概耗时1分钟,检测一个整包耗时30s左右,检测一个差分包耗时几秒.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+此项为true会略微增加编译时间,但可避免由于服务器磁盘坏道导致的升级包数据损坏问题.
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_dom_embed"><code>BIGVERSION</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+项目当前所在分支源码Android大版本号
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_dom_embed"><code>BUILDTYPE</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+release用于软件代表正式做ota包,debug用于调试otabuild脚本
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_dom_embed"><code>WIPE_DATA</code></span>
+</p>
+
+<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+所有整包差分包都强制清除数据
+<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
     <span class="md_line md_line_dom_embed"><code>autosync</code></span>
 </p>
 

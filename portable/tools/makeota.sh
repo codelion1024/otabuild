@@ -1,4 +1,4 @@
-#! /bin/dash
+#!/bin/dash
 
 prepare_extra() {
     cat /dev/null >                             $otabuild/input/info.txt

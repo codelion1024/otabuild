@@ -54,12 +54,18 @@ mv -v $WORKSPACE/ota_parameter.txt $ota_param_file
 dos2unix $ota_param_file
 enca -L zh_CN -x UTF-8 $ota_param_file
 
-if [ $LOCATION == "XIAN" ]; then
+# $JENKINS_URL is the env variable powered by jenkins(http://10.100.11.206:8080/jenkins/env-vars.html/), available to shell scripts
+JENKINS_IP_UNSTRIP=`echo $JENKINS_URL | cut -d ':' -f 2`
+JENKINS_IP=${JENKINS_IP_UNSTRIP:2} # strip the "//" after "http:"
+if [ $JENKINS_IP == "10.100.11.206" ]; then
   target_old_windir=$(get_targetfiles_dir_XIAN source_version)
   target_new_windir=$(get_targetfiles_dir_XIAN dest_version)
-elif [ $LOCATION == "SHENZHEN" ]; then
+elif [ $JENKINS_IP == "10.100.11.23" ]; then
   target_old_windir=$(get_targetfiles_dir_SHENZHEN source_version)
   target_new_windir=$(get_targetfiles_dir_SHENZHEN dest_version)
+else
+  echo "parsing JENKINS_IP($JENKINS_IP) from JENKINS_URL($JENKINS_URL) failed"
+  clean_and_quit
 fi
 
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
@@ -95,7 +101,8 @@ if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 printf "%s\n" "=========================所有信息BEGIN=================================="
 printf "BIGVERSION                  %s\n" $BIGVERSION
 printf "market                      %s\n" $market
-printf "LOCATION                    %s\n" $LOCATION
+printf "JENKINS_URL                 %s\n" $JENKINS_URL
+printf "JENKINS_IP                  %s\n" $JENKINS_IP
 printf "ANDROID                     %s\n" $ANDROID
 printf "otabuild                    %s\n" $otabuild
 printf "PROJECT_NAME                %s\n" $PROJECT_NAME

@@ -1,332 +1,926 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+}
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-    <meta name="renderer" content="webkit"/>
-    <title>README</title>
-    <link rel="stylesheet" href="data:text/css;base64,CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyIHsKICAgICAgICB3aWR0aDo4cHg7CiAgICAgICAgbWFyZ2luOjAgMXB4OwogICAgICAgIGJhY2tncm91bmQ6ICNmZGZkZmQ7CiAgICB9CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyOmhvcml6b250YWx7CiAgICAgICAgaGVpZ2h0OiA4cHg7CiAgICB9CgogICAgOjotd2Via2l0LXNjcm9sbGJhci1idXR0b257CiAgICAgICAgaGVpZ2h0OiAwOwogICAgfQoKICAgIDo6LXdlYmtpdC1zY3JvbGxiYXItdHJhY2sgewogICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDsKICAgIH0KICAgIDo6LXdlYmtpdC1zY3JvbGxiYXItdHJhY2stcGllY2UgewogICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmZGZkZmQ7CiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4OwogICAgfQogICAgOjotd2Via2l0LXNjcm9sbGJhci10aHVtYiB7CiAgICAgICAgd2lkdGg6OHB4OwogICAgICAgIG1hcmdpbjogMCAxcHg7CiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNjNGM0YzQ7CiAgICB9CiAgICA6Oi13ZWJraXQtc2Nyb2xsYmFyLXRodW1iOmhvdmVyIHsKICAgICAgICBiYWNrZ3JvdW5kOiAjOTA5MDkwOwogICAgfQoKCgoKICAgIGJvZHkgewogICAgICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7CiAgICAgICAgZm9udC1zaXplOiAxNHB4OwogICAgICAgIGxpbmUtaGVpZ2h0OjIuMTAyNTsKICAgICAgICBmb250LWZhbWlseTogIk1lbmxvIiwgIkFuZGFsZSBNb25vIiwgbW9ub3NwYWNlLCAiRHJvaWQgU2FucyBGYWxsYmFjayIsICJNaWNyb3NvZnQgWWFIZWkiLCBzYW5zLXNlcmlmOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzYzNjM2M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICAgICAgd29yZC13cmFwOmJyZWFrLXdvcmQ7CgogICAgICAgIG92ZXJmbG93LXg6IGhpZGRlbjsKICAgICAgICB0ZXh0LXJlbmRlcmluZzogb3B0aW1pemVMZWdpYmlsaXR5OwogICAgICAgIC13ZWJraXQtdGV4dC1zaXplLWFkanVzdDogbm9uZTsKICAgIH0KCiAgICBicnsKICAgICAgICBsaW5lLWhlaWdodDogMi4xMDI1OwogICAgfQoKCgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDYwMHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAzMHB4OwogICAgICAgIH0KICAgIH0KCiAgICBAbWVkaWEgKG1heC13aWR0aDogNDgwcHgpIHsKICAgICAgICBib2R5ewogICAgICAgICAgICBwYWRkaW5nOiAwIDIwcHg7CiAgICAgICAgfQogICAgfQoKICAgIC5naXN0ewogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgIH0KCiAgICAucG9zdHsKICAgICAgICBtYXJnaW4tdG9wOiAxMHB4OwogICAgICAgIG1hcmdpbi1ib3R0b206IDUwcHg7CiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgfQoKCgogICAgaW1newogICAgICAgIG1heC13aWR0aDogOTglOwogICAgICAgIG1hcmdpbjogMC44ZW0gYXV0byAwLjhlbSBhdXRvOwogICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICB3b3JkLXdyYXA6YnJlYWstd29yZDsKICAgICAgICBvdmVyZmxvdzpoaWRkZW47CiAgICAgICAgbWFyZ2luOiAxLjVlbSAwOwogICAgfQoKICAgIGxpIHB7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuODg1OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KCiAgICAuY29kZWhpbGl0ZXRhYmxlIHByZXsKICAgICAgICBtYXJnaW4tbGVmdDogMDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDA7CgogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgLmNvZGVoaWxpdGUgcHJlewogICAgICAgIGJvcmRlci1sZWZ0OiBub25lOwogICAgfQoKICAgIC8qIHRleHQgaW5kZW50IGZvciBjaGluZXNlIGVuZHMqLwoKCiAgICBibG9ja3F1b3RlIC5wX3BhcnQgcCwgbGkgLnBfcGFydCBwewogICAgICAgIHRleHQtaW5kZW50OiAwICFpbXBvcnRhbnQ7CiAgICB9CgoKICAgIGhyewogICAgICAgIG1hcmdpbjogMzhweCAwOwogICAgICAgIGJvcmRlcjogbm9uZTsKICAgICAgICBib3JkZXItYm90dG9tOiAxcHggZGFzaGVkICNlM2UzZTM7CiAgICAgICAgY29sb3I6ICNlM2UzZTM7CiAgICAgICAgaGVpZ2h0OiAxcHg7CiAgICAgICAgbGluZS1oZWlnaHQ6MXB4OwogICAgICAgIGZvbnQtc2l6ZToxcHg7CiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjsKICAgIH0KCgogICAgaDF7CiAgICAgICAgY29sb3I6ICMxMGEzZWU7CiAgICAgICAgZm9udC1zaXplOiAxLjdlbTsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgICAgIG1hcmdpbjogMDsKICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjZlbTsKICAgICAgICBtYXJnaW4tdG9wOiAwLjhlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgIH0KCiAgICBoMSwgaDIsIGgzLCBoNHsKICAgICAgICBjb2xvcjogIzEwYTNlZTsKICAgIH0KCiAgICBoMSwgaDIsIGgzewogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICB9CgogICAgaDIsIGgzewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjVlbTsKICAgICAgICBtYXJnaW4tdG9wOiAxLjVlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjhlbTsKICAgIH0KCiAgICBoMiB7CiAgICAgICAgZm9udC1zaXplOiAxLjQ1ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgoKICAgIG9sIHsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWx7CiAgICAgICAgcGFkZGluZzogNXB4IDM4cHg7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIGxpLCBsaXsKICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bCBwLCBvbCBwewogICAgICAgIG92ZXJmbG93OiB2aXNpYmxlOwogICAgfQoKCiAgICBibG9ja3F1b3RlIHsKICAgICAgICAtbW96LWJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBtYXJnaW46IDEuNmVtIDA7CiAgICAgICAgcGFkZGluZzogMCAwIDAgMS4yZW07CiAgICAgICAgYm9yZGVyLWxlZnQ6IDAuNGVtIHNvbGlkICNkZGRkZGQ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgbWluLWhlaWdodDoyMHB4OwogICAgfQoKCiAgICBibG9ja3F1b3RlIHAgewogICAgICAgIG1hcmdpbjogMC44ZW0gMDsKICAgIH0KCiAgICBibG9ja3F1b3RlIHNwYW4ubWRfbGluZSB7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDAuMjVlbTsKICAgIH0KCiAgICBibG9ja3F1b3RlIHVsewogICAgICAgIHBhZGRpbmc6IDAgMTVweDsKICAgIH0KCiAgICBibG9ja3F1b3RlIHNtYWxsIHsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwIDAuOGVtIDEuNWVtOwogICAgICAgIGZvbnQtc2l6ZTogMC45ZW07CiAgICAgICAgY29sb3I6ICNjY2M7CiAgICB9CgoKCiAgICB0YWJsZSB7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKICAgICAgICBib3JkZXItc3BhY2luZzogMDsKICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjZDlkOWQ5OwogICAgICAgIGJvcmRlci1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi10b3A6IDIwcHg7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgIH0KCgogICAgdGgsIHRkIHsKICAgICAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkICNkOWQ5ZDk7CiAgICAgICAgcGFkZGluZzogOHB4OwogICAgICAgIGxpbmUtaGVpZ2h0OiAyMHB4OwogICAgICAgIHRleHQtYWxpZ246IGxlZnQ7CiAgICAgICAgdmVydGljYWwtYWxpZ246IHRvcDsKICAgICAgICBib3JkZXItdG9wOiAxcHggc29saWQgI2Q5ZDlkOTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6ICNmNWY1ZjU7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2U2ZTZlNjsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAxLjJlbTsKICAgICAgICBwYWRkaW5nOiAxNXB4IDEwcHg7CiAgICAgICAgZGlzcGxheTogYmxvY2s7CiAgICAgICAgb3ZlcmZsb3c6IGF1dG87CiAgICAgICAgYmFja2dyb3VuZDogI2Y3ZjdmNzsKICAgICAgICBmb250LXNpemU6IDkwJTsKICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICB3b3JkLXdyYXA6IG5vcm1hbDsKICAgIH0KCiAgICBwcmUgY29kZXsKICAgICAgICBib3JkZXI6bm9uZTsKICAgICAgICBiYWNrZ3JvdW5kOiBub25lOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHByZSBwewogICAgICAgIG1hcmdpbjogMDsKICAgICAgICBwYWRkaW5nOiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHRoLCAuY29kZWhpbGl0ZSB0ZHsKICAgICAgICBsaW5lLWhlaWdodDogMS44ZW07CiAgICB9CgoKICAgIGF7CiAgICAgICAgY29sb3I6ICM0MDgzYzQ7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwogICAgICAgIC8vYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHRyYW5zcGFyZW50OwogICAgfQoKICAgIGE6aG92ZXJ7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgIzQwODNjNDsKICAgIH0KCiAgICBzdHJvbmcgewogICAgICAgIGNvbG9yOiAjMDAwMDAwOwogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgfQoKCiAgICAvKiBmb3IgbWFya2Rvd24gKi8KCiAgICAubGluZW5vcyBwcmV7CgkJYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CgkJYm9yZGVyOiBub25lOwoJfQoJLyoKCS5saW5lbm9zewoJICAgIHBhZGRpbmc6IDAgMCAwIDEwcHg7Cgl9CgkqLwoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogI2ZkZmRmZDsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2U2ZTZlNjsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM2MzYzNjOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjYzg1YTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAnXDI3MTUnOwogICAgICAgIHBhZGRpbmctcmlnaHQ6IDAuN2VtOwogICAgICAgIGZvbnQtZmFtaWx5OiBhcmlhbDsKICAgIH0KCiAgICB1bCBsaS50b2RvX2RvbmVfaXRlbTpiZWZvcmV7CiAgICAgICAgY29udGVudDogJ1wyNzEzJzsKICAgICAgICBwYWRkaW5nLXJpZ2h0OiAwLjdlbTsKICAgICAgICBmb250LWZhbWlseTogYXJpYWw7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtIGlucHV0ewogICAgICAgIGRpc3BsYXk6bm9uZQogICAgfQoKCiAgICAvKnB5Z21lbnRzKi8KCiAgICAuY29kZWhpbGl0ZXsKICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50OwogICAgfQoKICAgIHRhYmxlLmNvZGVoaWxpdGV0YWJsZXsgYm9yZGVyOm5vbmU7IH0KCgogICAgLmNvZGVoaWxpdGV0YWJsZSB0ZHsgYm9yZGVyOiBub25lOyBwYWRkaW5nOiAwO30KCiAgICAuZmxvdy1ncmFwaGlje3RleHQtYWxpZ246IGNlbnRlcn0KCgogICAgdGFibGUsIHRyLCB0ZCwgdGgsIHRib2R5LCB0aGVhZCwgdGZvb3QsIC5tZF9lY2hhcnRzLCBibG9ja3F1b3RlIC5tZF9saW5lewogICAgICAgIHBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZCAhaW1wb3J0YW50OwogICAgfQoKICAgIC5mb290bm90ZXMgLm1kX2xpbmV7CiAgICAgICAgZGlzcGxheTogaW5saW5lICFpbXBvcnRhbnQ7CiAgICB9CgoKICAgIC5pbWdfcnRfOTB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1zLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtby10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgIH0KICAgIC5pbWdfcnRfMTgwewogICAgICAgIHRyYW5zZm9ybTpyb3RhdGUoMTgwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoMTgwZGVnKTsKICAgIH0KICAgIC5pbWdfcnRfMjcwewogICAgICAgIHRyYW5zZm9ybTpyb3RhdGUoMjcwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tb3otdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoMjcwZGVnKTsKICAgIH0KCiAgICAubWRfaGFzX2Jsb2NrX2JlbG93ewogICAgICAgIG1hcmdpbi1ib3R0b206IDAuMWVtICFpbXBvcnRhbnQ7CiAgICB9CiAgICAubWRfaGFzX2Jsb2NrX2JlbG93X2ltZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC42ZW0gIWltcG9ydGFudDsKICAgIH0KCgoKICAgICAgICBzcGFuLm1kX2xpbmV7bWFyZ2luLWJvdHRvbTowLjVlbTsgZGlzcGxheTpibG9jazsgbGluZS1oZWlnaHQ6MS44MTg2NjI1fQogICAgICAgIC5tZF9saW5lIGJyeyBkaXNwbGF5OiBub25lO30KICAgICAgICAuY29kZWhpbGl0ZSAuaGxsIHsgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZjYyB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2IgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkJhY2t0aWNrICovCi5jb2RlaGlsaXRlIC5zYyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQ2hhciAqLwouY29kZWhpbGl0ZSAuc2QgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkRvYyAqLwouY29kZWhpbGl0ZSAuczIgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkRvdWJsZSAqLwouY29kZWhpbGl0ZSAuc2UgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkVzY2FwZSAqLwouY29kZWhpbGl0ZSAuc2ggeyBjb2xvcjogIzFjN2U3MTsgZm9udC1zdHlsZTogaXRhbGljIH0gLyogTGl0ZXJhbC5TdHJpbmcuSGVyZWRvYyAqLwouY29kZWhpbGl0ZSAuc2kgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkludGVycG9sICovCi5jb2RlaGlsaXRlIC5zeCB7IGNvbG9yOiAjY2I2YzIwIH0gLyogTGl0ZXJhbC5TdHJpbmcuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnNyIHsgY29sb3I6ICMxYzdlNzEgfSAvKiBMaXRlcmFsLlN0cmluZy5SZWdleCAqLwouY29kZWhpbGl0ZSAuczEgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLlNpbmdsZSAqLwouY29kZWhpbGl0ZSAuc3MgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLlN5bWJvbCAqLwouY29kZWhpbGl0ZSAuYnAgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbi5Qc2V1ZG8gKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC5pbCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlci5Mb25nICov">
-    <!--header_scripts-->
-</head>
-<body>
+* {
+    box-sizing: border-box;
+}
 
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
-<div class="post">
-    
-    <div class="post_body">
-        <h5 id="toc_0">1 编译服务器软件环境要求</h5>
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
 
-<p class="md_block">
-    <span class="md_line">1.1 enca,用于转换ota_parameter.txt文件(spm启动任务时上传的文件)的编码<br /></span>
-    <span class="md_line">sudo apt-get install enca<br /></span>
-    <span class="md_line">1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符<br /></span>
-    <span class="md_line">sudo apt-get install dos2unix<br /></span>
-    <span class="md_line">1.3 python命令默认链接到的是python2.x<br /></span>
-    <span class="md_line">1.4 Jenkins上需要安装AnsiColor插件,用于让Jenkins任务的Console Output支持解释ANSI转义字符,输出彩色日志<br /></span>
-    <span class="md_line">https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin</span>
-</p>
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
 
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
 
-<h5 id="toc_1">2 适配新项目前的准备工作</h5>
+.markdown-body a {
+  background-color: transparent;
+}
 
-<p class="md_block">
-    <span class="md_line">2.1 将以下活动cherry-pick到当前项目的分支上并merge<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/47213/ 全包升级时根据版本编译时间决定是否清data分区<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/48082/ 支持通过全量包降级升级<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/48086/ 支持直接生成逆向差分升级包</span>
-</p>
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
 
+.markdown-body strong {
+  font-weight: bold;
+}
 
-<p class="md_block">
-    <span class="md_line">http://10.100.13.23:8080/#/c/49688/ 解决system.img差异导致的OTA失败<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/49717/ 解决system.img差异导致的OTA失败<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/49879/ 优化out/dist下对编译结果的判断逻辑</span>
-</p>
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
 
+.markdown-body img {
+  border: 0;
+}
 
-<p class="md_block">
-    <span class="md_line">http://10.100.13.23:8080/#/c/48050/ extra_script框架更新build下的辅助改动<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/50611/ extra_script框架:recovery集成busybox工具集,更新update-script逻辑<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/51335/ extra_script框架:recovery中集成toybox,并创建子命令链接<br /></span>
-    <span class="md_line">http://10.100.13.23:8080/#/c/51368/ extra_script框架:修复注释格式错误</span>
-</p>
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
 
+.markdown-body pre {
+  overflow: auto;
+}
 
-<p class="md_block">
-    <span class="md_line">2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 用以下命令在android/qiku的上一级目录clone好otabuild仓库, 同时切到otabuild_Int分支:</span>
-</p>
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
 
-<div class="codehilite code_lang_bash  highlight"><pre><span></span>android$ git clone --branch otabuild_Int ssh://<span class="o">{</span>username<span class="o">}</span>@10.100.13.23:29418/android/otabuild
-</pre></div>
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
 
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line">其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.</span>
-</p>
+.markdown-body html input[disabled] {
+  cursor: default;
+}
 
+.markdown-body input {
+  line-height: normal;
+}
 
-<p class="md_block">
-    <span class="md_line">2.3  在otabuild仓库的extra_script下, 建立存放对应机型国内版和海外版extra脚本路径,如extra_script\QK1807\normal和\extra_script\QK1807\oversea.<br /></span>
-    <span class="md_line">对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板脚本文件到normal和oversea下.<br /></span>
-    <span class="md_line">对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板脚本文件到normal和oversea下.<br /></span>
-    <span class="md_line">然后在otabuild下将刚新增的extra脚本提交到otabuild_Int和otabuild_Dev,并合入.<br /></span>
-    <span class="md_line">以后按软件代表的特殊需求持续更新对应的脚本即可.</span>
-</p>
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
 
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
-<h5 id="toc_2">3 hudson任务配置</h5>
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
 
-<h6 id="toc_3">3.1 选择任务类型</h6>
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-<p class="md_block">
-    <span class="md_line">创建当前项目的Jenkins任务时,首先选择任务类型为<code>构建一个自由风格的软件项目</code></span>
-</p>
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
 
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
 
-<h6 id="toc_4">3.2 设置 <code>参数化构建过程</code></h6>
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
 
-<p class="md_block">
-    <span class="md_line">勾选任务配置中的<code>参数化构建过程</code>  </span>
-</p>
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
 
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
 
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+@media print {
+  body .markdown-body {
+    padding: 0;
+    border: none;
+  }
+}
+</style><title>README</title></head><body><article class="markdown-body"><p>#####1 编译服务器软件环境要求<br>
+1.1 enca,用于转换ota_parameter.txt文件(spm启动任务时上传的文件)的编码<br>
+<code>sudo apt-get install enca</code><br>
+1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符<br>
+<code>sudo apt-get install dos2unix</code><br>
+1.3 python命令默认链接到的是python2.x<br>
+1.4 Jenkins上需要安装AnsiColor插件,用于让Jenkins任务的Console  Output支持解释ANSI转义字符,输出彩色日志<br>
+<code>https://wiki.jenkins.io/display/JENKINS/AnsiColor+Plugin</code></p>
+<p>#####2 适配新项目前的准备工作<br>
+2.1 将以下活动cherry-pick到当前项目的分支上并merge<br>
+/#/c/47213/ 全包升级时根据版本编译时间决定是否清data分区<br>
+/#/c/48082/ 支持通过全量包降级升级<br>
+/#/c/48086/ 支持直接生成逆向差分升级包</p>
+<p>/#/c/49688/ 解决system.img差异导致的OTA失败<br>
+/#/c/49717/ 解决system.img差异导致的OTA失败<br>
+/#/c/49879/ 优化out/dist下对编译结果的判断逻辑</p>
+<p>/#/c/48050/ extra_script框架更新build下的辅助改动<br>
+/#/c/50611/ extra_script框架:recovery集成busybox工具集,更新update-script逻辑<br>
+/#/c/51335/ extra_script框架:recovery中集成toybox,并创建子命令链接<br>
+/#/c/51368/ extra_script框架:修复注释格式错误</p>
+<p>2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 用以下命令在android/qiku的上一级目录clone好otabuild仓库, 同时切到otabuild_Int分支:</p>
+<div class="highlight highlight-source-shell"><pre>android$ git clone --branch otabuild_Int ssh://{username}@10.100.13.23:29418/android/otabuild</pre></div>
+<p>其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.</p>
+<p>2.3  在otabuild仓库的extra_script下, 建立存放对应机型国内版和海外版extra脚本路径,如extra_script\QK1807\normal和\extra_script\QK1807\oversea.<br>
+对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板脚本文件到normal和oversea下.<br>
+对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板脚本文件到normal和oversea下.<br>
+然后在otabuild下将刚新增的extra脚本提交到otabuild_Int和otabuild_Dev,并合入.<br>
+以后按软件代表的特殊需求持续更新对应的脚本即可.</p>
+<p>#####3 hudson任务配置<br>
+######3.1 选择任务类型
+创建当前项目的Jenkins任务时,首先选择任务类型为<code>构建一个自由风格的软件项目</code></p>
+<p>######3.2 设置 <code>参数化构建过程</code>
+勾选任务配置中的<code>参数化构建过程</code></p>
 <table>
 <thead>
 <tr>
 <th>参数</th>
-<th style="text-align: center">类型</th>
-<th style="text-align: right">取值</th>
-<th style="text-align: center">含义</th>
+<th align="center">类型</th>
+<th align="right">取值</th>
+<th align="center">含义</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>SIGNTYPE</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">Rel(默认), Int</td>
-<td style="text-align: center">ota包的签名类型,选Rel用qiku签名,选Int用google签名</td>
+<td align="center">Choice</td>
+<td align="right">Rel(默认), Int</td>
+<td align="center">ota包的签名类型,选Rel用qiku签名,选Int用google签名</td>
 </tr>
 <tr>
 <td>ota_parameter.txt</td>
-<td style="text-align: center">File Parameter</td>
-<td style="text-align: right">使用者上传</td>
-<td style="text-align: center">spm启动任务时上传的文件</td>
+<td align="center">File Parameter</td>
+<td align="right">使用者上传</td>
+<td align="center">spm启动任务时上传的文件</td>
 </tr>
 <tr>
 <td>check_integrity</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">true, false(默认)</td>
-<td style="text-align: center">是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟</td>
+<td align="center">Choice</td>
+<td align="right">true, false(默认)</td>
+<td align="center">是否对拷贝到编译服务器的target-file.zip和刚编译生成的ota包做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟</td>
 </tr>
 <tr>
 <td>BIGVERSION</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">7, 8(默认)</td>
-<td style="text-align: center">项目android源码的大版本号, O及之后都选8, O之前都选7</td>
+<td align="center">Choice</td>
+<td align="right">7, 8(默认)</td>
+<td align="center">项目android源码的大版本号, O及之后都选8, O之前都选7</td>
 </tr>
 <tr>
 <td>BUILDTYPE</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">RELEASE(默认), DEBUG</td>
-<td style="text-align: center">RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本</td>
+<td align="center">Choice</td>
+<td align="right">RELEASE(默认), DEBUG</td>
+<td align="center">RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本</td>
 </tr>
 <tr>
 <td>autosync</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">true, false</td>
-<td style="text-align: center">是否自动同步编译输出到17服务器</td>
+<td align="center">Choice</td>
+<td align="right">true, false</td>
+<td align="center">是否自动同步编译输出到17服务器</td>
 </tr>
 <tr>
 <td>WIPE_DATA</td>
-<td style="text-align: center">Choice</td>
-<td style="text-align: right">true, false</td>
-<td style="text-align: center">所整包差分包都强制清除数据</td>
+<td align="center">Choice</td>
+<td align="right">true, false</td>
+<td align="center">所整包差分包都强制清除数据</td>
 </tr>
 </tbody>
 </table>
-
-<p class="md_block">
-    <span class="md_line">各参数的Description的html描述信息:<br /></span>
-    <span class="md_line md_line_dom_embed"><code>SIGNTYPE</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+<p>各参数的Description的html描述信息:<br>
+<code>SIGNTYPE</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
 默认Rel为正式QIKU签名，Int为google原生签名。
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>ota_parameter.txt</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
+请上传ota_parameter.txt,内容格式如下：&lt;<span class="pl-ent">br</span>/&gt;
+source_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\088.PX.170825.QK1607_2017.08.25-09.29\Configurations&lt;<span class="pl-ent">br</span>/&gt;
+dest_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\090.PX.170828.QK1607_2017.08.28-16.08\Configurations&lt;<span class="pl-ent">br</span>/&gt;
+priority=Optional&lt;<span class="pl-ent">br</span>/&gt;
+ota_style=all&lt;<span class="pl-ent">br</span>/&gt;
+full_bsp_modem=false&lt;<span class="pl-ent">br</span>/&gt;
+description=1.改善XX;\n2增加XX;\n3.优化。&lt;<span class="pl-ent">br</span>/&gt;
 
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>ota_parameter.txt</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
-请上传ota_parameter.txt,内容格式如下：<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-source_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\088.PX.170825.QK1607_2017.08.25-09.29\Configurations<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-dest_version=\\10.99.11.20\QC8976_Test_Version\QK1607\Rel_Version\090.PX.170828.QK1607_2017.08.28-16.08\Configurations<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-priority=Optional<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-ota_style=all<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-full_bsp_modem=false<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-description=1.改善XX;\n2增加XX;\n3.优化。<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-各参数说明:<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-source_version:源版本，对前向升级包而言即低版本而言，需填入*-cota-target_files-*.zip的全路径<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-dest_version:目标版本，对前向升级包而言即高版本而言，需填入*-cota-target_files-*.zip的全路径<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-priority:差分包升级类型，Optional为普通升级包，Super为强制升级包。没填写，默认使用Optional<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+&lt;<span class="pl-ent">br</span>/&gt;
+各参数说明:&lt;<span class="pl-ent">br</span>/&gt;
+source_version:源版本，对前向升级包而言即低版本而言，需填入*-cota-target_files-*.zip的全路径&lt;<span class="pl-ent">br</span>/&gt;
+dest_version:目标版本，对前向升级包而言即高版本而言，需填入*-cota-target_files-*.zip的全路径&lt;<span class="pl-ent">br</span>/&gt;
+priority:差分包升级类型，Optional为普通升级包，Super为强制升级包。没填写，默认使用Optional&lt;<span class="pl-ent">br</span>/&gt;
   
-ota_style: 此次的OTA包类型，取值有all,full,diff和fullpkg,forward,backward.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-all表示同时制作整包,正向差分升级包以及逆向差分升级包，full表示只制作正向差分升级包和整包，diff表示只制作逆向差分升级包<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-fullpkg,forward,backward为调试选项,仅用于调试脚本时填写.分别代表只制作整包,只制作正向差分升级包,只制作逆向差分升级包<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-不填写则默认使用all<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+ota_style: 此次的OTA包类型，取值有all,full,diff和fullpkg,forward,backward.&lt;<span class="pl-ent">br</span>/&gt;
+all表示同时制作整包,正向差分升级包以及逆向差分升级包，full表示只制作正向差分升级包和整包，diff表示只制作逆向差分升级包&lt;<span class="pl-ent">br</span>/&gt;
+fullpkg,forward,backward为调试选项,仅用于调试脚本时填写.分别代表只制作整包,只制作正向差分升级包,只制作逆向差分升级包&lt;<span class="pl-ent">br</span>/&gt;
+不填写则默认使用all&lt;<span class="pl-ent">br</span>/&gt;
   
-full_bsp_modem:取值为true或false,含义为做差分包时是否对bsp散件做全量更新.默认为false<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-description:该差分包的更新说明<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>check_integrity</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
-是否对拷贝到编译服务器的target-files.zip和刚编译生成的ota包做数据完整性检测.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-服务器上检测一个target-files.zip大概耗时1分钟,检测一个整包耗时30s左右,检测一个差分包耗时几秒.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+full_bsp_modem:取值为true或false,含义为做差分包时是否对bsp散件做全量更新.默认为false&lt;<span class="pl-ent">br</span>/&gt;
+description:该差分包的更新说明&lt;<span class="pl-ent">br</span>/&gt;
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>check_integrity</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
+是否对拷贝到编译服务器的target-files.zip和刚编译生成的ota包做数据完整性检测.&lt;<span class="pl-ent">br</span>/&gt;
+服务器上检测一个target-files.zip大概耗时1分钟,检测一个整包耗时30s左右,检测一个差分包耗时几秒.&lt;<span class="pl-ent">br</span>/&gt;
 此项为true会略微增加编译时间,但可避免由于服务器磁盘坏道导致的升级包数据损坏问题.
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>BIGVERSION</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>BIGVERSION</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
 项目当前所在分支源码Android大版本号
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>BUILDTYPE</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>BUILDTYPE</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
 release用于软件代表正式做ota包,debug用于调试otabuild脚本
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>WIPE_DATA</code></span>
-</p>
-
-<div class="codehilite code_lang_html  highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">&gt;</span>
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>WIPE_DATA</code></p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent"><span class="pl-bu">font</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
 所有整包差分包都强制清除数据
-<span class="p">&lt;</span><span class="nt">font</span><span class="p">&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<p class="md_block">
-    <span class="md_line md_line_dom_embed"><code>autosync</code></span>
-</p>
-
-<div class="codehilite code_lang_http  highlight"><pre><span></span><span class="err">&lt;font size=&quot;3&quot;&gt;</span>
-<span class="err">是否自动同步编译输出到17服务器&lt;br/&gt;</span>
-<span class="err">如果手动拷贝到17服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到17</span>
-<span class="err">&lt;font&gt;</span>
-</pre></div>
-
-<!--block_code_end-->
-<h6 id="toc_5">3.3 设置 <code>绑定服务器节点</code></h6>
-
-<p class="md_block">
-    <span class="md_line">勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</span>
-</p>
-
-
-<h6 id="toc_6">3.4 设置 <code>构建环境</code></h6>
-
-<p class="md_block">
-    <span class="md_line">在<code>构建环境</code>下勾选<code>Color ANSI Console Output</code>, 之后在<code>ANSI color map</code>下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br /></span>
-    <span class="md_line">各颜色风格示例:<br /></span>
-    <span class="md_line">1 xterm<br /></span>
-    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picxterm.PNG';this.onerror=null;"  class="" src="/.md_picxterm.PNG" alt="xterm" title="xterm example" ><br /></span>
-    <span class="md_line">2 vga<br /></span>
-    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picvga.PNG';this.onerror=null;"  class="" src="/.md_picvga.PNG" alt="vga" title="vga example" ><br /></span>
-    <span class="md_line">3 css<br /></span>
-    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_piccss.PNG';this.onerror=null;"  class="" src="/.md_piccss.PNG" alt="css" title="css example" ><br /></span>
-    <span class="md_line">4 gnome-terminal<br /></span>
-    <span class="md_line md_line_dom_embed"><img onerror="this.src='file:///D:/linyang/Documents/temp/脚本优化/OTA/otabuild/.md_picgnome-terminal.PNG';this.onerror=null;"  class="" src="/.md_picgnome-terminal.PNG" alt="gnome-terminal" title="gnome-terminal example" ></span>
-</p>
-
-
-<h6 id="toc_7">3.5 设置 <code>构建</code></h6>
-
-<p class="md_block">
-    <span class="md_line">选择<code>Execute shell</code>,<code>Command</code>为:</span>
-</p>
-
-<div class="codehilite code_lang_bash  highlight"><pre><span></span><span class="nv">SHELL</span><span class="o">=</span>script parser <span class="nb">type</span>    <span class="c1"># now supported &#39;bash&#39; and &#39;dash&#39;. With reference https://wiki.ubuntu.com/DashAsBinSh, dash is a lite edition of bash, it launchs faster and is posix compatible.</span>
-<span class="nb">export</span> <span class="nv">ANDROID</span><span class="o">=</span>/path/to/android/source     <span class="c1">#  eg:&#39;/home/system1/src/1807_lc/android/qiku&#39;</span>
-<span class="nb">export</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span>project name                  <span class="c1"># eg:&#39;QK1807&#39;</span>
-<span class="nb">export</span> <span class="nv">PLATFORM</span><span class="o">=</span>chipset name                  <span class="c1"># eg:&#39;SDM660&#39;</span>
-<span class="nb">export</span> <span class="nv">market</span><span class="o">=</span>market place                <span class="c1"># set &#39;normal&#39; if domestic, set &#39;oversea&#39; if oversea</span>
-<span class="nb">echo</span> <span class="s2">&quot;build type is </span><span class="nv">$BUILDTYPE</span><span class="s2">&quot;</span>
-<span class="nb">cd</span> <span class="nv">$ANDROID</span>/../otabuild
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;RELEASE&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+&lt;<span class="pl-ent"><span class="pl-bu">font</span></span>&gt;</pre></div>
+<p><code>autosync</code></p>
+<div class="highlight highlight-source-httpspec"><pre>&lt;font size=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>&gt;
+是否自动同步编译输出到<span class="pl-c1">17</span>服务器&lt;br/&gt;
+如果手动拷贝到<span class="pl-c1">17</span>服务器比较快, 在需要紧急发布的情况下,可以在编译时选择不同步,编译完成后手动拷贝到<span class="pl-c1">17</span>
+&lt;font&gt;</pre></div>
+<p>######3.3 设置 <code>绑定服务器节点</code><br>
+勾选<code>Restrict where this project can be run</code>,<code>Label Expression</code>  设置为项目android源码所在服务器,eg:Ubu_10.99.12.11</p>
+<p>######3.4 设置 <code>构建环境</code><br>
+在<code>构建环境</code>下勾选<code>Color ANSI Console Output</code>, 之后在<code>ANSI color map</code>下选择4种颜色风格xterm,vga,css,gnome-terminal中的一种.个人推荐gnome-terminal或vga风格.<br>
+各颜色风格示例:<br>
+1 xterm<br>
+<a href="///C://cygwin64/home/kolya/new/otabuild/md_pic/xterm.PNG" target="_blank" rel="noopener noreferrer"><img src="///C://cygwin64/home/kolya/new/otabuild/md_pic/xterm.PNG" alt="xterm" title="xterm example" style="max-width:100%;"></a><br>
+2 vga<br>
+<a href="///C://cygwin64/home/kolya/new/otabuild/md_pic/vga.PNG" target="_blank" rel="noopener noreferrer"><img src="///C://cygwin64/home/kolya/new/otabuild/md_pic/vga.PNG" alt="vga" title="vga example" style="max-width:100%;"></a><br>
+3 css<br>
+<a href="///C://cygwin64/home/kolya/new/otabuild/md_pic/css.PNG" target="_blank" rel="noopener noreferrer"><img src="///C://cygwin64/home/kolya/new/otabuild/md_pic/css.PNG" alt="css" title="css example" style="max-width:100%;"></a><br>
+4 gnome-terminal<br>
+<a href="///C://cygwin64/home/kolya/new/otabuild/md_pic/gnome-terminal.PNG" target="_blank" rel="noopener noreferrer"><img src="///C://cygwin64/home/kolya/new/otabuild/md_pic/gnome-terminal.PNG" alt="gnome-terminal" title="gnome-terminal example" style="max-width:100%;"></a></p>
+<p>######3.5 设置 <code>构建</code><br>
+选择<code>Execute shell</code>,<code>Command</code>为:</p>
+<div class="highlight highlight-source-shell"><pre>SHELL=script parser <span class="pl-c1">type</span>    <span class="pl-c"><span class="pl-c">#</span> now supported 'bash' and 'dash'. With reference https://wiki.ubuntu.com/DashAsBinSh, dash is a lite edition of bash, it launchs faster and is posix compatible.</span>
+<span class="pl-k">export</span> ANDROID=/path/to/android/source     <span class="pl-c"><span class="pl-c">#</span>  eg:'/home/system1/src/1807_lc/android/qiku'</span>
+<span class="pl-k">export</span> PROJECT_NAME=project name                  <span class="pl-c"><span class="pl-c">#</span> eg:'QK1807'</span>
+<span class="pl-k">export</span> PLATFORM=chipset name                  <span class="pl-c"><span class="pl-c">#</span> eg:'SDM660'</span>
+<span class="pl-k">export</span> market=market place                <span class="pl-c"><span class="pl-c">#</span> set 'normal' if domestic, set 'oversea' if oversea</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>build type is <span class="pl-smi">$BUILDTYPE</span><span class="pl-pds">"</span></span>
+<span class="pl-c1">cd</span> <span class="pl-smi">$ANDROID</span>/../otabuild
+<span class="pl-k">if</span> [ <span class="pl-smi">$BUILDTYPE</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>RELEASE<span class="pl-pds">"</span></span> ]<span class="pl-k">;</span> <span class="pl-k">then</span>
   git checkout otabuild_Int
-  git checkout .
+  git checkout <span class="pl-c1">.</span>
   git pull --rebase origin otabuild_Int
-  <span class="c1"># $window_out_path_20 stands for the upgrade package path in 20 server</span>
-  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>/path/to/release/in/20server
-  <span class="c1"># $window_out_path_17 stands for the upgrade package path in 17 server</span>
-  <span class="nb">export</span> <span class="nv">window_out_path_17</span><span class="o">=</span>/path/to/release/in/17server
-<span class="k">elif</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;DEBUG&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="pl-c"><span class="pl-c">#</span> $window_out_path_20 stands for the upgrade package path in 20 server</span>
+  <span class="pl-k">export</span> window_out_path_20=/path/to/release/in/20server
+  <span class="pl-c"><span class="pl-c">#</span> $window_out_path_17 stands for the upgrade package path in 17 server</span>
+  <span class="pl-k">export</span> window_out_path_17=/path/to/release/in/17server
+<span class="pl-k">elif</span> [ <span class="pl-smi">$BUILDTYPE</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>DEBUG<span class="pl-pds">"</span></span> ]<span class="pl-k">;</span> <span class="pl-k">then</span>
   git checkout otabuild_Dev
-  <span class="c1"># when debug, no need copy to 17 server,just need copy to a signle path for we debug.</span>
-  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>/path/to/store/debug-purposed-packages
-<span class="k">fi</span>
+  <span class="pl-c"><span class="pl-c">#</span> when debug, no need copy to 17 server,just need copy to a signle path for we debug.</span>
+  <span class="pl-k">export</span> window_out_path_20=/path/to/store/debug-purposed-packages
+<span class="pl-k">fi</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&quot;bash&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nv">$SHELL</span> ./main.sh
-<span class="k">elif</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&quot;dash&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nv">$SHELL</span> ./portable/main.sh
-<span class="k">fi</span>
-</pre></div>
-
-<!--block_code_end-->
-<h5 id="toc_8">4 其他注意事项</h5>
-
-<p class="md_block md_has_block_below md_has_block_below_ol">
-    <span class="md_line">1 西安编译服务器上的挂载点配置文件为~/bin/mount.sh,深圳编译服务器上的挂载点配置文件为 /etc/fstab<br /></span>
-    <span class="md_line">otabuild是从服务器上的挂载点配置文件中, 自动解析来得到target-files文件的挂载路径. 因此对于这两个文件,有以下要求:</span>
-</p>
-
-
+<span class="pl-k">if</span> [ <span class="pl-smi">$SHELL</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>bash<span class="pl-pds">"</span></span> ]<span class="pl-k">;</span> <span class="pl-k">then</span>
+  <span class="pl-smi">$SHELL</span> ./main.sh
+<span class="pl-k">elif</span> [ <span class="pl-smi">$SHELL</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>dash<span class="pl-pds">"</span></span> ]<span class="pl-k">;</span> <span class="pl-k">then</span>
+  <span class="pl-smi">$SHELL</span> ./portable/main.sh
+<span class="pl-k">fi</span></pre></div>
+<p>#####4 其他注意事项<br>
+1 西安编译服务器上的挂载点配置文件为~/bin/mount.sh,深圳编译服务器上的挂载点配置文件为 /etc/fstab<br>
+otabuild是从服务器上的挂载点配置文件中, 自动解析来得到target-files文件的挂载路径.   因此对于这两个文件,有以下要求:</p>
 <ol>
-<li> 换行符为unix风格</li>
+<li>换行符为unix风格</li>
 <li>最好不要有无任何内容的空白行</li>
 </ol>
-
-<h5 id="toc_9">5 编译系统中所有文件说明</h5>
-
-<p class="md_block">
-    <span class="md_line">main.sh--主控脚本,由Jenkin任务直接启动<br /></span>
-    <span class="md_line">tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息<br /></span>
-    <span class="md_line">tools/makeota.sh--main.sh调用,实现编译ota包<br /></span>
-    <span class="md_line">tools/makeupc.py--main.sh调用,实现生成upc文件<br /></span>
-    <span class="md_line">tools/config--所有支持机型的配置文件,里面保存一些必要的常量<br /></span>
-    <span class="md_line">tools/linux-x86--host端生成ota包时需要用到的库和binary.<br /></span>
-    <span class="md_line">tools/signapk.jar--用于签名ota包.</span>
-</p>
-    </div>
-</div>
-
-<!--mathjax-->
-
-</body>
-</html>
+<p>#####5 编译系统中所有文件说明<br>
+main.sh--主控脚本,由Jenkin任务直接启动<br>
+tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息<br>
+tools/makeota.sh--main.sh调用,实现编译ota包<br>
+tools/makeupc.py--main.sh调用,实现生成upc文件<br>
+tools/config--所有支持机型的配置文件,里面保存一些必要的常量<br>
+tools/linux-x86--host端生成ota包时需要用到的库和binary.<br>
+tools/signapk.jar--用于签名ota包.</p>
+</article></body></html>

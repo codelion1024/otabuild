@@ -1,0 +1,13 @@
+# 上传的ota_parameter.txt中source_version和dest_version取值中的ip地址, 脚本从source_version解析出的路径中寻找targetfiles,
+# 因要求targetfiles文件必须存放于targetfiles-server-ip对应服务器下
+targetfiles_server_ip=10.99.11.20
+
+# 此平台的项目在targetfiles-server-ip下存放targetfiles文件的"根目录", 这是在windows下查看的地址,即\\targetfiles-server-ip\targetfiles-subroot-win
+# 例如1713在10.99.11.20下存放targetfiles文件的路径为\\10.99.11.20\qcom_sdm630,则targetfiles-subroot-win取值即为qcom_sdm630
+targetfiles_subroot_win=qcom_sdm636
+
+# 此平台的项目在targetfiles-server-ip下存放targetfiles文件的路径\\targetfiles-server-ip\targetfiles-subroot-win(windows路径)
+# 在此项目的编译服务器上会将\\targetfiles-server-ip\targetfiles-subroot-win挂载为/mnt/hgfs/targetfiles-subroot-linux (linux路径)
+# 例如1713在10.99.11.20下存放targetfiles文件的路径为\\10.99.11.20\qcom_sdm630
+# 1713在编译服务器10.99.12.10上编译, 在编译服务器10.99.12.10上 \\10.99.11.20\qcom_sdm630 被挂载为/mnt/hgfs/QCOM_SDM630
+targetfiles_subroot_linux=QCOM_SDM636

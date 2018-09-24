@@ -3,6 +3,8 @@
 #version 2.7
 
 import sys
+if sys.version_info > (3, 0):
+  raise RuntimeError('we use Python 2.x to run makeupc.py')
 import os
 import time
 import zipfile
@@ -27,7 +29,7 @@ def main():
   base64file = open(os.path.dirname(diffpackpath) + '/base64.txt', 'wb')
   base64.encode(open(diffpackpath, 'rb'),  base64file)
   base64file.close()
-  with file(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
+  with open(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
     for line in f.readlines():
       bindata.append(line.strip('\n'))
 

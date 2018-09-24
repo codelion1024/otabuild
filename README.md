@@ -1,70 +1,85 @@
-###1 编译服务器软件环境要求:  
-1.1 enca,用于对ota_parameter.txt进行编码转换  
-sudo apt-get install enca  
-1.2 python默认链接到的是python2.x
+#####1 编译服务器软件环境要求
+1.1 enca,用于转换ota_parameter.txt文件(spm启动任务时上传的文件)的编码
+sudo apt-get install enca
+1.2 dos2unix, 用于转换ota_parameter.txt文件的换行符
+sudo apt-get install dos2unix
+1.3 python命令默认链接到的是python2.x
 
+#####2 适配新项目前的准备工作
+2.1 将以下活动cherry-pick到当前项目的分支上并merge
+http://10.100.13.23:8080/#/c/47213/ 全包升级时根据版本编译时间决定是否清data分区
+http://10.100.13.23:8080/#/c/48082/ 支持通过全量包降级升级
+http://10.100.13.23:8080/#/c/48086/ 支持直接生成逆向差分升级包
 
-###2 适配新项目前的准备工作  
+http://10.100.13.23:8080/#/c/49688/ 解决system.img差异导致的OTA失败
+http://10.100.13.23:8080/#/c/49717/ 解决system.img差异导致的OTA失败
+http://10.100.13.23:8080/#/c/49879/ 优化out/dist下对编译结果的判断逻辑
 
-2.1 在otabuild仓库的tools/config下查看新项目的配置文件 {项目平台名}_ota_parameter.txt 是否存在  
-如果不存在则创建,在此文件中设置3个变量的值:
-变量名 | 含义
---- | ---
-targetfiles_server_ip | 上传的ota_parameter.txt中source_version和dest_version取值中的ip地址,脚本从source_version解析出的路径中寻找targetfiles,因此要求targetfiles文件必须存放于targetfiles-server-ip对应服务器下
-targetfiles_subroot_win | 此平台的项目在targetfiles-server-ip下存放targetfiles文件的"根目录", 这是在windows下查看的地址,即\\\targetfiles-server-ip\targetfiles-subroot-win,例如1713在10.99.11.20下存放targetfiles文件的路径为\\\10.99.11.20\qcom_sdm630,则targetfiles-subroot-win取值即为qcom_sdm630
-targetfiles_subroot_linux | 此平台的项目在targetfiles-server-ip下存放targetfiles文件的路径\\\targetfiles-server-ip\targetfiles-subroot-win(windows路径),在此项目的编译服务器上会将\\\targetfiles-server-ip\targetfiles-subroot-win挂载为/mnt/hgfs/targetfiles-subroot-linux (linux路径).例如1713在10.99.11.20下存放targetfiles文件的路径为\\\10.99.11.20\qcom_sdm630,1713在编译服务器10.99.12.10上编译, 在编译服务器10.99.12.10上 \\\10.99.11.20\qcom_sdm630 被挂载为/mnt/hgfs/QCOM_SDM630
+http://10.100.13.23:8080/#/c/48050/ extra_script框架更新build下的辅助改动
+http://10.100.13.23:8080/#/c/50611/ extra_script框架:recovery集成busybox工具集,更新update-script逻辑
+http://10.100.13.23:8080/#/c/51335/ extra_script框架:recovery中集成toybox,并创建子命令链接
+http://10.100.13.23:8080/#/c/51368/ extra_script框架:修复注释格式错误
 
-2.2 将以下活动cherry-pick到当前项目的分支上  
-http://10.100.13.23:8080/#/c/47213/  
-http://10.100.13.23:8080/#/c/48050/  
-
-2.3 在编译服务器上该项目的安卓源码路径 android/qiku, 在android/qiku的上一级目录clone好otabuild仓库, 即 android/otabuild,  
-然后切到otabuild_Int分支  
+2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 在android/qiku的上一级目录clone好otabuild仓库, 即 android/otabuild,然后切到otabuild_Int分支:
 git checkout -t origin/otabuild_Int
 
-2.4  在otabuild仓库的extra_script下, 建立对应机型名的文件夹  
-将otabuild/extra_script/template下的脚本模板拷到此机型文件夹下,以后按软件代表的特殊需求持续更新即可  
+2.3  在otabuild仓库的extra_script下, 建立对应机型名的文件夹,将otabuild/extra_script/template下对应的extra脚本模板拷到此机型文件夹下.
+对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板.
+对于android 8.0之前的项目,基于file方式做包,因此拷贝extra_script\template\file-based\下的模板.
+国内版拷贝到机型名\normal路径下,海外版拷贝到机型名\oversea路径下.
+以后按软件代表的特殊需求持续更新对应的脚本即可.
 
-
-###3 hudson任务配置  
-####3.1 设置  参数化构建过程   
-参数 | 类型 | 取值
+#####3 hudson任务配置
+######3.1 设置  参数化构建过程
+参数 | 类型 | 取值 | 含义
 ---|---|---
-SIGNTYPE | Choice | Rel或Int
-ota_parameter.txt | File Parameter | 使用者上传
-check_integrity | Choice | 选true会增加target-file zip包数据完整性检测, 服务器上检测一个target-file大概耗时1分钟
+SIGNTYPE | Choice | Rel(默认), Int | ota包的签名类型,选Rel用qiku签名,选Int用google签名
+ota_parameter.txt | File Parameter | 使用者上传 | spm启动任务时上传的文件 
+check_integrity | Choice | true, false(默认) | 是否对target-file zip做数据完整性检测, 服务器上检测一个target-file大概耗时1分钟
+BIGVERSION | Choice | 7, 8(默认)  |  项目android源码的大版本号, O及之后都选8, O之前都选7
+BUILDTYPE | Choice | RELEASE(默认), DEBUG | RELEASE用于软件代表正式做ota包,DEBUG用于调试otabuild脚本
 
-####3.2 设置  绑定服务器节点    
-勾选Restrict where this project can be run,Label Expression设置为项目android源码所在服务器,eg:Ubu_10.99.12.11
+######3.2 设置  绑定服务器节点
+勾选`Restrict where this project can be run`,`Label Expression`设置为项目android源码所在服务器,eg:Ubu_10.99.12.11
 
-####3.3 设置  构建  
-选择Execute shell,Command为:  
+######3.3 设置  构建
+选择`Execute shell`,`Command`为:
 ```bash
-export ANDROID=项目android源码路径      # $ANDROID为编译服务器上当前项目android源码路径  
-export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名  
-export PLATFORM=芯片平台名				    # $PLATFORM为平台名  
-export window_out_path=编译输出路径	  # $window_out_path为编译生成的ota包输出路径  
+export ANDROID=项目android源码路径 	        # $ANDROID为编译服务器上当前项目android源码路径
+export PROJECT_NAME=机型名							# $PROJECT_NAME为机型名
+export PLATFORM=芯片平台名						   # $PLATFORM为平台名
+export market=国内版或海外版                          # 国内版取normal, 海外版取oversea
+echo "build type is $BUILDTYPE"
+cd $ANDROID/../otabuild
+if [ "$BUILDTYPE" == "RELEASE" ]; then
+  git checkout otabuild_Int
+  git checkout .
+  git pull --rebase origin otabuild_Int
+  export window_out_path_20=编译输出路径     # $window_out_path_20为20服务器编译生成的ota包输出路径
+  export window_out_path_17=编译输出路径     # $window_out_path_17为17服务器编译生成的ota包输出路径
+elif [ "$BUILDTYPE" == "DEBUG" ]; then
+  git checkout otabuild_Dev
+  # when debug, no need copy to 17 server,just need copy to a signle path for we debug.
+  export window_out_path_20=编译输出路径     # $window_out_path_20为20服务器编译生成的ota包输出路径
+fi
 
-cd $ANDROID/../otabuild  
-git pull --rebase origin otabuild_Int  
-bash ./main.sh  
+bash ./main.sh
 ```
 
+#####4 其他注意事项
+1 西安编译服务器上的挂载点配置文件为~/bin/mount.sh,深圳编译服务器上的挂载点配置文件为 /etc/fstab
+otabuild是从服务器上的挂载点配置文件中, 自动解析来得到target-files文件的挂载路径. 因此对于这两个文件,有以下要求:
+1.  换行符为unix风格
+2. 最好不要有无任何内容的空白行
 
-
-
-
-
-
-
-###4 编译系统中所有文件说明  
-main.sh--主控脚本,由Jenkin任务直接启动  
-tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息  
-tools/makeota.sh--main.sh调用,实现编译ota包  
-tools/makeupc.py--main.sh调用,实现生成upc文件  
-tools/config--所有支持机型的配置文件,里面保存一些必要的常量  
-tools/linux-x86--host端生成ota包时需要用到的库和binary.  
-tools/signapk.jar--用于签名ota包.  
+#####5 编译系统中所有文件说明
+main.sh--主控脚本,由Jenkin任务直接启动
+tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息
+tools/makeota.sh--main.sh调用,实现编译ota包
+tools/makeupc.py--main.sh调用,实现生成upc文件
+tools/config--所有支持机型的配置文件,里面保存一些必要的常量
+tools/linux-x86--host端生成ota包时需要用到的库和binary.
+tools/signapk.jar--用于签名ota包.
 
 
 

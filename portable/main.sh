@@ -42,15 +42,15 @@ if [ $ota_style = "all" ] || [ $ota_style = "diff" ] || [ $ota_style = "backward
   python $otabuild/tools/makeupc.py $diffpack_signed $PROJECT_NAME "$description" $priority $hw_version $old_ver $new_ver
 fi
 
-if [ "$window_out_path_20" != "" ]; then
-  cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_20
+if [ "$window_out_path_one" != "" ]; then
+  cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_one
 fi
-if [ "$window_out_path_17" != "" ]; then
+if [ "$window_out_path_two" != "" ]; then
   if [ $autosync = "true" ]; then
     printf '%b' "\033[32;1m all of ota packgages had copied to 20 server, we can get them from 20, now begin copy to 17 server \033[0m\n"
-    cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_17
+    cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_two
   elif [ $autosync = "false" ]; then
-    printf '%b' "\033[32;1m you had selected don't sync building result to $window_out_path_17, you should copy them manually. \033[0m\n"
+    printf '%b' "\033[32;1m you had selected don't sync building result to $window_out_path_two, you should copy them manually. \033[0m\n"
   fi
 fi
 clean_and_quit

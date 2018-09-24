@@ -43,6 +43,7 @@ target_old_windir=$(get_targetfiles_dir source_version)
 target_new_windir=$(get_targetfiles_dir dest_version)
 
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
+otatools_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/linux-x86;mkdir -p $otatools_dir
 target_old_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/oldtarget;mkdir -p $target_old_dir
 target_new_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/newtarget;mkdir -p $target_new_dir
 if [ ! -d $window_out_path_17 ]; then echo -e "\e[31m $window_out_path_17 didn't exist, ask CIE to create it on ubuntu compile server \e[0m";clean_and_quit; fi
@@ -99,6 +100,7 @@ printf "ota_param_file              %s\n" $ota_param_file
 cat -n $ota_param_file
 printf "\n"
 printf "outputdir                   %s\n" $outputdir
+printf "otatools_dir                %s\n" $otatools_dir
 printf "target_old_dir              %s\n" $target_old_dir
 printf "target_new_dir              %s\n" $target_new_dir
 printf "OTA_TYPE                    %s\n" $OTA_TYPE
@@ -155,25 +157,24 @@ if [ $check_integrity = "true" ]; then
 fi
 
 printf "\e[32m =================将host端工具从out拷贝到%s/linux-x86下====================== \e[0m\n" $otabuild
-if [ -e $ANDROID/out/dist/otatools.zip ]; then
+if [ -e $ANDROID/out/target/product/${PROJECT_NAME}/otatools.zip ]; then
   # if otatools.zip exits, always extract it to get all of host building tools firstly. otatools.zip is used for this purpose.
-  unzip -o $ANDROID/out/dist/otatools.zip "bin/*" "framework/*" "lib64/*" -d $otabuild/linux-x86/
+  unzip -o $ANDROID/out/target/product/${PROJECT_NAME}/otatools.zip "bin/*" "framework/*" "lib64/*" -d $otatools_dir
 else
   # if otatools.zip didn't exit, copy essential file manually.
-  if [ ! -d $otabuild/linux-x86 ]; then mkdir -p $otabuild/linux-x86; fi
-  if [ ! -d $otabuild/linux-x86/bin ]; then mkdir $otabuild/linux-x86/bin; fi
-  if [ ! -d $otabuild/linux-x86/framework ]; then mkdir $otabuild/linux-x86/framework; fi
-  if [ ! -d $otabuild/linux-x86/lib64 ]; then mkdir $otabuild/linux-x86/lib64; fi
-  cp -vu $ANDROID/out/host/linux-x86/bin/bsdiff                                                                    $otabuild/linux-x86/bin/
-  cp -vu $ANDROID/out/host/linux-x86/bin/imgdiff                                                                   $otabuild/linux-x86/bin/
-  cp -vu $ANDROID/out/host/linux-x86/framework/signapk.jar                                                         $otabuild/linux-x86/framework/
-  cp -vu $ANDROID/out/host/linux-x86/lib64/libc++.so                                                               $otabuild/linux-x86/lib64/
-  cp -vu $ANDROID/out/host/linux-x86/lib64/libconscrypt_openjdk_jni.so                                             $otabuild/linux-x86/lib64/
+  if [ ! -d $otatools_dir/bin ]; then mkdir $otatools_dir/bin; fi
+  if [ ! -d $otatools_dir/framework ]; then mkdir $otatools_dir/framework; fi
+  if [ ! -d $otatools_dir/lib64 ]; then mkdir $otatools_dir/lib64; fi
+  cp -vu $ANDROID/out/host/linux-x86/bin/bsdiff                                                                    $otatools_dir/bin/
+  cp -vu $ANDROID/out/host/linux-x86/bin/imgdiff                                                                   $otatools_dir/bin/
+  cp -vu $ANDROID/out/host/linux-x86/framework/signapk.jar                                                         $otatools_dir/framework/
+  cp -vu $ANDROID/out/host/linux-x86/lib64/libc++.so                                                               $otatools_dir/lib64/
+  cp -vu $ANDROID/out/host/linux-x86/lib64/libconscrypt_openjdk_jni.so                                             $otatools_dir/lib64/
   if [ $BIGVERSION -lt 8 ]; then
-    cp -vu $ANDROID/out/host/linux-x86/lib64/libdivsufsort.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort64.so $otabuild/linux-x86/lib64/
+    cp -vu $ANDROID/out/host/linux-x86/lib64/libdivsufsort.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort64.so $otatools_dir/lib64/
   elif [ $BIGVERSION -ge 8 ]; then
-    cp -vu $ANDROID/out/host/linux-x86/bin/bro                                                                     $otabuild/linux-x86/bin/
-    cp -vu $ANDROID/out/host/linux-x86/lib64/libbrotli.so                                                          $otabuild/linux-x86/lib64/
+    cp -vu $ANDROID/out/host/linux-x86/bin/bro                                                                     $otatools_dir/bin/
+    cp -vu $ANDROID/out/host/linux-x86/lib64/libbrotli.so                                                          $otatools_dir/lib64/
   fi
 fi
 

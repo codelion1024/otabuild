@@ -30,7 +30,7 @@ makefull()
   --verbose \
   --no_prereq \
   --package_key $KEY \
-  --path $otabuild/linux-x86 \
+  --path $otatools_dir \
   --device_specific $ANDROID/device/qcom/common \
   $target_new_file $fullpack_signed
 
@@ -68,7 +68,7 @@ makediff()
     --verbose \
     --worker_threads 8 \
     --package_key $KEY \
-    --path $otabuild/linux-x86 \
+    --path $otatools_dir \
     --device_specific $ANDROID/device/qcom/common \
     --incremental_from $target_old_file_noradio $target_new_file $diffpack_signed
   else
@@ -78,7 +78,7 @@ makediff()
     --verbose \
     --worker_threads 8 \
     --package_key $KEY \
-    --path $otabuild/linux-x86 \
+    --path $otatools_dir \
     --device_specific $ANDROID/device/qcom/common \
     --incremental_from $target_old_file $target_new_file $diffpack_signed
   fi

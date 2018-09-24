@@ -25,8 +25,10 @@ echo "ARTIFICIAL PROCESS begin"
 # 由于1713 55版本的OTA包部署之后，周六有用户反馈连接5G wifi时蓝牙断连问题，所以紧急撤掉55版本，重新发布了58版本
 # 所以，还得麻烦你帮忙制作40<->58  43<->58的OTA包
 if ([ $ver_local == "040" ] || [ $ver_local == "043" ]) && [ $tgtver == "058" ]; then
-  rm -rf  /data/app/com.qiku.cardmanager*
-  rm -rf  /data/app/com.lightsky.video*
+  mount -v -t ext4 -o max_batch_time=0,commit=1,data=ordered,barrier=1,errors=panic,nodelalloc /dev/block/bootdevice/by-name/userdata /data
+  rm -rf /data/app/com.qiku.cardmanager*
+  rm -rf /data/app/com.lightsky.video*
+  umount /data
 fi
 
 

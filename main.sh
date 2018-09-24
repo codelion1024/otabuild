@@ -2,6 +2,7 @@
 
 function clean_and_quit()
 {
+    echo "clean input, output, and then quit"
     if [ -d $otabuild ]; then rm -vr $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
     if [ -d $otabuild ]; then rm -vr $otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME; fi
     exit
@@ -16,7 +17,6 @@ printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--编译开始"
 
 otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
-if [ $? == 8 ]; then clean_and_quit(); fi
 
 curtime=$(date +%y%m%d_%H%M)
 if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then

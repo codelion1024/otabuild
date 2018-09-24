@@ -107,11 +107,11 @@ printf "=================将target-files从/mnt/hgfs拷贝到%s/input下========
 cp -vf $target_old_win $target_old_dir
 if [ $check_integrity = "true" ]; then
     zip -T $target_old_file
-    if [ $? != 0 ]; then echo "$target_old_file is data corrupt,exit!";exit 8; fi
+    if [ $? != 0 ]; then echo "$target_old_file is missing or data corrupt!";clean_and_quit; fi
 fi
 
 cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then
     zip -T $target_new_file
-    if [ $? != 0 ]; then echo "$target_new_file is data corrupt,exit!";exit 8; fi
+    if [ $? != 0 ]; then echo "$target_new_file is missing or data corrupt!";clean_and_quit; fi
 fi

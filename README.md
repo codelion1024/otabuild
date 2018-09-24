@@ -18,11 +18,14 @@ ota_parameter.txt | File Parameter | 使用者上传
 
 2.3 构建  
 选择Execute shell,Command为:  
-ANDROID=项目android源码路径
+ANDROID=项目android源码路径  
+PROJECT_NAME=机型名  
+PLATFORM=芯片平台名  
+window_out_path=编译输出路径  
 
 cd $ANDROID/../otabuild  
 git pull --rebase origin otabuild_Int  
-bash ./main.sh $ANDROID  
+bash ./main.sh $ANDROID $PROJECT_NAME $PLATFORM $window_out_path  
 
 
 3 otabuild适配新项目  

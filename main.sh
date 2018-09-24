@@ -8,6 +8,9 @@ STEP=0
 echo $BUILD_TAG--步骤$(expr $STEP + 1)--编译开始
 
 ANDROID=$1                      # $ANDROID为编译服务器上当前项目android源码路径
+PROJECT_NAME=$2
+PLATFORM=$3
+window_out_path=$4
 otabuild=$ANDROID/../otabuild
 
 source $otabuild/tools/init.sh

@@ -11,6 +11,7 @@ enca -L zh_CN -x UTF-8 $ota_param_file
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
 target_old_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/oldtarget;mkdir -p $target_old_dir
 target_new_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/newtarget;mkdir -p $target_new_dir
+mkdir -p $window_out_path;
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -22,17 +23,6 @@ OTA_TYPE=stable
 
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
-
-# 对于新项目,要在这里手动添加PLATFORM和window_out_path的值
-if [ $PROJECT_NAME = "QK1607" ]; then
-  PLATFORM=QC8976;window_out_path=/mnt/hgfs/ota/QC8976_Test_Version/${PROJECT_NAME};mkdir -p $window_out_path; 
-fi
-if [ $PROJECT_NAME = "QK1713" ]; then
-  PLATFORM=SDM630;window_out_path=/mnt/hgfs/ota/QCOM_SDM630/${PROJECT_NAME};mkdir -p $window_out_path;
-fi
-if [ $PROJECT_NAME = "QK1711" ]; then
-  PLATFORM=QC8940;window_out_path=/mnt/hgfs/ota/QC8940_Test_Version/QK1711_OS3.0;mkdir -p $window_out_path;
-fi
 
 PLAT_CFG_FILE=$otabuild/tools/config/${PLATFORM}_ota_parameter.txt
 int_server_name=`grep '^int_server_name' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`

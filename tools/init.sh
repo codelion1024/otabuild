@@ -78,7 +78,6 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$JAVA_HOME/bin:$PATH
 OTA_TYPE=stable
-SIGNAPK=$otabuild/tools/signapk.jar
 Int_KEY=$ANDROID/build/target/product/security/testkey
 Rel_KEY=/mnt/hgfs/security/testkey
 

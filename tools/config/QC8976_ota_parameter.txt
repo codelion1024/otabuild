@@ -1,3 +1,0 @@
-targetfiles_server_ip=10.99.11.20
-targetfiles_subroot_win=QC8976_Test_Version
-targetfiles_subroot_linux=QC8976_Test_Version

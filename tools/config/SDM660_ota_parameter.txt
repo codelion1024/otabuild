@@ -1,3 +1,0 @@
-targetfiles_server_ip=10.99.11.20
-targetfiles_subroot_win=qcom_sdm660
-targetfiles_subroot_linux=QCOM_SDM660

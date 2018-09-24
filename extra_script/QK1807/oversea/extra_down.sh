@@ -1,16 +1,17 @@
-﻿#!/system/bin/sh
+﻿#!/sbin/sh
 
-srcver=`cat /tmp/info.txt | grep srcver | busybox cut -d '=' -f 2`
-tgtver=`cat /tmp/info.txt | grep tgtver | busybox cut -d '=' -f 2`
-device=`cat /tmp/info.txt | grep device | busybox cut -d '=' -f 2`
-style=`cat /tmp/info.txt | grep style  | busybox cut -d '=' -f 2`
-SIGNTYPE=`cat /tmp/info.txt | grep SIGNTYPE  | busybox cut -d '=' -f 2`
-priority=`cat /tmp/info.txt | grep priority  | busybox cut -d '=' -f 2`
-full_bsp_modem=`cat /tmp/info.txt | grep full_bsp_modem  | busybox cut -d '=' -f 2`
-PLATFORM=`cat /tmp/info.txt | grep PLATFORM  | busybox cut -d '=' -f 2`
-hw_version=`cat /tmp/info.txt | grep hw_version  | busybox cut -d '=' -f 2`
-ver_local=$(getprop ro.build.version.incremental)
-dev_local=$(getprop ro.product.device)
+srcver=`busybox cat /tmp/info.txt | busybox grep srcver | busybox cut -d '=' -f 2`
+tgtver=`busybox cat /tmp/info.txt | busybox grep tgtver | busybox cut -d '=' -f 2`
+device=`busybox cat /tmp/info.txt | busybox grep device | busybox cut -d '=' -f 2`
+style=`busybox cat /tmp/info.txt | busybox grep style | busybox cut -d '=' -f 2`
+SIGNTYPE=`busybox cat /tmp/info.txt | busybox grep SIGNTYPE | busybox cut -d '=' -f 2`
+priority=`busybox cat /tmp/info.txt | busybox grep priority | busybox cut -d '=' -f 2`
+full_bsp_modem=`busybox cat /tmp/info.txt | busybox grep full_bsp_modem | busybox cut -d '=' -f 2`
+PLATFORM=`busybox cat /tmp/info.txt | busybox grep PLATFORM | busybox cut -d '=' -f 2`
+hw_version=`busybox cat /tmp/info.txt | busybox grep hw_version | busybox cut -d '=' -f 2`
+# use -v '^#' to filter out comment lines
+ver_local=`busybox grep -v '^#' /default.prop | busybox grep ro.build.version.incremental | busybox cut -d '=' -f 2`
+dev_local=`busybox grep -v '^#' /default.prop | busybox grep ro.product.device | busybox cut -d '=' -f 2`
 
 
 if [ $device != $dev_local ]; then

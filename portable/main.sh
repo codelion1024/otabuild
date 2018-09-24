@@ -42,6 +42,12 @@ fi
 
 if [ "$window_out_path_one" != "" ]; then
   cp -rvf $otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME/* $window_out_path_one
+  if [ $check_integrity = "true" ]; then
+    # REMEMBER WE HAD SWAPED 'OLD_VER' AND 'NEW_VER' !
+    test_integrity $window_out_path_one/OTA_V${old_ver}_V${new_ver}_${TIME}_${OTA_TYPE}_F/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
+    test_integrity $window_out_path_one/OTA_V${new_ver}_V${old_ver}_${TIME}_${OTA_TYPE}/ota_diff_${new_ver}_${old_ver}_${hw_version}_${OTA_TYPE}_signed.zip
+    test_integrity $window_out_path_one/OTA_V${new_ver}_V${old_ver}_${TIME}_${OTA_TYPE}/ota_full_${old_ver}_${hw_version}_${OTA_TYPE}_signed.zip
+  fi
 fi
 if [ "$window_out_path_two" != "" ]; then
   if [ $autosync = "true" ]; then

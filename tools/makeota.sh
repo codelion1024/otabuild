@@ -27,7 +27,7 @@ makefull()
   prepare_extra
   if [ $BIGVERSION -ge 8 ]; then    # we make block-based OTA for new project since android O
     echo "--------BLOCK-BASED FULL OTA-----------------"
-    $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --no_prereq --wipe_user_data -x pagesize=2048 --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --block --verbose --no_prereq --wipe_user_data --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
   elif [ $BIGVERSION -lt 8 ]; then
     echo "--------FILE-BASED FULL OTA-----------------"
     $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --no_prereq --wipe_user_data -x pagesize=2048 --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack

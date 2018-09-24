@@ -1,7 +1,3 @@
 targetfiles_server_ip=10.99.11.20
 targetfiles_subroot_win=QC8940_Test_Version
 targetfiles_subroot_linux=QC8940_Test_Version
-
-
-#release签名文件目录
-rel_key_dir=/home/system1/QK1711/Rel_Version/security/testkey

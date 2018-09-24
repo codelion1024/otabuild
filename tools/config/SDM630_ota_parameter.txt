@@ -1,7 +1,3 @@
 targetfiles_server_ip=10.99.11.20
 targetfiles_subroot_win=qcom_sdm630
 targetfiles_subroot_linux=QCOM_SDM630
-
-
-#release签名文件目录
-rel_key_dir=/home/system1/QK1713/Rel_Version/security/testkey

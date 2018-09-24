@@ -20,7 +20,7 @@ OTA_TYPE=stable
 PLAT_CFG_FILE=$otabuild/tools/config/${PLATFORM}_ota_parameter.txt
 SIGNAPK=$otabuild/tools/signapk.jar
 Int_KEY=$ANDROID/build/target/product/security/testkey
-Rel_KEY=`grep '^rel_key_dir' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
+Rel_KEY=/mnt/hgfs/security/testkey
 targetfiles_server_ip=`grep '^targetfiles_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 targetfiles_subroot_win=`grep '^targetfiles_subroot_win' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 targetfiles_subroot_linux=`grep '^targetfiles_subroot_linux' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`

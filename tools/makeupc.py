@@ -26,14 +26,6 @@ def main():
   old_ver=sys.argv[6]
   new_ver=sys.argv[7]
 
-  bindata=[]
-  base64file = open(os.path.dirname(diffpackpath) + '/base64.txt', 'wb')
-  base64.encode(open(diffpackpath, 'rb'),  base64file)  # save the base64 encoding stream of upgrade package to base64.txt
-  base64file.close()
-  with open(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
-    for line in f.readlines():
-      bindata.append(line.strip('\n')) # join all lines of base64.txt together
-
   diffpack=zipfile.ZipFile(diffpackpath)
   scriptpath=diffpack.extract('META-INF/com/google/android/updater-script', os.path.dirname(sys.argv[1]))
   diffpack.close
@@ -48,6 +40,14 @@ def main():
     print(new_version)
     assert(len(old_version) > 28)
     assert(len(new_version) > 28)
+
+  bindata=[]
+  base64file = open(os.path.dirname(diffpackpath) + '/base64.txt', 'wb')
+  base64.encode(open(diffpackpath, 'rb'),  base64file)  # save the base64 encoding stream of upgrade package to base64.txt
+  base64file.close()
+  with open(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
+    for line in f.readlines():
+      bindata.append(line.strip('\n')) # join all lines of base64.txt together
 
   root              = ET.Element("update-package")
   creationdate      = ET.SubElement(root, "creation-date")

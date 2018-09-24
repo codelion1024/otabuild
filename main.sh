@@ -19,7 +19,8 @@ otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
 
 curtime=$(date +%y%m%d_%H%M)
-if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then
+# fullpkg,forward,backward均为调试选项,供内部开发使用,分别用于单独制作全包,单独制作前向差分包,后向差分包
+if [ $ota_style = "all" ] || [ $ota_style = "full" ] || [ $ota_style = "fullpkg" ]; then
   printf "=====================开始制作整包==================\n"
   source $otabuild/tools/makeota.sh full
 fi

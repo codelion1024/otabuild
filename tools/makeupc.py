@@ -42,6 +42,9 @@ def main():
     line = [x for x in f if x.find(PROJECT_NAME) > 0][0:2]
     old_version = re.split("[:/]", line[0])[5]
     new_version = re.split("[:/]", line[1])[5]
+    print '==========debug updater-script中old_version,new_version=============='
+    print(old_version)
+    print(new_version)
     assert(len(old_version) > 28)
     assert(len(new_version) > 28)
 

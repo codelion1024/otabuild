@@ -22,6 +22,8 @@ OTA_TYPE=stable
 
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
+
+# 对于新项目,要在这里手动添加PLATFORM和window_out_path的值
 if [ $PROJECT_NAME = "QK1607" ]; then
   PLATFORM=QC8976;window_out_path=/mnt/hgfs/ota/QC8976_Test_Version/${PROJECT_NAME};mkdir -p $window_out_path; 
 fi

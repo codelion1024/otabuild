@@ -4,7 +4,7 @@
 
 import sys
 if sys.version_info > (3, 0):
-  raise RuntimeError('we use Python 2.x to run makeupc.py')
+  raise RuntimeError('we use Python 2.x to run this python script')
 import os
 import time
 import zipfile
@@ -17,6 +17,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
+  print '============开始制作upc文件============'
   diffpackpath=sys.argv[1]
   PROJECT_NAME=sys.argv[2]
   description=sys.argv[3]
@@ -27,16 +28,17 @@ def main():
 
   bindata=[]
   base64file = open(os.path.dirname(diffpackpath) + '/base64.txt', 'wb')
-  base64.encode(open(diffpackpath, 'rb'),  base64file)
+  base64.encode(open(diffpackpath, 'rb'),  base64file)  # 先将升级包的base64编码保存到base64.txt
   base64file.close()
   with open(os.path.dirname(diffpackpath) + '/base64.txt', 'r') as f:
     for line in f.readlines():
-      bindata.append(line.strip('\n'))
+      bindata.append(line.strip('\n')) # base64.txt中所有行连到一起
 
   diffpack=zipfile.ZipFile(diffpackpath)
   scriptpath=diffpack.extract('META-INF/com/google/android/updater-script', os.path.dirname(sys.argv[1]))
   diffpack.close
   with open(scriptpath, "r") as f:
+    # 先从updater-script中过滤出含有机型名的前两行,再从这两行中提取出升级前后的完整版本号
     line = [x for x in f if x.find(PROJECT_NAME) > 0][0:2]
     old_version = re.split("[:/]", line[0])[5]
     new_version = re.split("[:/]", line[1])[5]
@@ -45,7 +47,7 @@ def main():
 
   root              = ET.Element("update-package")
   creationdate      = ET.SubElement(root, "creation-date")
-  creationdate.text = time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(os.path.getctime(diffpackpath)))
+  creationdate.text = time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(os.path.getctime(diffpackpath))) # 用getctime得到升级包的创建时间
   hw                = ET.SubElement(root, "hw")
   hw.text           = PROJECT_NAME
   hwv               = ET.SubElement(root, "hwv")
@@ -61,10 +63,11 @@ def main():
   prio              = ET.SubElement(root, "priority")
   prio.text         = priority
   md5               = ET.SubElement(root, "md5")
-  md5.text          = hashlib.md5(open(diffpackpath, 'r').read()).hexdigest()
+  md5.text          = hashlib.md5(open(diffpackpath, 'r').read()).hexdigest() # 得到升级包的md5
   binary            = ET.SubElement(root, "binary")
   binary.text       = "".join(bindata)
   tree              = ET.ElementTree(root)
+  # 为了在保存xml文件时声明xml文件头,将xml_declaration设为true
   tree.write(os.path.dirname(diffpackpath) + '/UPC_' + PROJECT_NAME + '_' + hw_version + '_' + old_ver + '-' + new_ver + '.xml', encoding="UTF-8", xml_declaration=True)
   if os.path.exists(os.path.dirname(diffpackpath)):
     os.remove(os.path.dirname(diffpackpath) + '/base64.txt');shutil.rmtree(os.path.dirname(diffpackpath) + '/META-INF/')

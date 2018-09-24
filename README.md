@@ -16,7 +16,11 @@ targetfiles_subroot_linux | 此平台的项目在targetfiles-server-ip下存放t
 
 2.2 将以下活动cherry-pick到当前项目的分支上  
 http://10.100.13.23:8080/#/c/47213/  
-http://10.100.13.23:8080/#/c/46178/  
+http://10.100.13.23:8080/#/c/48050/  
+
+2.3 在编译服务器上该项目的安卓源码路径 android/qiku, 在android/qiku的上一级目录clone好otabuild仓库, 即 android/otabuild,  
+然后切到otabuild_Int分支  
+git checkout -t origin/otabuild_Int
 
 ###3 hudson任务配置  
 ####3.1 设置  参数化构建过程   
@@ -39,7 +43,7 @@ export window_out_path=编译输出路径	  # $window_out_path为编译生成的
 
 cd $ANDROID/../otabuild  
 git pull --rebase origin otabuild_Int  
-bash ./main.sh $ANDROID $PROJECT_NAME $PLATFORM $window_out_path  
+bash ./main.sh  
 ```
 
 

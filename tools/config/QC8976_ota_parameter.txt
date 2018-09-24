@@ -1,0 +1,14 @@
+#编译服务器挂载集成服务器的目录
+int_server_name=QC8976_Test_Version
+#集成服务器地址
+int_server_ip=10.99.11.20
+#集成服务器目录
+int_platform=QC8976_Test_Version
+
+#编译服务器挂载发布服务器的目录
+rel_server_name=QC8976_Rel_Version
+#发布服务器地址
+rel_server_ip=10.100.11.19
+rel_version=CP_Release_Version
+#发布服务器目录
+rel_platform=QC8976_Release_Version

@@ -135,6 +135,28 @@ printf "new_ver                     %s\n" $new_ver
 printf "hw_version                  %s\n" $hw_version
 printf "%s\n" "=========================所有信息END=================================="
 
+printf "=================检查ota_param_file中的source_version和dest_version下是否确实存在target-files======================\n"
+if [ "$target_old_win" == "" ] || [ "$target_new_win" == "" ]; then
+  if [ $ota_style == "fullpkg" ] && [ "$target_new_win" != "" ]; then
+    echo "new target-files exist, still can proceed if we only build a full OTA package"
+  else
+    # on any other situations, we can't proceed if lack one of target-files
+    echo "Lack target-files!!! We can't proceed, Check if target_old_win and target_new_win is null value"
+    clean_and_quit
+  fi
+fi
+printf "=================将target-files从/mnt/hgfs拷贝到%s/input下======================\n" $otabuild
+cp -vf $target_old_win $target_old_dir
+if [ $check_integrity = "true" ]; then
+    zip -T $target_old_file
+    if [ $? != 0 ]; then echo "$target_old_file is missing or data corrupt!";clean_and_quit; fi
+fi
+
+cp -vf $target_new_win $target_new_dir
+if [ $check_integrity = "true" ]; then
+    zip -T $target_new_file
+    if [ $? != 0 ]; then echo "$target_new_file is missing or data corrupt!";clean_and_quit; fi
+fi
 
 printf "=================将host端工具从out拷贝到%s/linux-x86下======================\n" $otabuild
 if [ -e $ANDROID/out/dist/otatools.zip ]; then
@@ -157,27 +179,5 @@ else
     cp -vu $ANDROID/out/host/linux-x86/bin/bro                                                                     $otabuild/linux-x86/bin/
     cp -vu $ANDROID/out/host/linux-x86/lib64/libbrotli.so                                                          $otabuild/linux-x86/lib64/
   fi
-fi
-
-printf "=================将target-files从/mnt/hgfs拷贝到%s/input下======================\n" $otabuild
-if [ "$target_old_win" == "" ] || [ "$target_new_win" == "" ]; then
-  if [ $ota_style == "fullpkg" ] && [ "$target_new_win" != "" ]; then
-    echo "new target-files exist, still can proceed if we only build a full OTA package"
-  else
-    echo "on any other situations, we can't proceed if lack target-files"
-    clean_and_quit
-  fi
-fi
-
-cp -vf $target_old_win $target_old_dir
-if [ $check_integrity = "true" ]; then
-    zip -T $target_old_file
-    if [ $? != 0 ]; then echo "$target_old_file is missing or data corrupt!";clean_and_quit; fi
-fi
-
-cp -vf $target_new_win $target_new_dir
-if [ $check_integrity = "true" ]; then
-    zip -T $target_new_file
-    if [ $? != 0 ]; then echo "$target_new_file is missing or data corrupt!";clean_and_quit; fi
 fi
 

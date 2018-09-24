@@ -270,23 +270,25 @@ release用于软件代表正式做ota包,debug用于调试otabuild脚本
     <span class="md_line">选择<code>Execute shell</code>,<code>Command</code>为:</span>
 </p>
 
-<div class="codehilite code_lang_bash  highlight"><pre><span></span><span class="nv">SHELL</span><span class="o">=</span>脚本解析器类型                        <span class="c1"># 选择用&#39;bash&#39;还是&#39;dash&#39;作为脚本解析器.参考https://wiki.ubuntu.com/DashAsBinSh dash是bash的精简版,启动更快, POSIX兼容移植性更好.</span>
-<span class="nb">export</span> <span class="nv">ANDROID</span><span class="o">=</span>项目android源码路径          <span class="c1"># $ANDROID为编译服务器上当前项目android源码路径</span>
-<span class="nb">export</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span>机型名                  <span class="c1"># $PROJECT_NAME为机型名</span>
-<span class="nb">export</span> <span class="nv">PLATFORM</span><span class="o">=</span>芯片平台名                  <span class="c1"># $PLATFORM为芯片平台名</span>
-<span class="nb">export</span> <span class="nv">market</span><span class="o">=</span>国内版或海外版                <span class="c1"># 国内版取normal, 海外版取oversea</span>
+<div class="codehilite code_lang_bash  highlight"><pre><span></span><span class="nv">SHELL</span><span class="o">=</span>script parser <span class="nb">type</span>    <span class="c1"># now supported &#39;bash&#39; and &#39;dash&#39;. With reference https://wiki.ubuntu.com/DashAsBinSh, dash is a lite edition of bash, it launchs faster and is posix compatible.</span>
+<span class="nb">export</span> <span class="nv">ANDROID</span><span class="o">=</span>/path/to/android/source     <span class="c1">#  eg:&#39;/home/system1/src/1807_lc/android/qiku&#39;</span>
+<span class="nb">export</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span>project name                  <span class="c1"># eg:&#39;QK1807&#39;</span>
+<span class="nb">export</span> <span class="nv">PLATFORM</span><span class="o">=</span>chipset name                  <span class="c1"># eg:&#39;SDM660&#39;</span>
+<span class="nb">export</span> <span class="nv">market</span><span class="o">=</span>market place                <span class="c1"># set &#39;normal&#39; if domestic, set &#39;oversea&#39; if oversea</span>
 <span class="nb">echo</span> <span class="s2">&quot;build type is </span><span class="nv">$BUILDTYPE</span><span class="s2">&quot;</span>
 <span class="nb">cd</span> <span class="nv">$ANDROID</span>/../otabuild
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;RELEASE&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
   git checkout otabuild_Int
   git checkout .
   git pull --rebase origin otabuild_Int
-  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>编译输出路径    <span class="c1"># $window_out_path_20为20服务器编译生成的ota包输出路径</span>
-  <span class="nb">export</span> <span class="nv">window_out_path_17</span><span class="o">=</span>编译输出路径    <span class="c1"># $window_out_path_17为17服务器编译生成的ota包输出路径</span>
+  <span class="c1"># $window_out_path_20 stands for the upgrade package path in 20 server</span>
+  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>/path/to/release/in/20server
+  <span class="c1"># $window_out_path_17 stands for the upgrade package path in 17 server</span>
+  <span class="nb">export</span> <span class="nv">window_out_path_17</span><span class="o">=</span>/path/to/release/in/17server
 <span class="k">elif</span> <span class="o">[</span> <span class="nv">$BUILDTYPE</span> <span class="o">=</span> <span class="s2">&quot;DEBUG&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
   git checkout otabuild_Dev
   <span class="c1"># when debug, no need copy to 17 server,just need copy to a signle path for we debug.</span>
-  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>编译输出路径
+  <span class="nb">export</span> <span class="nv">window_out_path_20</span><span class="o">=</span>/path/to/store/debug-purposed-packages
 <span class="k">fi</span>
 
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&quot;bash&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>

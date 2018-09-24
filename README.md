@@ -136,23 +136,25 @@ release用于软件代表正式做ota包,debug用于调试otabuild脚本
 ######3.5 设置 `构建`
 选择`Execute shell`,`Command`为:
 ```bash
-SHELL=脚本解析器类型                        # 选择用'bash'还是'dash'作为脚本解析器.参考https://wiki.ubuntu.com/DashAsBinSh dash是bash的精简版,启动更快, POSIX兼容移植性更好.
-export ANDROID=项目android源码路径          # $ANDROID为编译服务器上当前项目android源码路径
-export PROJECT_NAME=机型名                  # $PROJECT_NAME为机型名
-export PLATFORM=芯片平台名                  # $PLATFORM为芯片平台名
-export market=国内版或海外版                # 国内版取normal, 海外版取oversea
+SHELL=script parser type    # now supported 'bash' and 'dash'. With reference https://wiki.ubuntu.com/DashAsBinSh, dash is a lite edition of bash, it launchs faster and is posix compatible.
+export ANDROID=/path/to/android/source     #  eg:'/home/system1/src/1807_lc/android/qiku'
+export PROJECT_NAME=project name                  # eg:'QK1807'
+export PLATFORM=chipset name                  # eg:'SDM660'
+export market=market place                # set 'normal' if domestic, set 'oversea' if oversea
 echo "build type is $BUILDTYPE"
 cd $ANDROID/../otabuild
 if [ $BUILDTYPE = "RELEASE" ]; then
   git checkout otabuild_Int
   git checkout .
   git pull --rebase origin otabuild_Int
-  export window_out_path_20=编译输出路径    # $window_out_path_20为20服务器编译生成的ota包输出路径
-  export window_out_path_17=编译输出路径    # $window_out_path_17为17服务器编译生成的ota包输出路径
+  # $window_out_path_20 stands for the upgrade package path in 20 server
+  export window_out_path_20=/path/to/release/in/20server
+  # $window_out_path_17 stands for the upgrade package path in 17 server
+  export window_out_path_17=/path/to/release/in/17server
 elif [ $BUILDTYPE = "DEBUG" ]; then
   git checkout otabuild_Dev
   # when debug, no need copy to 17 server,just need copy to a signle path for we debug.
-  export window_out_path_20=编译输出路径
+  export window_out_path_20=/path/to/store/debug-purposed-packages
 fi
 
 if [ $SHELL = "bash" ]; then

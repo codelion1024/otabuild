@@ -159,6 +159,7 @@ if [ "$target_old_win" == "" ] || [ "$target_new_win" == "" ]; then
   else
     echo "on any other situations, we can't proceed if lack target-files"
     clean_and_quit
+  fi
 fi
 
 cp -vf $target_old_win $target_old_dir
@@ -172,3 +173,4 @@ if [ $check_integrity = "true" ]; then
     zip -T $target_new_file
     if [ $? != 0 ]; then echo "$target_new_file is missing or data corrupt!";clean_and_quit; fi
 fi
+

@@ -6,7 +6,7 @@ sudo apt-get install enca
 
 ###2 适配新项目前的准备工作  
 
-2.1 在tools/config下查看新项目的配置文件 {项目平台名}_ota_parameter.txt 是否存在  
+2.1 在otabuild仓库的tools/config下查看新项目的配置文件 {项目平台名}_ota_parameter.txt 是否存在  
 如果不存在则创建,在此文件中设置3个变量的值:
 变量名 | 含义
 --- | ---
@@ -21,6 +21,10 @@ http://10.100.13.23:8080/#/c/48050/
 2.3 在编译服务器上该项目的安卓源码路径 android/qiku, 在android/qiku的上一级目录clone好otabuild仓库, 即 android/otabuild,  
 然后切到otabuild_Int分支  
 git checkout -t origin/otabuild_Int
+
+2.4  在otabuild仓库的extra_script下, 建立对应机型名的文件夹  
+将otabuild/extra_script/template下的脚本模板拷到此机型文件夹下,以后按软件代表的特殊需求持续更新即可  
+
 
 ###3 hudson任务配置  
 ####3.1 设置  参数化构建过程   

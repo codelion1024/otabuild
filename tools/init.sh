@@ -1,11 +1,49 @@
 #!/bin/bash
 
+function get_targetfiles_dir_XIAN()
+{
+  netpath_full=$(grep $1 $ota_param_file | awk -F \= '{print $2}' | sed 's/\\/\//g')
+  while read line
+  do
+    netpath_prefix=$(echo $line | awk '{print $5}')
+    mountpath=$(echo $line | awk '{print $6}')
+    if [[ $netpath_full == *$netpath_prefix* ]]; then
+      behind=$(echo "$netpath_full" | awk -F "$netpath_prefix" '{printf "%s",$2}')
+      echo $mountpath$behind
+      break
+    fi
+  done < ~/bin/mount.sh # build server in xian use ~/bin/mount.sh to manage mountpoint
+}
+
+function get_targetfiles_dir_SHENZHEN()
+{
+  netpath_full=$(grep $1 $ota_param_file | awk -F \= '{print $2}' | sed 's/\\/\//g')
+  while read line
+  do
+    netpath_prefix=$(echo $line | awk '{print $1}')
+    mountpath=$(echo $line | awk '{print $2}')
+    if [[ $netpath_full == *$netpath_prefix* ]]; then
+      behind=$(echo "$netpath_full" | awk -F "$netpath_prefix" '{printf "%s",$2}')
+      echo $mountpath$behind
+      break
+    fi
+  done < /etc/fstab # build server in shenzhen use /etc/fstab to manage mountpoint
+}
+
 printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--初始化并打印所有参数"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
 ota_param_file=$ota_param_dir/ota_parameter.txt
 mv -v $WORKSPACE/ota_parameter.txt $ota_param_file
 enca -L zh_CN -x UTF-8 $ota_param_file
+
+if [ $LOCATION == "XIAN" ]; then
+  target_old_windir=$(get_targetfiles_dir_XIAN source_version)
+  target_new_windir=$(get_targetfiles_dir_XIAN dest_version)
+elif [ $LOCATION == "SHENZHEN" ]; then
+  target_old_windir=$(get_targetfiles_dir_SHENZHEN source_version)
+  target_new_windir=$(get_targetfiles_dir_SHENZHEN dest_version)
+fi
 
 outputdir=$otabuild/output/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $outputdir
 target_old_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME/oldtarget;mkdir -p $target_old_dir
@@ -17,17 +55,10 @@ export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$JAVA_HOME/bin:$PATH
 OTA_TYPE=stable
-
-PLAT_CFG_FILE=$otabuild/tools/config/${PLATFORM}_ota_parameter.txt
 SIGNAPK=$otabuild/tools/signapk.jar
 Int_KEY=$ANDROID/build/target/product/security/testkey
 Rel_KEY=/mnt/hgfs/security/testkey
-targetfiles_server_ip=`grep '^targetfiles_server_ip' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-targetfiles_subroot_win=`grep '^targetfiles_subroot_win' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
-targetfiles_subroot_linux=`grep '^targetfiles_subroot_linux' $PLAT_CFG_FILE | awk -F =  '{print $2}' | tr -d " "| tr -d "\r"`
 
-target_old_windir=$(grep source_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$targetfiles_server_ip'\/'$targetfiles_subroot_win'/\/mnt\/hgfs\/'$targetfiles_subroot_linux'/g')
-target_new_windir=$(grep dest_version $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}' | sed 's/\\/\//g' | sed 's/\/\/'$targetfiles_server_ip'\/'$targetfiles_subroot_win'/\/mnt\/hgfs\/'$targetfiles_subroot_linux'/g')
 priority=$(grep priority $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 description=$(grep description $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
 ota_style=$(grep ota_style $ota_param_file | tr -s "[\r]" "[\n]" | awk -F \= '{print $2}')
@@ -47,6 +78,7 @@ if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 printf "%s\n" "=========================所有信息BEGIN=================================="
 printf "BIGVERSION                  %s\n" $BIGVERSION
 printf "market                      %s\n" $market
+printf "LOCATION                    %s\n" $LOCATION
 printf "ANDROID                     %s\n" $ANDROID
 printf "otabuild                    %s\n" $otabuild
 printf "PROJECT_NAME                %s\n" $PROJECT_NAME
@@ -62,11 +94,6 @@ printf "OTA_TYPE                    %s\n" $OTA_TYPE
 printf "PLATFORM                    %s\n" $PLATFORM
 printf "window_out_path_17          %s\n" $window_out_path_17
 printf "window_out_path_20          %s\n" $window_out_path_20
-printf "PLAT_CFG_FILE               %s\n" $PLAT_CFG_FILE
-printf "%s\n" "--------------------------------------------------------------"
-printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip
-printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip
-printf "targetfiles_subroot_linux   %s\n" $targetfiles_subroot_linux
 printf "%s\n" "--------------------------------------------------------------"
 printf "target_old_windir           %s\n" $target_old_windir
 printf "target_new_windir           %s\n" $target_new_windir

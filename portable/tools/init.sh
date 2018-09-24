@@ -152,14 +152,14 @@ if [ "$target_old_win" = "" ] || [ "$target_new_win" = "" ]; then
 fi
 printf '%b' "\033[32;1m =================copy target-files from '/mnt/hgfs' to '%s/input'====================== \033[0m\n" $otabuild
 if [ $ota_style != "fullpkg" ]; then
-  cp -vf $target_old_win $target_old_dir
+  time cp -vf $target_old_win $target_old_dir
   if [ $check_integrity = "true" ]; then
     test_integrity $target_old_file
   fi
 fi
 
 
-cp -vf $target_new_win $target_new_dir
+time cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then
   test_integrity $target_new_file
 fi

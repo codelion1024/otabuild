@@ -22,8 +22,11 @@ http://10.100.13.23:8080/#/c/50611/ extra_script框架:recovery集成busybox工�
 http://10.100.13.23:8080/#/c/51335/ extra_script框架:recovery中集成toybox,并创建子命令链接
 http://10.100.13.23:8080/#/c/51368/ extra_script框架:修复注释格式错误
 
-2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 在android/qiku的上一级目录clone好otabuild仓库, 即 android/otabuild,然后切到otabuild_Int分支:
-git checkout -t origin/otabuild_Int
+2.2 在编译服务器上该项目的安卓源码路径 android/qiku, 用以下命令在android/qiku的上一级目录clone好otabuild仓库, 同时切到otabuild_Int分支:
+```bash
+android$ git clone --branch otabuild_Int ssh://{username}@10.100.13.23:29418/android/otabuild
+```
+其中{username}部分替换为当前服务器在gerrit上配置的用户名,西安项目通常为system1.
 
 2.3  在otabuild仓库的extra_script下, 建立对应机型名的文件夹,将otabuild/extra_script/template下对应的extra脚本模板拷到此机型文件夹下.
 对于android 8.0及以后的项目,基于block方式做包,因此拷贝extra_script\template\block-based\下的模板.

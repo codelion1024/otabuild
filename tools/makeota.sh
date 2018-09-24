@@ -35,13 +35,7 @@ makefull()
   $target_new_file $fullpack_signed
 
   if [ $check_integrity = "true" ]; then
-    zip --verbose --test $fullpack_signed
-    if [ $? != 0 ]; then
-      echo -e "\e[31m $fullpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
-      clean_and_quit
-    else
-      echo -e "\e[32m $fullpack_signed integrity check succeed, go on \e[0m"
-    fi
+    test_integrity $fullpack_signed
   fi
 }
 
@@ -84,13 +78,7 @@ makediff()
   fi
 
   if [ $check_integrity = "true" ]; then
-    zip --verbose --test $diffpack_signed
-    if [ $? != 0 ]; then
-      echo -e "\e[31m $diffpack_signed integrity check failed before copy to windows server, stop building, disk may has bad block(s)!!! \e[0m"
-      clean_and_quit
-    else
-      echo -e "\e[32m $diffpack_signed integrity check succeed, go on \e[0m"
-    fi
+    test_integrity $diffpack_signed
   fi
 }
 

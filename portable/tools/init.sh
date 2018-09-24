@@ -29,6 +29,16 @@ join_description() {
   echo "<![CDATA[${des_joined#*n}]]>"
 }
 
+test_integrity() {
+  zip --verbose --test $1
+  if [ $? != 0 ]; then
+    printf '%b' "\033[31;1m $1 integrity check failed after copy to compile server, stop building, DISK MAY HAS BAD BLOCK(S)!!! \033[0m\n"
+    clean_and_quit
+  else
+    printf '%b' "\033[32;1m $1 integrity check succeed, go on \033[0m\n"
+  fi
+}
+
 printf '%b' "\033[32;1m $BUILD_TAG--步骤$((STEP=STEP+1))--初始化并打印所有参数 \033[0m\n"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
@@ -134,24 +144,12 @@ fi
 printf '%b' "\033[32;1m =================将target-files从/mnt/hgfs拷贝到%s/input下====================== \033[0m\n" $otabuild
 cp -vf $target_old_win $target_old_dir
 if [ $check_integrity = "true" ]; then
-    zip --verbose --test $target_old_file
-    if [ $? != 0 ]; then
-      printf '%b' "\033[31;1m $target_new_file integrity check failed after copy to compile server, stop building, disk may has bad block(s)!!! \033[0m\n"
-      clean_and_quit
-    else
-      printf '%b' "\033[32;1m $target_new_file integrity check succeed, go on \033[0m\n"
-    fi
+    test_integrity $target_old_file
 fi
 
 cp -vf $target_new_win $target_new_dir
 if [ $check_integrity = "true" ]; then
-    zip --verbose --test $target_new_file
-    if [ $? != 0 ]; then
-      printf '%b' "\033[31;1m $target_new_file integrity check failed after copy to compile server, stop building, disk may has bad block(s)!!! \033[0m\n"
-      clean_and_quit
-    else
-      printf '%b' "\033[32;1m $target_new_file integrity check succeed, go on \033[0m\n"
-    fi
+    test_integrity $target_new_file
 fi
 
 printf '%b' "\033[32;1m =================将host端工具从out拷贝到%s/linux-x86下====================== \033[0m\n" $otabuild

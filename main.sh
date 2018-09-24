@@ -7,12 +7,8 @@ TIME=`date +%y%m%d_%H%M%S`
 STEP=0
 printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "编译开始"
 
-ANDROID=$1                      # $ANDROID为编译服务器上当前项目android源码路径
-PROJECT_NAME=$2                 # $PROJECT_NAME为机型名
-PLATFORM=$3                     # $PLATFORM为平台名
-window_out_path=$4              # $window_out_path为编译生成的ota包输出路径
-otabuild=$ANDROID/../otabuild
 
+otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh
 
 if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then

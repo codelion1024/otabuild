@@ -26,12 +26,12 @@ makefull() {
     echo -e "\e[32m --------BLOCK-BASED FULL OTA----------------- \e[0m"
     $ANDROID/build/tools/releasetools/ota_from_target_files \
     --block \
-    --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 \
+    --verbose --no_prereq --package_key $KEY --path $otabuild/linux-x86 \
     --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   elif [ $BIGVERSION -lt 8 ]; then
     echo -e "\e[32m --------FILE-BASED FULL OTA----------------- \e[0m"
     $ANDROID/build/tools/releasetools/ota_from_target_files \
-    --verbose --no_prereq --wipe_user_data --package_key $KEY --path $otabuild/linux-x86 \
+    --verbose --no_prereq --package_key $KEY --path $otabuild/linux-x86 \
     --device_specific $ANDROID/device/qcom/common $target_new_file $fullpack_signed
   fi
   if [ $check_integrity = "true" ]; then

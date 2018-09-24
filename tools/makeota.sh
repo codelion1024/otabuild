@@ -6,9 +6,9 @@ makefull()
   mkdir -p $outputdir/$packfolder
   fullpack=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}.zip
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
-  
+
   echo "---制作整包($fullpack_signed)---"
-  $ANDROID/build/tools/releasetools/ota_from_target_files -n -w -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
+  $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -n -w -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
   java -Xmx4096m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $fullpack $fullpack_signed
   if [ -f $fullpack ]; then rm -v $fullpack; fi
 }
@@ -29,9 +29,9 @@ makediff()
 
   echo "--制作差分包($diffpack_signed)---"
   if [ $full_bsp_modem = "true" ]; then
-    $ANDROID/build/tools/releasetools/ota_from_target_files -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
   else
-    $ANDROID/build/tools/releasetools/ota_from_target_files -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
   fi
   java -Xmx2048m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $diffpack $diffpack_signed
   if [ -f $diffpack ]; then rm -v $diffpack; fi

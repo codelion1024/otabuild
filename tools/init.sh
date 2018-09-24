@@ -57,6 +57,7 @@ old_ver=$(basename --suffix=.zip $target_old_win | awk -F \- '{print $4}')
 new_ver=$(basename --suffix=.zip $target_new_win | awk -F \- '{print $4}')
 hw_version=$(echo $target_old_win | awk -F \/ '{print $7}' | awk -F \. '{print $2}')
 if [ $priority = "" ]; then priority=Optional; fi
+if [ $ota_style = "" ]; then ota_style=all; fi
 
 
 echo =========================所有信息BEGIN==================================
@@ -104,13 +105,15 @@ echo "hw_version        $hw_version"
 echo =========================所有信息END==================================
 
 
-
-echo =================将target-files从/mnt/hgfs拷贝到$otabuild/input下======================
-cp -vf $target_old_win $target_old_dir
-cp -vf $target_new_win $target_new_dir
-
-mkdir -p $otabuild/linux-x86;mkdir $otabuild/linux-x86/bin;mkdir $otabuild/linux-x86/framework;mkdir $otabuild/linux-x86/lib64;
+echo =================将host端工具从out拷贝到$otabuild/linux-x86下======================
+if [ ! -d $otabuild/linux-x86 ]; then mkdir -p $otabuild/linux-x86; fi
+if [ ! -d $otabuild/linux-x86/bin ]; then mkdir $otabuild/linux-x86/bin; fi
+if [ ! -d $otabuild/linux-x86/framework ]; then mkdir $otabuild/linux-x86/framework; fi
+if [ ! -d $otabuild/linux-x86/lib64 ]; then mkdir $otabuild/linux-x86/lib64; fi
 cp -vu $ANDROID/out/host/linux-x86/bin/bsdiff $ANDROID/out/host/linux-x86/bin/imgdiff $otabuild/linux-x86/bin/
 cp -vu $ANDROID/out/host/linux-x86/framework/signapk.jar $otabuild/linux-x86/framework/
 cp -vu $ANDROID/out/host/linux-x86/lib64/libc++.so $ANDROID/out/host/linux-x86/lib64/libconscrypt_openjdk_jni.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort64.so $otabuild/linux-x86/lib64/
 
+echo =================将target-files从/mnt/hgfs拷贝到$otabuild/input下======================
+cp -vf $target_old_win $target_old_dir
+cp -vf $target_new_win $target_new_dir

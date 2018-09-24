@@ -32,3 +32,16 @@ bash ./main.sh $ANDROID $PROJECT_NAME $PLATFORM $window_out_path
 3.1 在tools/config下新增新项目的配置文件  
 
 
+4 编译系统中所有文件说明  
+main.sh--主控脚本,由Jenkin任务直接启动  
+tools/init.sh--main.sh调用,初始化脚本,解析出所有编译所需信息  
+tools/makeota.sh--main.sh调用,实现编译ota包  
+tools/makeupc.py--main.sh调用,实现生成upc文件  
+tools/config--所有支持机型的配置文件,里面保存一些必要的常量  
+tools/linux-x86--host端生成ota包时需要用到的库和binary.  
+tools/signapk.jar--用于签名ota包.  
+
+
+
+
+

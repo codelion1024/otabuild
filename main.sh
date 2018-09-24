@@ -5,28 +5,28 @@ type enca >/dev/null 2>&1 || { echo >&2 "we need enca to convert ota_param_file'
 
 TIME=`date +%y%m%d_%H%M%S`
 STEP=0
-echo $BUILD_TAG--步骤$(expr $STEP + 1)--编译开始
+printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "编译开始"
 
 ANDROID=$1                      # $ANDROID为编译服务器上当前项目android源码路径
-PROJECT_NAME=$2
-PLATFORM=$3
-window_out_path=$4
+PROJECT_NAME=$2                 # $PROJECT_NAME为机型名
+PLATFORM=$3                     # $PLATFORM为平台名
+window_out_path=$4              # $window_out_path为编译生成的ota包输出路径
 otabuild=$ANDROID/../otabuild
 
 source $otabuild/tools/init.sh
 
 if [ $ota_style = "all" ] || [ $ota_style = "full" ]; then
-  echo =====================开始制作整包==================
+  printf "=====================开始制作整包==================\n"
   curtime=$(date +%y%m%d_%H%M)
   source $otabuild/tools/makeota.sh full
-  echo =====================开始制作正向差分升级包==================
+  printf "=====================开始制作正向差分升级包==================\n"
   source $otabuild/tools/makeota.sh up
   mv -v $ota_param_file $outputdir/$packfolder
   python $otabuild/tools/makeupc.py $diffpack_signed $PROJECT_NAME "$description" $priority $hw_version $old_ver $new_ver
 fi
 
 if [ $ota_style = "all" ] || [ $ota_style = "diff" ]; then
-  echo ======================开始制作逆向差分升级包=================
+  printf "======================开始制作逆向差分升级包=================\n"
   # 对于逆向差分升级包, 需要交换新旧target-files
   tmpdir=$target_old_dir;target_old_dir=$target_new_dir;target_new_dir=$tmpdir
   tmpfile=$target_old_file;target_old_file=$target_new_file;target_new_file=$tmpfile

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo $BUILD_TAG--步骤$(expr $STEP + 1)--初始化并打印所有参数
+printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "初始化并打印所有参数"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
 ota_param_file=$ota_param_dir/ota_parameter.txt
@@ -50,52 +50,52 @@ if [ $ota_style = "" ]; then ota_style=all; fi
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
-echo =========================所有信息BEGIN==================================
-echo "ANDROID           $ANDROID"
-echo "otabuild          $otabuild"
-echo "PROJECT_NAME      $PROJECT_NAME"
-echo "SIGNTYPE          $SIGNTYPE"
-echo "TIME              $TIME"
-echo "ota_param_dir     $ota_param_dir"
-echo "ota_param_file    $ota_param_file"
+printf "=========================所有信息BEGIN==================================\n"
+printf "ANDROID           %s\n" $ANDROID
+printf "otabuild          %s\n" $otabuild
+printf "PROJECT_NAME      %s\n" $PROJECT_NAME
+printf "SIGNTYPE          %s\n" $SIGNTYPE
+printf "TIME              %s\n" $TIME
+printf "ota_param_dir     %s\n" $ota_param_dir
+printf "ota_param_file    %s\n" $ota_param_file
 cat -n $ota_param_file
-echo "outputdir         $outputdir"
-echo "target_old_dir    $target_old_dir"
-echo "target_new_dir    $target_new_dir"
-echo "OTA_TYPE          $OTA_TYPE"
-echo "PLATFORM          $PLATFORM"
-echo "window_out_path   $window_out_path"
-echo "DEV_SRC           $DEV_SRC"
-echo "DEV_DST           $DEV_DST"
-echo "PLAT_CFG_FILE     $PLAT_CFG_FILE"
-echo --------------------------------------------------------------
-echo "int_server_name   $int_server_name"
-echo "int_server_ip     $int_server_ip"
-echo "int_platform      $int_platform"
-echo "int_server        $int_server"
-echo "rel_server_name   $rel_server_name"
-echo "rel_server_ip     $rel_server_ip"
-echo "rel_version       $rel_version"
-echo "rel_platform      $rel_platform"
-echo "rel_server        $rel_server"
-echo --------------------------------------------------------------
-echo "source_version    $source_version"
-echo "dest_version      $dest_version"
-echo "priority          $priority"
-echo "description       $description"
-echo "ota_style         $ota_style"
-echo "full_bsp_modem    $full_bsp_modem"
-echo "target_old_win    $target_old_win"
-echo "target_new_win    $target_new_win"
-echo "target_old_file   $target_old_file"
-echo "target_new_file   $target_new_file"
-echo "old_ver           $old_ver"
-echo "new_ver           $new_ver"
-echo "hw_version        $hw_version"
-echo =========================所有信息END==================================
+printf "outputdir         %s\n" $outputdir
+printf "target_old_dir    %s\n" $target_old_dir
+printf "target_new_dir    %s\n" $target_new_dir
+printf "OTA_TYPE          %s\n" $OTA_TYPE
+printf "PLATFORM          %s\n" $PLATFORM
+printf "window_out_path   %s\n" $window_out_path
+printf "DEV_SRC           %s\n" $DEV_SRC
+printf "DEV_DST           %s\n" $DEV_DST
+printf "PLAT_CFG_FILE     %s\n" $PLAT_CFG_FILE
+printf "--------------------------------------------------------------\n"
+printf "int_server_name   %s\n" $int_server_name
+printf "int_server_ip     %s\n" $int_server_ip
+printf "int_platform      %s\n" $int_platform
+printf "int_server        %s\n" $int_server
+printf "rel_server_name   %s\n" $rel_server_name
+printf "rel_server_ip     %s\n" $rel_server_ip
+printf "rel_version       %s\n" $rel_version
+printf "rel_platform      %s\n" $rel_platform
+printf "rel_server        %s\n" $rel_server
+printf "--------------------------------------------------------------\n"
+printf "source_version    %s\n" $source_version
+printf "dest_version      %s\n" $dest_version
+printf "priority          %s\n" $priority
+printf "description       %s\n" $description
+printf "ota_style         %s\n" $ota_style
+printf "full_bsp_modem    %s\n" $full_bsp_modem
+printf "target_old_win    %s\n" $target_old_win
+printf "target_new_win    %s\n" $target_new_win
+printf "target_old_file   %s\n" $target_old_file
+printf "target_new_file   %s\n" $target_new_file
+printf "old_ver           %s\n" $old_ver
+printf "new_ver           %s\n" $new_ver
+printf "hw_version        %s\n" $hw_version
+printf "=========================所有信息END==================================\n"
 
 
-echo =================将host端工具从out拷贝到$otabuild/linux-x86下======================
+printf "=================将host端工具从out拷贝到%s/linux-x86下======================\n" $otabuild
 if [ ! -d $otabuild/linux-x86 ]; then mkdir -p $otabuild/linux-x86; fi
 if [ ! -d $otabuild/linux-x86/bin ]; then mkdir $otabuild/linux-x86/bin; fi
 if [ ! -d $otabuild/linux-x86/framework ]; then mkdir $otabuild/linux-x86/framework; fi
@@ -104,6 +104,6 @@ cp -vu $ANDROID/out/host/linux-x86/bin/bsdiff $ANDROID/out/host/linux-x86/bin/im
 cp -vu $ANDROID/out/host/linux-x86/framework/signapk.jar $otabuild/linux-x86/framework/
 cp -vu $ANDROID/out/host/linux-x86/lib64/libc++.so $ANDROID/out/host/linux-x86/lib64/libconscrypt_openjdk_jni.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort.so $ANDROID/out/host/linux-x86/lib64/libdivsufsort64.so $otabuild/linux-x86/lib64/
 
-echo =================将target-files从/mnt/hgfs拷贝到$otabuild/input下======================
+printf "=================将target-files从/mnt/hgfs拷贝到%s/input下======================\n" $otabuild
 cp -vf $target_old_win $target_old_dir
 cp -vf $target_new_win $target_new_dir

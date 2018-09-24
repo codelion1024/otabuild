@@ -7,7 +7,7 @@ makefull()
   fullpack=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}.zip
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  echo "---制作整包($fullpack_signed)---"
+  printf "---制作整包(%s)---\n" $fullpack_signed
   $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -n -w -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
   java -Xmx4096m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $fullpack $fullpack_signed
   if [ -f $fullpack ]; then rm -v $fullpack; fi
@@ -16,7 +16,7 @@ makefull()
 makediff()
 {
   if [ $full_bsp_modem = "true" ]; then
-    echo -------------对target_old_file去除BSPMODEM文件----------------
+    printf "-------------对target_old_file去除BSPMODEM文件----------------\n"
     target_old_file_noradio=$target_old_dir/$(basename -s '.zip' $target_old_file)_noradio.zip
     # --copy代表复制zip文件所有内容, 用-x排除RADIO下所有bsp散件
     # 这一步默认输出的log很多,用--quiet参数消除
@@ -29,7 +29,7 @@ makediff()
   diffpack=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}.zip
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
-  echo "--制作差分包($diffpack_signed)---"
+  printf "--制作差分包(%s)---\n" $diffpack_signed
   if [ $full_bsp_modem = "true" ]; then
     $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
   else

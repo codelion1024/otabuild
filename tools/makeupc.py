@@ -38,8 +38,9 @@ def main():
   scriptpath=diffpack.extract('META-INF/com/google/android/updater-script', os.path.dirname(sys.argv[1]))
   diffpack.close
   with open(scriptpath, "r") as f:
-    # 先从updater-script中过滤出含有机型名的前两行,再从这两行中提取出升级前后的完整版本号
-    line = [x for x in f if x.find(PROJECT_NAME) > 0][0:2]
+    # 先从updater-script中过滤出含有"ro.build.fingerprint"的前两行
+    line = [x for x in f if x.find('ro.build.fingerprint') > 0][0:2]
+    # 再从这两行中提取出升级前后的完整版本号
     old_version = re.split("[:/]", line[0])[5]
     new_version = re.split("[:/]", line[1])[5]
     print '==========debug updater-script中old_version,new_version=============='

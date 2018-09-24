@@ -58,8 +58,6 @@ printf "target_new_dir              %s\n" $target_new_dir
 printf "OTA_TYPE                    %s\n" $OTA_TYPE
 printf "PLATFORM                    %s\n" $PLATFORM
 printf "window_out_path             %s\n" $window_out_path
-printf "DEV_SRC                     %s\n" $DEV_SRC
-printf "DEV_DST                     %s\n" $DEV_DST
 printf "PLAT_CFG_FILE               %s\n" $PLAT_CFG_FILE
 printf "%s\n" "--------------------------------------------------------------"
 printf "targetfiles_server_ip       %s\n" $targetfiles_server_ip

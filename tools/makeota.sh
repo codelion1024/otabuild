@@ -31,9 +31,9 @@ makediff()
 
   echo "--制作差分包($diffpack_signed)---"
   if [ $full_bsp_modem = "true" ]; then
-    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
   else
-    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
   fi
   java -Xmx2048m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $diffpack $diffpack_signed
   if [ -f $diffpack ]; then rm -v $diffpack; fi

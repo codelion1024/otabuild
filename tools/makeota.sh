@@ -25,7 +25,7 @@ makefull()
 
   printf "%s\n" "制作整包----$fullpack_signed"
   prepare_extra
-  $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -n -w -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
+  $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --block --no_prereq --wipe_user_data -x pagesize=2048 --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
   java -Xmx8192m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $fullpack $fullpack_signed
   if [ -f $fullpack ]; then rm -v $fullpack; fi
 }
@@ -49,9 +49,9 @@ makediff()
   printf "%s\n" "制作差分包----$diffpack_signed"
   prepare_extra
   if [ $full_bsp_modem = "true" ]; then
-    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --block --worker_threads 8 -x pagesize=2048 --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
   else
-    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
+    $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --block --worker_threads 8 -x pagesize=2048 --package_key $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file $target_new_file $diffpack
   fi
   java -Xmx4096m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $diffpack $diffpack_signed
   if [ -f $diffpack ]; then rm -v $diffpack; fi

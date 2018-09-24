@@ -5,8 +5,7 @@ type enca >/dev/null 2>&1 || { echo >&2 "we need enca to convert ota_param_file'
 
 TIME=`date +%y%m%d_%H%M%S`
 STEP=0
-printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "编译开始"
-
+printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--编译开始"
 
 otabuild=$ANDROID/../otabuild
 source $otabuild/tools/init.sh

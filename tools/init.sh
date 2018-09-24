@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-printf "%s--步骤%d--%s\n" $BUILD_TAG `let STEP++` "初始化并打印所有参数"
+printf "%s\n" "$BUILD_TAG--步骤$((STEP++))--初始化并打印所有参数"
 
 ota_param_dir=$otabuild/input/$SIGNTYPE/$PROJECT_NAME/$TIME;mkdir -p $ota_param_dir
 ota_param_file=$ota_param_dir/ota_parameter.txt
@@ -50,7 +49,7 @@ if [ $ota_style = "" ]; then ota_style=all; fi
 if [ $SIGNTYPE = "Int" ]; then KEY=$Int_KEY; fi
 if [ $SIGNTYPE = "Rel" ]; then KEY=$Rel_KEY; fi
 
-printf "=========================所有信息BEGIN==================================\n"
+printf "%s\n" "=========================所有信息BEGIN=================================="
 printf "ANDROID           %s\n" $ANDROID
 printf "otabuild          %s\n" $otabuild
 printf "PROJECT_NAME      %s\n" $PROJECT_NAME
@@ -68,7 +67,7 @@ printf "window_out_path   %s\n" $window_out_path
 printf "DEV_SRC           %s\n" $DEV_SRC
 printf "DEV_DST           %s\n" $DEV_DST
 printf "PLAT_CFG_FILE     %s\n" $PLAT_CFG_FILE
-printf "--------------------------------------------------------------\n"
+printf "%s\n" "--------------------------------------------------------------"
 printf "int_server_name   %s\n" $int_server_name
 printf "int_server_ip     %s\n" $int_server_ip
 printf "int_platform      %s\n" $int_platform
@@ -78,7 +77,7 @@ printf "rel_server_ip     %s\n" $rel_server_ip
 printf "rel_version       %s\n" $rel_version
 printf "rel_platform      %s\n" $rel_platform
 printf "rel_server        %s\n" $rel_server
-printf "--------------------------------------------------------------\n"
+printf "%s\n" "--------------------------------------------------------------"
 printf "source_version    %s\n" $source_version
 printf "dest_version      %s\n" $dest_version
 printf "priority          %s\n" $priority
@@ -92,7 +91,7 @@ printf "target_new_file   %s\n" $target_new_file
 printf "old_ver           %s\n" $old_ver
 printf "new_ver           %s\n" $new_ver
 printf "hw_version        %s\n" $hw_version
-printf "=========================所有信息END==================================\n"
+printf "%s\n" "=========================所有信息END=================================="
 
 
 printf "=================将host端工具从out拷贝到%s/linux-x86下======================\n" $otabuild

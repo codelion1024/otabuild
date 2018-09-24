@@ -56,6 +56,7 @@ makediff() {
     $ANDROID/build/tools/releasetools/ota_from_target_files \
     $IS_WIPE_USER_DATA \
     $IS_BLOCK \
+    --log_diff $outputdir/$packfolder/diff_${old_ver}_${new_ver}.txt \
     --verbose \
     --worker_threads $thread_nums \
     --package_key $KEY \
@@ -66,6 +67,7 @@ makediff() {
     $ANDROID/build/tools/releasetools/ota_from_target_files \
     $IS_WIPE_USER_DATA \
     $IS_BLOCK \
+    --log_diff $outputdir/$packfolder/diff_${old_ver}_${new_ver}.txt \
     --verbose \
     --worker_threads $thread_nums \
     --package_key $KEY \

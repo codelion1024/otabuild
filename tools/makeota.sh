@@ -1,5 +1,21 @@
 #! /bin/bash
 
+function prepare_extra()
+{
+    cat /dev/null >                             $ANDROID/build/tools/releasetools/info.txt
+    echo "srcver=$old_ver" >>                   $ANDROID/build/tools/releasetools/info.txt
+    echo "tgtver=$new_ver" >>                   $ANDROID/build/tools/releasetools/info.txt
+    echo "device=$PROJECT_NAME" >>              $ANDROID/build/tools/releasetools/info.txt
+    echo "style=$style" >>                      $ANDROID/build/tools/releasetools/info.txt
+    echo "SIGNTYPE=$SIGNTYPE" >>                $ANDROID/build/tools/releasetools/info.txt
+    echo "priority=$priority" >>                $ANDROID/build/tools/releasetools/info.txt
+    echo "full_bsp_modem=$full_bsp_modem" >>    $ANDROID/build/tools/releasetools/info.txt
+    echo "PLATFORM=$PLATFORM" >>                $ANDROID/build/tools/releasetools/info.txt
+    echo "hw_version=$hw_version" >>            $ANDROID/build/tools/releasetools/info.txt
+
+    cp -vf $otabuild/extra_script/${PROJECT_NAME}/extra_${style}.sh $ANDROID/build/tools/releasetools/extra.sh
+}
+
 makefull()
 {
   packfolder=OTA_V${old_ver}_V${new_ver}_${curtime}_${OTA_TYPE}
@@ -8,6 +24,7 @@ makefull()
   fullpack_signed=$outputdir/$packfolder/ota_full_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
   printf "%s\n" "制作整包----$fullpack_signed"
+  prepare_extra
   $ANDROID/build/tools/releasetools/ota_from_target_files --verbose -n -w -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common $target_new_file $fullpack
   java -Xmx4096m -jar $SIGNAPK -w $KEY.x509.pem $KEY.pk8 $fullpack $fullpack_signed
   if [ -f $fullpack ]; then rm -v $fullpack; fi
@@ -30,6 +47,7 @@ makediff()
   diffpack_signed=$outputdir/$packfolder/ota_diff_${old_ver}_${new_ver}_${hw_version}_${OTA_TYPE}_signed.zip
 
   printf "%s\n" "制作差分包----$diffpack_signed"
+  prepare_extra
   if [ $full_bsp_modem = "true" ]; then
     $ANDROID/build/tools/releasetools/ota_from_target_files --verbose --worker_threads 8 -x pagesize=2048 -k $KEY -p $otabuild/linux-x86 -s $ANDROID/device/qcom/common -i $target_old_file_noradio $target_new_file $diffpack
   else
